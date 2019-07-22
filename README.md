@@ -1,5 +1,7 @@
-[![Montolo DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3343313.svg)](https://doi.org/10.5281/zenodo.3343313)
-[![MontoloStats DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3343053.svg)](https://doi.org/10.5281/zenodo.3343053)
+*Montolo* restriction type definitions and measures: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3343313.svg)](https://doi.org/10.5281/zenodo.3343313)
+
+The current *MontoloStats* dataset: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3343053.svg)](https://doi.org/10.5281/zenodo.3343053)
+
 
 
 # Montolo
