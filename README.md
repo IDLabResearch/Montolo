@@ -5,12 +5,12 @@ The current *MontoloStats* dataset: [![DOI](https://zenodo.org/badge/DOI/10.5281
 
 # Montolo
 
-To understand how current RDF-based ontologies are modeled we created **Montolo** which currently describes concepts related to *Restrictions* in ontologies..
+To understand how current RDF-based ontologies are modeled we created **Montolo** which currently describes concepts related to *Restrictions* in ontologies.
 Ontologies which are built with the RDF framework consist of concepts and relationship between these concepts. 
 Additionally several restrictions in the form of axioms can be defined, using terms of the RDFS and OWL vocabulary.
 
 
-**MontoloStats** is a dataset containing statistics about ontology modeling described using the **MontoloVoc** vocabulary based on W3C PROV and W3C DataCube.
+[MontoloStats](https://lov.ilabt.imec.be/montolo/data/montolo-stats/latest/) is a dataset containing statistics about ontology modeling described using the [MontoloVoc](https://lov.ilabt.imec.be/montolo/ns/montolo-voc) vocabulary based on W3C PROV and W3C DataCube.
 So far MontoloStats contains statistics from **98% of LOV** and **97% of BioPortal** ontologies.
 
 This repository contains code to download ontologies, create the MontoloStats dataset and perform analyses.
@@ -24,21 +24,31 @@ This repository contains code to download ontologies, create the MontoloStats da
 First you have to download a current list of LOV ontologies
 and then you can download all versions and filter for most recent versions.
 
-```
+```bash
 # Get a list of ontologies listed in LOV
 curl https://lov.linkeddata.es/dataset/lov/api/v2/vocabulary/list > lov_list.json
 
+# Install needed nodejs modules
+npm install 
+
 # Download LOV ontologies
 export NODE_OPTIONS=--max_old_space_size=4096
-node get-lov-ontologies.js
+mkdir ontologies/2019-07-19_lov-all
+node get-lov-ontologies.js lov_list.json ontologies/2019-07-19_lov-all
 
 # Filter most current ontology version
-...
+mkdir ontologies/2019-07-19_lov-current
+node get-latest-ontologies.js ontologies/2019-07-19_lov-all ontologies/2019-07-19_lov-current
 ```
 
 **BioPortal**
 First you have to download a current list of BioPortal ontologies
 and then you can download all versions and filter for most recent verions.
+
+```bash
+todo: add script to repo
+
+```
 
 
 ## Compute statistics
@@ -47,10 +57,10 @@ The statistics are computed using a [LODStats extension](https://github.com/IDLa
 
 ```
 # Create stats for LOV
-...
+todo: add script to repo
 
 # Create stats for BioPortal
-...
+todo: add script to repo
 
 # Combine results in a single turtle file
 # Create a single file from all made observations
