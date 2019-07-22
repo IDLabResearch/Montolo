@@ -1,0 +1,833 @@
+#
+# This file contains Restriction Type-related instantiations of the MontoloVoc vocabulary
+#
+
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix mov: <https://w3id.org/montolo/ns/montolo-voc#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix qb: <http://purl.org/linked-data/cube#> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix sdmx-attribute: <http://purl.org/linked-data/sdmx/2009/attribute#> .
+@prefix mon: <https://w3id.org/montolo/ns/montolo#>  .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix frbr: <http://purl.org/vocab/frbr/core#> .
+@prefix rdfcv: <http://www.dr-thomashartmann.de/phd-thesis/rdf-validation/vocabularies/rdf-constraints-vocabulary#> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+
+<https://w3id.org/montolo/ns/montolo#> rdf:type void:Dataset, owl:Ontology, voaf:Vocabulary ;
+                                       vann:preferredNamespacePrefix "mon" ;
+                                       vann:preferredNamespaceUri "https://w3id.org/montolo/ns/montolo#";
+                                       rdfs:label "Montolo restriction types"@en ;
+                                       dct:title "Montolo restriction types"@en ;
+                                       dct:description "Montolo restriction types, described using the MontoloVoc vocabulary"@en ;
+                                       rdfs:comment """-Version 1.0.0 Rebranded from ReLOVStats."""@en ;
+                                       owl:versionIRI   <https://w3id.org/montolo/ns/montolo/v1.0.0> ;
+                                       owl:versionInfo "1.0.0" ;
+                                       rdfs:seeAlso <https://w3id.org/montolo> ;
+                                       dct:modified "2019-07-19"^^xsd:date ;
+                                       dct:issued "2019-07-19"^^xsd:date ;
+                                       dct:created "2019-07-19"^^xsd:date ;
+                                       dct:rights "Copyright © Ghent University – imec – IDLab"@en ;
+                                       cc:license <https://creativecommons.org/publicdomain/zero/1.0/> ;
+                                       foaf:primaryTopic <https://w3id.org/montolo> ;
+                                       dct:creator <https://sven-lieber.org/profile#me> ;
+                                       dct:contributor <http://ben.de-meester.org/#me> ;
+                                       dct:contributor [ foaf:name "Anastasia Dimou"@en ;
+                                                         rdf:type foaf:Person ;
+                                                         foaf:mbox "mailto:Anastasia.dimou@UGent.be"
+                                                       ] ;
+                                       .
+
+<https://sven-lieber.org/profile#me> rdf:type foaf:Person ;
+                                     foaf:mbox "mailto:sven.lieber@ugent.be" ;
+                                     foaf:name "Sven Lieber"@en .
+
+<https://ben.de-meester.org/#me> rdf:type foaf:Person ;
+                                 foaf:mbox "mailto:ben.demeester@ugent.be" ;
+                                 foaf:name "Ben De Meester"@en .
+
+#
+# Definitions of Restriction Types
+#
+
+mon:functionalProperties a mov:RestrictionType ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:seeAlso <https://publikationen.bibliothek.kit.edu/1000054062> ;
+	dct:description """Constraints of the constraint type functional properties state that object or data properties are functional within the context of a class."""@en ;
+    rdfs:comment """"""@en ;
+    rdfs:label "Functional properties restriction type"@en .
+
+mon:inverseFunctionalProperties a mov:RestrictionType ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:seeAlso <https://publikationen.bibliothek.kit.edu/1000054062> ;
+	dct:description """Constraints of the constraint type inverse-functional properties state that object properties are inverse-functional within the context of a class."""@en ;
+    rdfs:comment """"""@en ;
+    rdfs:label "Inverse functional properties restriction type"@en .
+
+mon:subsumption a mov:RestrictionType ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:seeAlso <https://publikationen.bibliothek.kit.edu/1000054062> ;
+	dct:description """The subsumption constraint type corresponds to concept inclusion in DL terminology. Subclass axioms are a fundamental type of axioms in OWL2 and can be used to construct class hierarchies."""@en ;
+    rdfs:comment """"""@en ;
+    rdfs:label "Subsumption restriction type"@en .
+
+mon:propertyDomains a mov:RestrictionType ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:seeAlso <https://publikationen.bibliothek.kit.edu/1000054062> ;
+	dct:description """Constraints of the property domains constraint type restrict the domain of object or data properties. In DL terminology, this constraint type is also called domain restrictions on roles. A constraint of the type property domains states that the domain of the object or data property p is the class C - that is, if an individual i is connected by p with some other individual or some literal, then i is an instance of C."""@en ;
+    rdfs:comment """"""@en ;
+    rdfs:label "Property domains restriction type"@en .
+
+mon:propertyRanges a mov:RestrictionType ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:seeAlso <https://publikationen.bibliothek.kit.edu/1000054062> ;
+	dct:description """Constraints of the constraint type property ranges restrict the range of object and data properties. In DL terminology, this constraint type is also called range restrictions on roles. The property ranges constraint type states that the range of the object or data property p is either (1) the class C - that is, if some individual is connected by p with an individual i, then i is an instance of C, or (2) the datatype DT - that is, if some individual is connected by p with a literal l, then l is in DT."""@en ;
+    rdfs:comment """"""@en ;
+    rdfs:label "Property ranges restriction type"@en .
+
+mon:literalPatternMatching a mov:RestrictionType ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:seeAlso <https://publikationen.bibliothek.kit.edu/1000054062> ;
+	dct:description """Constraints of the constraint type literal pattern matching ensure that individuals of a given class C can only have relations via a specific data property p to literals of a specific datatype DT that match a certain literal pattern."""@en ;
+    rdfs:comment """"""@en ;
+    rdfs:label "Literal pattern matching restriction type"@en .
+
+mon:literalRanges a mov:RestrictionType ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:seeAlso <https://publikationen.bibliothek.kit.edu/1000054062> ;
+	dct:description """Constraints of the constraint type literal ranges ensure that for individuals of class C, the literal values of the data property p of the datatype DT are within the literal range of [min, max]."""@en ;
+    rdfs:comment """"""@en ;
+    rdfs:label "Literal ranges restriction type"@en .
+
+
+mon:universalQuantification a mov:RestrictionType ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:seeAlso <https://publikationen.bibliothek.kit.edu/1000054062> ;
+	dct:description """Universal quantifications (value restrictions in DL) are used to enforce that all individuals of a given class C are connected by particular properties p only to instances/literals of certain classes C or datatypes DT."""@en ;
+    rdfs:comment """"""@en ;
+    rdfs:label "Universal quantification restriction type"@en .
+
+mon:minimumUnqualifiedCardinality a mov:RestrictionType ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:seeAlso <https://publikationen.bibliothek.kit.edu/1000054062> ;
+	dct:description """A constraint of the constraint type minimum unqualified cardinality restrictions consists of a non-negative integer n and an object or data property p, and it defines a class C which contains all those individuals that are connected by p to at least n different individuals/literals. Minimum unqualified cardinality restrictions must hold for all instances of the class C."""@en ;
+    rdfs:comment """Minimum unqualified cardinality restriction type"""@en ;
+    rdfs:label "Minimum unqualified cardinality restriction type"@en .
+
+mon:minimumQualifiedCardinality a mov:RestrictionType ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:seeAlso <https://publikationen.bibliothek.kit.edu/1000054062> ;
+	dct:description """The constraint type minimum qualified cardinality restrictions consists of a non-negative integer n, an object or data property p, and a class C or a datatype DT, and it defines a class C_context which contains all those individuals that are connected by p to at least n different (1) individuals that are instances of C or (2) literals in DT. Minimum qualified cardinality restrictions must hold for all instances of the class C_context."""@en ;
+    rdfs:comment """"""@en ;
+    rdfs:label "Minimum qualified cardinality restriction type"@en .
+
+mon:maximumUnqualifiedCardinality a mov:RestrictionType ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:seeAlso <https://publikationen.bibliothek.kit.edu/1000054062> ;
+	dct:description """A constraint of the constraint type maximum unqualified cardinality restrictions consists of a non-negative integer n and an object or data property p, and it defines a class C_context which contains all those individuals that are connected by p to at most n different individuals/literals. Maximum unqualififed cardinality restrictions must hold for all instances of the class C_context."""@en ;
+    rdfs:comment """"""@en ;
+    rdfs:label "Maximum unqualified cardinality restriction type"@en .
+
+mon:maximumQualifiedCardinality a mov:RestrictionType ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:seeAlso <https://publikationen.bibliothek.kit.edu/1000054062> ;
+    dct:description """The constraint type maximum qualified cardinality restrictions consists of a non-negative integer n, an object or data proeprty p, and a class C or a atatype DT, and it defiens a class C_context which contains all those individuals that are connected by p to at most n different (1) individuals that are instances of C or (2) literals in DT. Maximum qualified cardinality restrictions must hold for all instances of the class C_context."""@en ;
+    rdfs:label "Maximum qualified cardinality restriction type"@en .
+
+mon:exactUnqualifiedCardinality a mov:RestrictionType ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:seeAlso <https://publikationen.bibliothek.kit.edu/1000054062> ;
+    dct:description """A constraint of the constraint type exact unqualified cardinality restrictions consists of a non-negative integer n and an object or data property p, and it defines a class C_context which contains all those individuals that are connected by p to exactly n different individuals/literals. Exact unqualified cardinality restrictions must hold for all instances of the class C_context."""@en ;
+    rdfs:label "Exact unqualified cardinality restriction type"@en .
+
+mon:exactQualifiedCardinality a mov:RestrictionType ;
+   rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+   rdfs:seeAlso <https://publikationen.bibliothek.kit.edu/1000054062> ;
+   dct:description """A constraint of the constriant type exact qualified cardinality restrictions consists of a non-negative integer n, an object or data property p, and a class C or a datatype DT, and it defines a class C_context which contains all those individuals that are connected by p to exactly n different (1) individuals that are instances of C or (2) literals in DT. Exact qualified cardinality restrictions must hold for all instances of the class C_context."""@en ;
+   rdfs:label "Exact qualified cardinality restriction type"@en .
+    
+mon:asymmetricProperties a mov:RestrictionType ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:seeAlso <https://publikationen.bibliothek.kit.edu/1000054062> ;
+    dct:description """A property is asymmetric if it is disjoint from its own inverse. A constraint of the constraint type asymmetric object properties states that the object property p is asymmetric - that is, if an individual i_1 is connected by p to an individual i_2, then I_2 cannot be connected by p to i_2."""@en ;
+    rdfs:label "Asymmetric properties restriction type"@en .
+
+mon:irreflexiveProperties a mov:RestrictionType ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:seeAlso <https://publikationen.bibliothek.kit.edu/1000054062> ;
+    dct:description """A property is irreflexive if it is never locally reflexive. Constraints of the irreflexive object properties constraint type (irreflexive roles in DL) state that the object property p is irreflexive - that is, no individual is connected by p to itself."""@en ;
+    rdfs:label "Irreflexive properties restriction type"@en .
+
+mon:disjointProperties a mov:RestrictionType ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:seeAlso <https://publikationen.bibliothek.kit.edu/1000054062> ;
+    dct:description """A constraint of the constraint type disjoint properties states that all of the object or data properties p_i, 1 <= i <= n, are pairwise disjoint."""@en ;
+    rdfs:label "Disjoint properties restriction type"@en .
+
+mon:disjointClasses a mov:RestrictionType ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:seeAlso <https://publikationen.bibliothek.kit.edu/1000054062> ;
+    dct:description """The constraint type disjoint classes states that all of the classes C_i, 1 <= i <= n, are pairwise disjoint."""@en ;
+    rdfs:label "Disjoint classes restriction type"@en .
+
+#
+# Definitions of Restriction Types Expressions
+#
+
+mon:functionalPropertiesOwlFunctionalProperty a mov:RestrictionTypeExpression ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:comment """A functional properties restriction, expressed using the owl:FunctionalProperty property."""@en ;
+    frbr:realizationOf mon:functionalProperty ;
+    rdfs:label "owl:FunctionalProperty"@en .
+
+mon:inverseFunctionalPropertiesOwlInverseFunctionalProperty a mov:RestrictionTypeExpression ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:comment """An inverse functional properties restriction, expressed using the owl:InverseFunctionalProperty property."""@en ;
+    frbr:realizationOf mon:inverseFunctionalProperty ;
+    rdfs:label "owl:InverseFunctionalProperty"@en .
+
+mon:subsumptionRdfsSubClassOf a mov:RestrictionTypeExpression ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:comment """A subsumption restriction, expressed using the rdfs:subClassOf property."""@en ;
+    frbr:realizationOf mon:subsumption ;
+    rdfs:label "rdfs:subClassOf restriction"@en .
+
+mon:subsumptionOwlSubClassOf a mov:RestrictionTypeExpression ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:comment """A subsumption restriction, expressed using the owl:SubClassOf property."""@en ;
+    frbr:realizationOf mon:subsumption ;
+    rdfs:label "owl:SubClassOf restriction"@en .
+
+mon:propertyDomainsRdfsDomain a mov:RestrictionTypeExpression ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:comment """A property domains restriction, expressed using the rdfs:domain property."""@en ;
+    frbr:realizationOf mon:propertyDomains ;
+    rdfs:label "rdfs:domain restriction"@en .
+
+mon:propertyDomainsOwlObjectPropertyDomain a mov:RestrictionTypeExpression ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:comment """A property domains restriction, expressed using the owl:ObjectPropertyDomain property."""@en ;
+    frbr:realizationOf mon:propertyDomains ;
+    rdfs:label "owl:ObjectPropertyDomain restriction"@en .
+
+mon:propertyDomainsOwlDataPropertyDomain a mov:RestrictionTypeExpression ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:comment """A property domains restriction, expressed using the owl:DataPropertyDomain property."""@en ;
+    frbr:realizationOf mon:propertyDomains ;
+    rdfs:label "owl:DataPropertyDomain restriction"@en .
+
+mon:propertyRangesRdfsRange a mov:RestrictionTypeExpression ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:comment """A property ranges restriction, expressed using the rdfs:range property."""@en ;
+    frbr:realizationOf mon:propertyRanges ;
+    rdfs:label "rdfs:range restriction"@en .
+
+mon:propertyRangesOwlObjectPropertyRange a mov:RestrictionTypeExpression ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:comment """A property ranges restriction, expressed using the owl:ObjectPropertyRange property."""@en ;
+    frbr:realizationOf mon:propertyRanges ;
+    rdfs:label "owl:ObjectPropertyRange restriction"@en .
+
+mon:propertyRangesOwlDataPropertyRange a mov:RestrictionTypeExpression ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:comment """A property ranges restriction, expressed using the owl:DataPropertyRange property."""@en ;
+    frbr:realizationOf mon:propertyRanges ;
+    rdfs:label "owl:DataPropertyRange restriction"@en .
+
+mon:literalPatternMatchingXsdPatternOwlRestriction a mov:RestrictionTypeExpression ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:comment """A literal pattern matching restriction, expressed using the owl:withRestrictions property and a defined xsd:pattern."""@en ;
+    frbr:realizationOf mon:literalPatternMatching ;
+    rdfs:label "owl:withRestrictions on xsd:pattern restriction"@en .
+
+mon:literalRangesXsdMinMaxOwlRestriction a mov:RestrictionTypeExpression ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:comment """A literal ranges restriction, expressed using the owl:withRestriction property and a defined xsd:minInclusive xsd:minExclusive or xsd:maxInclusive or xsd:maxExclusive"""@en ;
+    frbr:realizationOf mon:literalRanges ;
+    rdfs:label "owl:withRestriction on xsd:minInclusive xsd:minExclusive xsd:maxInclusive xsd:maxExclusive"@en .
+
+mon:universalQuantificationOwlAllValuesFrom a mov:RestrictionTypeExpression ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:comment """An universal quantification restriction, expressed using the owl:allValuesFrom property."""@en ;
+    frbr:realizationOf mon:univeralQuantification ;
+    rdfs:label "owl:allValuesFrom restriction"@en .
+
+mon:minimumUnqualifiedCardinalityOwlMinCardinality a mov:RestrictionTypeExpression ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:comment """A minimum unqualified cardinality restriction, expressed using the owl:minCardinality property."""@en ;
+    rdfs:label "owl:minCardinality restriction"@en .
+
+mon:minimumQualifiedCardinalityOwl a mov:RestrictionTypeExpression ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:comment """A minimum qualified cardinality restriction, expressed using the owl:minQualifiedCardinality property."""@en ;
+    frbr:realizationOf mon:minimumQualifiedCardinality ;
+    rdfs:label "owl:minQualifiedCardinality restriction"@en .
+
+mon:maximumUnqualifiedCardinalityOwlMaxCardinality a mov:RestrictionTypeExpression ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:comment """A maximum unqualified cardinality restriction, expressed using the owl:maxCardinality property."""@en ;
+    rdfs:label "owl:maxCardinality restriction"@en .
+
+mon:maximumQualifiedCardinalityOwl a mov:RestrictionTypeExpression ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:comment """A maximum qualified cardinality restriction, expressed using the owl:maxQualifiedCardinality property."""@en ;
+    frbr:realizationOf mon:maximumQualifiedCardinality ;
+    rdfs:label "owl:maxQualifiedCardinality restriction"@en .
+
+mon:exactUnqualifiedCardinalityOwlCardinality a mov:RestrictionTypeExpression ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:comment """An exact unqualified cardinality restriction, expressed using the owl:cardinality property."""@en ;
+    frbr:realizationOf mon:exactUnqualifiedCardinality ;
+    rdfs:label "owl:cardinality restriction"@en .
+
+mon:exactUnqualifiedCardinalityOwlMinMax a mov:RestrictionTypeExpression ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:comment """An exact qualified cardinality restriction, expressed using the properties owl:minCardinality and owl:maxCardinality with the same values."""@en ;
+    frbr:realizationOf mon:exactUnqualifiedCardinality ;
+    rdfs:label "owl:minCardinality==owl:maxCardinality"@en .
+
+mon:asymmetricPropertiesOwlAsymmetricProperty a mov:RestrictionTypeExpression ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:comment """An asymmetric properties restriction, expressed using the owl:asymmetricProperty property."""@en ;
+    frbr:realizationOf mon:asymmetricProperties ;
+    rdfs:label "owl:asymmetricProperty restriction"@en .
+
+mon:irreflexivePropertiesOwlIrreflexiveProperty a mov:RestrictionTypeExpression ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:comment """An irreflexive properties restriction, expressed using the owl:irreflexiveProperty property."""@en ;
+    frbr:realizationOf mon:irreflexiveProperties ;
+    rdfs:label "owl:irreflexiveProperty restriction"@en .
+
+mon:disjointPropertiesOwlDisjointWith a mov:RestrictionTypeExpression ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:comment """A disjoint properties restriction, expressed using the owl:propertyDisjointWith property."""@en ;
+    frbr:realizationOf mon:disjointProperties ;
+    rdfs:label "owl:propertyDisjointWith restriction"@en .
+
+mon:disjointPropertiesOwlAllDisjointProperties a mov:RestrictionTypeExpression ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:comment """A disjoint properties restriction, expressed using the owl:AllDisjointProperties class."""@en ;
+    frbr:realizationOf mon:disjointProperties ;
+    rdfs:label "owl:AllDisjointProperties restriction"@en .
+
+mon:disjointClassesOwlDisjointWith a mov:RestrictionTypeExpression ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:comment """A disjoint classes restriction, expressed using the owl:disjointWith property."""@en ;
+    frbr:realizationOf mon:disjointClasses ;
+    rdfs:label "owl:disjointWith restriction"@en .
+
+mon:disjointClassesOwlAllDisjointClasses a mov:RestrictionTypeExpression ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:comment """A disjoint classes restriction, expressed using the owl:AllDisjointClasses class."""@en ;
+    frbr:realizationOf mon:disjointClasses ;
+    rdfs:label "owl:AllDisjointClasses restriction"@en .
+
+#
+# Definitions of Restriction Types Detectors (and Versions for our specific LODStats implementation)
+#
+
+mon:functionalPropertiesDetectorOwlFunctionalProperty a mov:RestrictionTypeExpressionDetector ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:comment """A method or software component to detect owl:FunctionalProperties restrictions."""@en ;
+    rdfs:label "owl:FunctionalProperty detector"@en .
+
+mon:functionalPropertiesLODStatsDetectorOwlFunctionalProperty-v1 a mov:RestrictionTypeExpressionDetectorVersion ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:label "owl:FunctionalProperty detector (LODStats) v1"@en ;
+    frbr:realizationOf mon:functionalPropertiesDetectorOwlFunctionalProperty .
+
+
+mon:inverseFunctionalPropertiesDetectorOwlInverseFunctionalProperty a mov:RestrictionTypeExpressionDetector ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:comment """A method or software component to detect owl:InverseProperty restrictions."""@en ;
+    rdfs:label "owl:InverseFunctionalProperty detector"@en .
+
+mon:inverseFunctionalPropertiesLODStatsDetectorOwlInverseFunctionalProperty-v1 a mov:RestrictionTypeExpressionDetectorVersion ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:label "owl:InverseFunctionalProperty detector (LODStats) v1"@en ;
+    frbr:realizationOf mon:inverseFunctionalPropertiesDetectorOwlInverseFunctionalProperty .
+
+
+mon:subsumptionDetectorRdfsSubClassOf a mov:RestrictionTypeExpressionDetector ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:comment """A method or software component to detect rdfs:subClassOf restrictions."""@en ;
+    rdfs:label "rdfs:subClassOf detector"@en .
+
+mon:subsumptionLODStatsDetectorRdfsSubClassOf-v1 a mov:RestrictionTypeExpressionDetectorVersion ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:label "rdfs:subClassOf detector (LODStats) v1"@en ;
+    frbr:realizationOf mon:subsumptionDetectorRdfsSubClassOf .
+
+
+mon:subsumptionDetectorOwlSubClassOf a mov:RestrictionTypeExpressionDetector ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:comment """A method or software component to detect owl:SubClassOf restrictions."""@en ;
+    rdfs:label "owl:SubClassOf detector"@en .
+
+mon:subsumptionLODStatsDetectorOwlSubClassOf-v1 a mov:RestrictionTypeExpressionDetectorVersion ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:label "owl:SubClassOf detector (LODStats) v1"@en ;
+    frbr:realizationOf mon:subsumptionDetectorOwlSubClassOf .
+
+
+mon:propertyDomainDetectorRdfsDomain a mov:RestrictionTypeExpressionDetector ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:comment """A method or software component to detect rdfs:domain restrictions."""@en ;
+    rdfs:label "rdfs:domain detector"@en .
+
+mon:propertyDomainLODStatsDetectorRdfsDomain-v1 a mov:RestrictionTypeExpressionDetectorVersion ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:label "rdfs:domain detector (LODStats) v1"@en ;
+    frbr:realizationOf mon:propertyDomainDetectorRdfsDomain .
+
+
+mon:propertyDomainDetectorOwlObjectPropertyDomain a mov:RestrictionTypeExpressionDetector ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:comment """A method or software component to detect owl:ObjectPropertyDomain restrictions."""@en ;
+    rdfs:label "owl:ObjectPropertyDomain detector"@en .
+
+mon:propertyDomainLODStatsDetectorOwlObjectPropertyDomain-v1 a mov:RestrictionTypeExpressionDetectorVersion ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:label "owl:ObjectPropertyDomain detector (LODStats) v1"@en ;
+    frbr:realizationOf mon:propertyDomainDetectorOwlObjectPropertyDomain .
+
+
+mon:propertyDomainDetectorOwlDataPropertyDomain a mov:RestrictionTypeExpressionDetector ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:comment """A method or software component to detect owl:DataPropertyDomain restrictions."""@en ;
+    rdfs:label "owl:DataPropertyDomain detector"@en .
+
+mon:propertyDomainLODStatsDetectorOwlDataPropertyDomain-v1 a mov:RestrictionTypeExpressionDetectorVersion ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:label "owl:DataPropertyDomain detector (LODStats) v1"@en ;
+    frbr:realizationOf mon:propertyDomainDetectorOwlDataPropertyDomain .
+
+
+mon:propertyRangeDetetorRdfsRange a mov:RestrictionTypeExpressionDetector ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:comment """A method or software component to detect rdfs:range restrictions."""@en ;
+    rdfs:label "rdfs:range detector"@en .
+
+mon:propertyRangeLODStatsDetectorRdfsRange-v1 a mov:RestrictionTypeExpressionDetectorVersion ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:label "rdfs:range detector (LODStats) v1"@en ;
+    frbr:realizationOf mon:propertyRangeDetetorRdfsRange .
+
+
+mon:propertyRangeDetectorOwlObjectPropertyRange a mov:RestrictionTypeExpressionDetector ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:comment """A method or software component to detect owl:ObjectPropertyRange restrictions."""@en ;
+    rdfs:label "owl:ObjectPropertyRange detector"@en .
+
+mon:propertyRangeLODStatsDetectorOwlObjectPropertyRange-v1 a mov:RestrictionTypeExpressionDetectorVersion ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:label "owl:ObjectPropertyRange detector (LODStats) v1"@en ;
+    frbr:realizationOf mon:propertyRangeDetectorOwlObjectPropertyRange .
+
+
+mon:literalPatternMatchingDetectorXsdPatternOwlRestriction a mov:RestrictionTypeExpressionDetector ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:comment """A method or software component to detect owl:withRestrictions, xsd:pattern restrictions."""@en ;
+    rdfs:label "owl:withRestrictions, xsd:pattern detector"@en .
+
+mon:literalPatternMatchingLODStatsDetectorXsdPatternOwlRestriction-v1 a mov:RestrictionTypeExpressionDetectorVersion ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:label "owl:withRestrictions, xsd:pattern detector (LODStats) v1"@en ;
+    frbr:realizationOf mon:literalPatternMatchingDetectorXsdPatternOwlRestriction .
+
+mon:literalRangesDetectorXsdMinMaxOwlRestriction a mov:RestrictionTypeExpressionDetector ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:comment """A method or software component to detect owl:withRestrictions, xsd:minInclusive, xsd:minExclusive, xsd:maxInclusive, xsd:maxExclusive."""@en ;
+    rdfs:label "owl:withRestriction, xsd:minInclusive, xsd:minExclusive, xsd:maxInclusive, xsd:maxExclusive detector"@en .
+
+mon:literalRangesLODStatsDetectorXsdMinMaxOwlRestriction-v1 a mov:RestrictionTypeExpressionDetectorVersion ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:label "owl:withRestriction, xsd:minInclusive, xsd:minExclusive, xsd:maxInclusive, xsd:maxExclusive detector v1"@en ;
+    frbr:realizationOf mon:literalRangesDetectorXsdMinMaxOwlRestriction .
+
+mon:universalQuantificationDetectorOwlAllValuesFrom a mov:RestrictionTypeExpressionDetector ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:comment """A method or software component to detect owl:allValuesFrom restrictions."""@en ;
+    rdfs:label "owl:allValuesFrom detector"@en .
+
+mon:universalQuantificationLODStatsDetectorOwlAllValuesFrom-v1 a mov:RestrictionTypeExpressionDetectorVersion ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:label "owl:allValuesFrom detector (LODStats) v1"@en ;
+    frbr:realizationOf mon:universalQuantificationDetectorOwlAllValuesFrom .
+
+
+mon:minimumUnqualifiedCardinalityDetectorOwlMinCardinality a mov:RestrictionTypeExpressionDetector ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:comment """A method or software component to detect owl:minCardinality restrictions."""@en ;
+    rdfs:label "owl:minCardinality detector"@en .
+
+mon:minimumUnqualifiedCardinalityLODStatsDetectorOwl-v1 a mov:RestrictionTypeExpressionDetectorVersion ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:label "owl:minCardinality detector (LODStats) v1"@en ;
+    frbr:realizationOf mon:minimumUnqualifiedCardinalityDetectorOwlMinCardinality .
+
+
+mon:minimumQualifiedCardinalityDetectorOwl a mov:RestrictionTypeExpressionDetector ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:comment """A method or software component to detect owl:minQualifiedCardinality restrictions."""@en ;
+    rdfs:label "owl:minQualifiedCardinality detector"@en .
+
+mon:minimumQualifiedCardinalityLODStatsDetector-v1 a mov:RestrictionTypeExpressionDetectorVersion ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:label "owl:minQualifiedCardinality detector (LODStats) v1"@en ;
+    frbr:realizationOf mon:minimumQualifiedCardinalityDetectorOwl .
+
+
+mon:maximumUnqualifiedCardinalityDetectorOwlMaxCardinality a mov:RestrictionTypeExpressionDetector ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:comment """A method or software component to detect owl:maxCardinality restrictions."""@en ;
+    rdfs:label "owl:maxCardinality detector"@en .
+
+
+mon:maximumUnqualifiedCardinalityLODStatsDetectorOwl-v1 a mov:RestrictionTypeExpressionDetectorVersion ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:label "owl:maxCardinality detector (LODStats) v1"@en ;
+    frbr:realizationOf mon:maximumUnqualifiedCardinalityDetectorOwlMaxCardinality .
+
+	
+mon:maximumQualifiedCardinalityDetectorOwl a mov:RestrictionTypeExpressionDetector ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:comment """A method or software component to detect owl:maxQualifiedCardinality restrictions."""@en ;
+    rdfs:label "owl:maxQualifiedCardinality detector"@en .
+
+mon:maximumQualifiedCardinalityLODStatsDetector-v1 a mov:RestrictionTypeExpressionDetectorVersion ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:label "owl:maxQualifiedCardinality detector (LODStats) v1"@en ;
+    frbr:realizationOf mon:maximumQualifiedCardinalityDetectorOwl .
+
+	
+mon:exactQualifiedCardinalityDetectorOwlCardinality a mov:RestrictionTypeExpressionDetector ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:comment """A method or software component to detect owl:qualifiedCardinality restrictions."""@en ;
+    rdfs:label "owl:qualifiedCardinality detector"@en .
+	
+mon:exactQualifiedCardinalityLODStatsDetectorOwlCardinality-v1 a mov:RestrictionTypeExpressionDetectorVersion ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:label "owl:qualifiedCardinality detector (LODStats) v1"@en ;
+    frbr:realizationOf mon:exactQualifiedCardinalityDetectorOwlCardinality .
+	
+	
+mon:exactUnqualifiedCardinalityDetectorOwlCardinality a mov:RestrictionTypeExpressionDetector ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:comment """A method or software component to detect owl:cardinality restrictions."""@en ;
+    rdfs:label "owl:cardinality detector"@en .
+
+mon:exactUnqualifiedCardinalityLODStatsDetectorOwlCardinality-v1 a mov:RestrictionTypeExpressionDetectorVersion ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:label "owl:cardinality detector (LODStats) v1"@en ;
+    frbr:realizationOf mon:exactUnqualifiedCardinalityDetectorOwlCardinality .
+
+
+mon:exactUnqualifiedCardinalityDetectorOwlMinMax a mov:RestrictionTypeExpressionDetector ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:comment """A method or software component to detect owl:minCardinality==owl:maxCardinality restrictions."""@en ;
+    rdfs:label "owl:minCardinality==owl:maxCardinality detector"@en .
+
+mon:exactUnqualifiedCardinalityLODStatsDetectorOwlMinMax-v1 a mov:RestrictionTypeExpressionDetectorVersion ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:label "owl:minCardinality==owl:maxCardinality detector (LODStats) v1"@en ;
+    frbr:realizationOf mon:exactUnqualifiedCardinalityDetectorOwlMinMax .
+
+
+mon:asymmetricPropertiesDetectorOwlAsymmetricProperty a mov:RestrictionTypeExpressionDetector ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:comment """A method or software component to detect owl:AsymmetricProperty restrictions."""@en ;
+    rdfs:label "owl:AsymmetricProperty detector"@en .
+
+mon:asymmetricPropertiesLODStatsDetectorOwlAsymmetricProperty-v1 a mov:RestrictionTypeExpressionDetectorVersion ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:label "owl:AsymmetricProperty detector (LODStats) v1"@en ;
+    frbr:realizationOf mon:asymmetricPropertiesDetectorOwlAsymmetricProperty .
+
+
+mon:irreflexivePropertiesDetectorOwlIrreflexiveProperty a mov:RestrictionTypeExpressionDetector ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:comment """A method or software component to detect owl:IrreflexiveProperty restrictions."""@en ;
+    rdfs:label "owl:IrreflexiveProperty detector"@en .
+
+mon:irreflexivePropertiesLODStatsDetectorOwlIrreflexiveProperty-v1 a mov:RestrictionTypeExpressionDetectorVersion ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:label "owl:IrreflexiveProperty detector (LODStats) v1"@en ;
+    frbr:realizationOf mon:irreflexivePropertiesDetectorOwlIrreflexiveProperty .
+
+
+mon:disjointPropertiesDetectorOwlDisjointWith a mov:RestrictionTypeExpressionDetector ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:comment """A method or software component to detect owl:propertyDisjointWith restrictions."""@en ;
+    rdfs:label "owl:propertyDisjointWith detector"@en .
+
+mon:disjointPropertiesLODStatsDetectorOwlDisjointWith-v1 a mov:RestrictionTypeExpressionDetectorVersion ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:label "owl:propertyDisjointWith detector (LODStats) v1"@en ;
+    frbr:realizationOf mon:disjointPropertiesDetectorOwlDisjointWith .
+
+
+mon:disjointPropertiesDetectorOwlAllDisjointProperties a mov:RestrictionTypeExpressionDetector ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:comment """A method or software component to detect owl:AllDisjointProperties restrictions."""@en ;
+    rdfs:label "owl:AllDisjointProperties detector"@en .
+
+mon:disjointPropertiesLODStatsDetectorOwlAllDisjointProperties-v1 a mov:RestrictionTypeExpressionDetectorVersion ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:label "owl:AllDisjointProperties detector (LODStats) v1"@en ;
+    frbr:realizationOf mon:disjointPropertiesDetectorOwlAllDisjointProperties .
+
+
+mon:disjointClassesDetectorOwlDisjointWith a mov:RestrictionTypeExpressionDetector ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:comment """A method or software component to detect owl:disjointWith restrictions."""@en ;
+    rdfs:label "owl:disjointWith detector"@en .
+
+mon:disjointClassesLODStatsDetectorOwlDisjointWith-v1 a mov:RestrictionTypeExpressionDetectorVersion ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:label "owl:disjointWith detector (LODStats) v1"@en ;
+    frbr:realizationOf mon:disjointClassesDetectorOwlDisjointWith .
+
+
+mon:disjointClassesDetectorOwlAllDisjointClasses a mov:RestrictionTypeExpressionDetector ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:comment """A method or software component to detect owl:AllDisjointClasses restrictions."""@en ;
+    rdfs:label "owl:AllDisjointClasses detector"@en .
+
+mon:disjointClassesLODStatsDetectorOwlAllDisjointClasses-v1 a mov:RestrictionTypeExpressionDetectorVersion ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:label "owl:AllDisjointClasses detector (LODStats) v1"@en ;
+    frbr:realizationOf mon:disjoinClassesDetectorOwlAllDisjointClasses .
+
+#
+# Definitions of Restriction Types Measures
+#
+
+mon:restrictionTypeOccurrence a mov:RestrictionTypeMeasure ;
+    rdfs:comment """The occurrence of a restriction of a certain type."""@en ;
+    rdfs:label "Restriction type occurrence"@en .
+
+mon:hierarchyOccurrence a mov:RestrictionTypeMeasure ;
+    rdfs:comment """The occurrence of disjoint hierarchies of IRIs."""@en ;
+    rdfs:label "Hierarchy amount"@en .
+
+mon:minHierarchyDepth a mov:RestrictionTypeMeasure ;
+    rdfs:comment """The smallest hierarchy depth of disjoint hierarchies of IRIs."""@en ;
+    rdfs:label "Minimum hierarchy depth"@en .
+
+mon:maxHierarchyDepth a mov:RestrictionTypeMeasure ;
+    rdfs:comment """The biggest hierarchy depth of disjoint hierarcheis of IRIs."""@en ;
+    rdfs:label "Maximum hierarchy depth"@en .
+
+mon:averageHierarchyDepth a mov:RestrictionTypeMeasure ;
+    rdfs:comment """The average hierarchy depth of disjoint hierarchies of IRIs."""@en ;
+    rdfs:label "Average hierarchy depth" .
+
+mon:medianHierarchyDepth a mov:RestrictionTypeMeasure ;
+    rdfs:comment """The median hierarchy depth of disjoint hierarchies of IRIs."""@en ;
+    rdfs:label "Median hierarchy depth"@en .
+
+#
+# Definitions of Ontology Repositories
+#
+mon:lov a mov:OntologyRepository ;
+    rdfs:label "Linked Open Vocabularies (LOV)"@en .
+
+mon:bioportal a mov:OntologyRepository ;
+    rdfs:label "BioPortal"@en .
+
+#
+# Definitions of Dimensions
+#
+
+mon:restrictionTypeDimension a qb:DimensionProperty, rdf:Property ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:label "Restriction type dimension"@en ;
+    rdfs:comment "The restriction type of this observation."@en ;
+    rdfs:domain qb:Observation ;
+    rdfs:range mov:RestrictionType .
+
+mon:detectorVersionDimension a qb:DimensionProperty, rdf:Property ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:label "Detector version dimension"@en ;
+    rdfs:comment "The specific detector used to collect the observation."@en ;
+    rdfs:domain qb:Observation ;
+    rdfs:range mov:RestrictionTypeExpressionDetectorVersion .
+
+mon:executionTimeDimension a qb:DimensionProperty, rdf:Property ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:label "Execution time dimension"@en ;
+    rdfs:comment "The time at which the observation was made."@en ;
+    rdfs:domain qb:Observation ;
+    rdfs:range xsd:dateTime .
+
+mon:ontologyVersionDimension a qb:DimensionProperty, rdf:Property ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:label "Ontology version dimension"@en ;
+    rdfs:comment "The ontology version from which this observation was made."@en ;
+    rdfs:domain qb:Observation ;
+    rdfs:range owl:Ontology .
+
+mon:ontologyRepositoryDimension a qb:DimensionProperty, rdf:Property ;
+    rdfs:isDefiendBy <https://w3id.org/montolo/ns/montolo#> ;
+    rdfs:label "Ontology Repository dimension"@en ;
+    rdfs:comment "The ontology repository from which the ontology was obtained."@en ;
+    rdfs:domain qb:Observation ;
+    rdfs:range mov:OntologyRepository .
+
+#
+# Definitions of Data Structures
+#
+
+#
+# Restriction type amount data structure
+#
+mon:restrictionTypesAmount a qb:DataStructureDefinition, prov:Entity ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:label "Amount of restriction types"@en ;
+    rdfs:comment """This data structure contains the measurement of the amount of restriction types."""@en ;
+
+    # dimensions
+    qb:component
+      [ a qb:ComponentSpecification ; qb:dimension mon:restrictionTypeDimension ;] ,
+      [ a qb:ComponentSpecification ; qb:dimension mon:detectorVersionDimension ;] ,
+      [ a qb:ComponentSpecification ; qb:dimension mon:executionTimeDimension ;] ,
+      [ a qb:ComponentSpecification ; qb:dimension mon:ontologyVersionDimension ;] ;
+
+    # measures
+    qb:component
+      [ a qb:ComponentSpecification ; qb:measure mon:occurrence ; ] ;
+
+    # attributes
+    qb:component
+      [ a qb:ComponentSpecification ; qb:attribute sdmx-attribute:unitMeasure ; ] .
+
+#
+# Hierarchy amount data structure
+#
+mon:hierarchyAmountDistribution a qb:DataStructureDefinition, prov:Entity ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:label "Amount of hierarchies"@en ;
+    rdfs:comment """This data structure contains the measurement of the amount of hierarchies."""@en ;
+
+    # dimensions
+    qb:component
+      [ a qb:ComponentSpecification ; qb:dimension mon:implementationDimension ; ] ,
+      [ a qb:ComponentSpecification ; qb:dimension mon:restrictionTypeDimension ;] ,
+      [ a qb:ComponentSpecification ; qb:dimension mon:detectorVersionDimension ;] ,
+      [ a qb:ComponentSpecification ; qb:dimension mon:executionTimeDimension ;] ,
+      [ a qb:ComponentSpecification ; qb:dimension mon:ontologyVersionDimension ;] ;
+
+    # measures
+    qb:component
+      [ a qb:ComponentSpecification ; qb:measure mon:hierarchyOccurrence ; ] ;
+
+    # attributes
+    qb:component
+      [ a qb:ComponentSpecification ; qb:attribute sdmx-attribute:unitMeasure ; ] .
+   
+#
+# Mean hierarchy depth data structure
+#
+mon:meanHierarchyDepthsDistribution a qb:DataStructureDefinition ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:label "Average hierarchy depth distribution"@en ;
+    rdfs:comment """This data structure contains average hieararchy depth measurements."""@en ;
+
+    # dimensions
+    qb:component
+      [ a qb:ComponentSpecification ; qb:dimension mon:implementationDimension ; ] ,
+      [ a qb:ComponentSpecification ; qb:dimension mon:restrictionTypeDimension ;] ,
+      [ a qb:ComponentSpecification ; qb:dimension mon:detectorVersionDimension ;] ,
+      [ a qb:ComponentSpecification ; qb:dimension mon:executionTimeDimension ;] ,
+      [ a qb:ComponentSpecification ; qb:dimension mon:ontologyVersionDimension ;] ;
+
+    # measures
+    qb:component
+      [ a qb:ComponentSpecification ; qb:measure mon:averageHierarchyDepth ; ] ;
+
+    # attributes
+    qb:component
+      [ a qb:ComponentSpecification ; qb:attribute sdmx-attribute:unitMeasure ; ] .
+
+#
+# Median hierarchy depth data structure
+#
+mon:medianHierarchyDepthsDistribution a qb:DataStructureDefinition ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:label "Median hierarchy depth distribution"@en ;
+    rdfs:comment """This data structure contains median hieararchy depth measurements."""@en ;
+
+    # dimensions
+    qb:component
+      [ a qb:ComponentSpecification ; qb:dimension mon:implementationDimension ; ] ,
+      [ a qb:ComponentSpecification ; qb:dimension mon:restrictionTypeDimension ;] ,
+      [ a qb:ComponentSpecification ; qb:dimension mon:detectorVersionDimension ;] ,
+      [ a qb:ComponentSpecification ; qb:dimension mon:executionTimeDimension ;] ,
+      [ a qb:ComponentSpecification ; qb:dimension mon:ontologyVersionDimension ;] ;
+
+    # measures
+    qb:component
+      [ a qb:ComponentSpecification ; qb:measure mon:medianHierarchyDepth ; ] ;
+
+    # attributes
+    qb:component
+      [ a qb:ComponentSpecification ; qb:attribute sdmx-attribute:unitMeasure ; ] .
+   
+#
+# Min hierarchy depth data structure
+#
+mon:minHierarchyDepthsDistribution a qb:DataStructureDefinition ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:label "Minimum hierarchy depth distribution"@en ;
+    rdfs:comment """This data structure contains minimum hieararchy depth measurements."""@en ;
+
+    # dimensions
+    qb:component
+      [ a qb:ComponentSpecification ; qb:dimension mon:implementationDimension ; ] ,
+      [ a qb:ComponentSpecification ; qb:dimension mon:restrictionTypeDimension ;] ,
+      [ a qb:ComponentSpecification ; qb:dimension mon:detectorVersionDimension ;] ,
+      [ a qb:ComponentSpecification ; qb:dimension mon:executionTimeDimension ;] ,
+      [ a qb:ComponentSpecification ; qb:dimension mon:ontologyVersionDimension ;] ;
+
+    # measures
+    qb:component
+      [ a qb:ComponentSpecification ; qb:measure mon:minHierarchyDepth ; ] ;
+
+    # attributes
+    qb:component
+      [ a qb:ComponentSpecification ; qb:attribute sdmx-attribute:unitMeasure ; ] .
+
+#   
+# Max hierarchy depth data structure
+#
+mon:maxHierarchyDepthsDistribution a qb:DataStructureDefinition ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    rdfs:label "Maximum hierarchy depth distribution"@en ;
+    rdfs:comment """This data structure contains maximum hieararchy depth measurements."""@en ;
+
+    # dimensions
+    qb:component
+      [ a qb:ComponentSpecification ; qb:dimension mon:implementationDimension ; ] ,
+      [ a qb:ComponentSpecification ; qb:dimension mon:restrictionTypeDimension ;] ,
+      [ a qb:ComponentSpecification ; qb:dimension mon:detectorVersionDimension ;] ,
+      [ a qb:ComponentSpecification ; qb:dimension mon:executionTimeDimension ;] ,
+      [ a qb:ComponentSpecification ; qb:dimension mon:ontologyVersionDimension ;] ;
+
+    # measures
+    qb:component
+      [ a qb:ComponentSpecification ; qb:measure mon:maxHierarchyDepth ; ] ;
+
+    # attributes
+    qb:component
+      [ a qb:ComponentSpecification ; qb:attribute sdmx-attribute:unitMeasure ; ] .
+   
+
+  
+

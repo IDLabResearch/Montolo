@@ -1,12 +1,22 @@
+*Montolo* restriction type definitions and measures 
+
+The current *MontoloStats* dataset [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3343053.svg)](https://doi.org/10.5281/zenodo.3343053)
+
+
 # Montolo
 
-Montoloi is a dataset containing statistics about ontology modeling described using a vocabulary based on W3C PROV and W3C DataCube.
-So far Montolo contains statistics from **98% of LOV** and **97% of BioPortal** ontologies.
+To understand how current RDF-based ontologies are modeled we created **Montolo** which currently describes concepts related to *Restrictions* in ontologies..
+Ontologies which are built with the RDF framework consist of concepts and relationship between these concepts. 
+Additionally several restrictions in the form of axioms can be defined, using terms of the RDFS and OWL vocabulary.
 
-This repository contains code to download ontologies, create the Montolo dataset and perform analyses.
+
+**MontoloStats** is a dataset containing statistics about ontology modeling described using the **MontoloVoc** vocabulary based on W3C PROV and W3C DataCube.
+So far MontoloStats contains statistics from **98% of LOV** and **97% of BioPortal** ontologies.
+
+This repository contains code to download ontologies, create the MontoloStats dataset and perform analyses.
 
 
-# Creation of Montolo
+# Creation of MontoloStats
 
 ## Download ontologies
 
@@ -33,7 +43,7 @@ and then you can download all versions and filter for most recent verions.
 
 ## Compute statistics
 
-The statistics are computed using a [LODStats extension](https://github.com/IDLabResearch/lovstats) and are [semantically described](https://github.com/IDLabResearch/lovcube-voc).
+The statistics are computed using a [LODStats extension](https://github.com/IDLabResearch/lovstats) and are [semantically described](https://github.com/IDLabResearch/montolo-voc).
 
 ```
 # Create stats for LOV
@@ -43,19 +53,80 @@ The statistics are computed using a [LODStats extension](https://github.com/IDLa
 ...
 
 # Combine results in a single turtle file
-...
-```
-
-# Analysis of Montolo
-
-The dataset is described using a W3C PROV and W3C DataCube-based vocabulary and thus can be analyzed using SPARQL queries.
-Our advanced analysis uses the clean W3C DataCube structure and SPARQL to create a CSV file containing all observations for further processing in R.
-
-```
 # Create a single file from all made observations
 cd analysis
-python combine-results.py -i ../stats/lov_2019-07-16 -i ../stats/bioportal_2019-07-16 -o ../stats/montolo.ttl -f 'turtle'
+python combine-results.py -i ../stats/lov_2019-07-16 -i ../stats/bioportal_2019-07-16 -o ../stats/MontoloStats.ttl -f 'turtle'
+```
 
-# Create a csv file with all observations
-python create-observations-csv.py -i ../stats/montolo.ttl -o montolo-observations.csv
+# Analysis of MontoloStats
+
+The dataset is described using a W3C PROV and W3C DataCube-based vocabulary and thus can be analyzed using SPARQL queries.
+
+```
+# Optional:
+# Create a csv file with all observations to further analyze the observations programatically, e.g. using R.
+python create-observations-csv.py -i ../stats/MontoloStats.ttl -o montolo-observations.csv
+```
+
+The [montolo](montolo.ttl) file contains the descriptions of several restriction types, restriction type expressions and restriction type measures.
+Statistical observations made based on [MontoloVoc](https://github.com/IDLabResearch/montolo-voc), 
+should link to a corresponding `data structure definition` as defined by RDF Data Cube (see following listing).
+We also provide several such data structures in the [montolo](montolo.ttl) file.
+
+```turtle
+@prefix lovc: <https://w3id.org/lovcube/ns/lovcube#> .
+@prefix rls: <https://w3id.org/lovcube/ns/relovstats#> .
+
+# Created statistics, described using the RDF Data Cube compliant LOVCube vocabulary
+# The observation links to a corresponding RDF Data Cube dataset (described below)
+[] a qb:Observation, prov:Entity, mov:RestrictionTypeStatistic ;
+    mon:detectorDimension mon:maximumUnqualifiedCardinalityDetector ;
+    mon:detectorVersionDimension mon:maximumUnqualifiedCardinalityLODStatsDetectorOwl-v1 ;
+    mon:executionTimeDimension "2019-04-05T11:48:21.845150"^^xsd:dateTime ;
+    mon:ontologyRepositoryDimension mon:lov ;
+    mon:ontologyVersionDimension prov: ;
+    mon:restrictionTypeDimension mon:maximumUnqualifiedCardinality ;
+    mon:restrictionTypeOccurrence 1 ;
+    qb:dataSet _:N740f60a3437f4b46869218f604ee20e4 ;
+    prov:qualifiedGeneration _:Nd459003b47e54c04ae84a21707a1460b .
+
+_:Nd92c84d33f9144549dd1fdfc1b98b620 a prov:Activity .
+
+_:Nd459003b47e54c04ae84a21707a1460b a prov:Generation,
+        prov:InstantaneousEvent ;
+    prov:activity _:Nd92c84d33f9144549dd1fdfc1b98b620 ;
+    prov:atTime "2019-04-05T11:48:21.845150"^^xsd:dateTime .
+
+# A RDF Data Cube dataset which refers to a data structure definition, defined in this repository (montolo.ttl)
+_:N740f60a3437f4b46869218f604ee20e4 a qb:DataSet,
+        prov:Entity,
+        mov:Dataset ;
+    qb:structure mon:restrictionTypesAmount ;
+    prov:qualifiedGeneration _:Nd459003b47e54c04ae84a21707a1460b ;
+    prov:wasGeneratedBy _:Nd92c84d33f9144549dd1fdfc1b98b620 .
+
+```
+
+# How to use?
+
+On https://w3id.org/montolo/data/montolo-stats (alternatively [here](https://zenodo.org/record/3343053) the existing *MontoloStats* dataset can be queried.
+It was created based on 98% of [LOV](http://lov.linkeddata.es) and 97% [BioPortal](https://bioportal.bioontology.org) ontologies.
+
+Example SPARQL query to get restriction types and correpsonding occurrence measure
+```sparql
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX mon: <https://w3id.org/montolo/ns/montolo#>
+
+SELECT ((strafter(str(?type), "#")) as ?typeName) (SUM(?occurrence) as ?total) ?ontology
+WHERE {
+  ?obs a qb:Observation ;
+    mon:restrictionTypeOccurrence ?occurrence ;
+    mon:restrictionTypeDimension ?type ;
+    mon:detectorVersionDimension ?detectorVersion ;
+    mon:ontologyRepositoryDimension ?ontologyRepository ;
+    mon:ontologyVersionDimension ?ontology .
+}
+GROUP BY ?type ?ontology
+ORDER BY ?type ASC(?total) ?ontology
+
 ```
