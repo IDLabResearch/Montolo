@@ -22,6 +22,7 @@ This repository contains code to download ontologies, create the MontoloStats da
 ## Download ontologies
 
 **LOV**
+
 First you have to download a current list of LOV ontologies
 and then you can download all versions and filter for most recent versions.
 
@@ -43,6 +44,7 @@ node get-latest-ontologies.js ontologies/2019-07-19_lov-all ontologies/2019-07-1
 ```
 
 **BioPortal**
+
 First you have to download a current list of BioPortal ontologies,
 usually these ontologies are either in OWL or OBO format.
 However, in both cases a proper convertion to RDF is needed taking the [OWL-to-RDF](https://www.w3.org/TR/owl2-mapping-to-rdf/) semantics into account.
@@ -60,7 +62,7 @@ todo: add script to repo
 
 The statistics are computed using a [LODStats extension](https://github.com/IDLabResearch/lovstats) and are [semantically described](https://github.com/IDLabResearch/montolo-voc).
 
-```
+```bash
 # Create stats for LOV
 todo: add script to repo
 
@@ -77,7 +79,7 @@ python combine-results.py -i ../stats/lov_2019-07-16 -i ../stats/bioportal_2019-
 
 The dataset is described using a W3C PROV and W3C DataCube-based vocabulary and thus can be analyzed using SPARQL queries.
 
-```
+```bash
 # Optional:
 # Create a csv file with all observations to further analyze the observations programatically, e.g. using R.
 python create-observations-csv.py -i ../stats/MontoloStats.ttl -o montolo-observations.csv
@@ -89,8 +91,10 @@ should link to a corresponding `data structure definition` as defined by RDF Dat
 We also provide several such data structures in the [montolo](montolo.ttl) file.
 
 ```turtle
-@prefix lovc: <https://w3id.org/lovcube/ns/lovcube#> .
-@prefix rls: <https://w3id.org/lovcube/ns/relovstats#> .
+@prefix mon: <https://w3id.org/montolo/ns/montolo#> .
+@prefix mov: <https://w3id.org/montolo/ns/montolo-voc#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix qb: <http://purl.org/linked-data/cube#> .
 
 # Created statistics, described using the RDF Data Cube compliant LOVCube vocabulary
 # The observation links to a corresponding RDF Data Cube dataset (described below)
