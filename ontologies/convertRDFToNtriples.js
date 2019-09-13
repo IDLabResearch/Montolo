@@ -1,4 +1,5 @@
 const fs = require('fs').promises;
+const fss = require('fs');
 const path = require('path');
 const rdfjsUtil = require("./rdfjsUtil");
 const RdfXmlParser = require("rdfxml-streaming-parser").RdfXmlParser;
@@ -16,29 +17,45 @@ async function main(){
   let inputFolder = path.resolve(__dirname, process.argv[2]);
   let outputFolder = path.resolve(__dirname, process.argv[3]);
 
-  let files = fs.readdirSync(inputFolder);
+  let files = fss.readdirSync(inputFolder);
 
+  let stats = {
+  'readError': 0,
+  'parseError': 0,
+  'failedReading': [],
+  'failedParsing': []
+  };
+
+  console.log("Start processing " + files.length + " files!");
   for(var i=0; i<files.length; i++){
 
     if(path.extname(files[i]) != '.owl'){
       continue;
     }
 
+    var prefix = files[i].split(/_/)[0];
     var content = '';
     try {
-      content = await fs.readFile(file, 'utf8');
+
+      var inputFile = path.resolve(inputFolder, files[i]);
+      var outputFile = path.resolve(outputFolder, files[i].replace('.owl', '.nt'));
+      content = await fs.readFile(inputFile, 'utf8');
+
     } catch (error){
-      console.log("Cannot read file: " + files[i]);
+      stats.readError++;
+      stats.failedReading.push(prefix);
       continue;
     }
 
     try {
       rdfToNtriplesFile(content, outputFile);
     } catch (error){
-      console.log("Cannot convert file: " + files[i]);
+      stats.parseError++;
+      stats.failedParsing.push(prefix);
     }
 
   }
+  console.log(stats);
 
 }
 
