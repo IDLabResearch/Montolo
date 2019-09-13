@@ -12,7 +12,7 @@ Additionally several restrictions in the form of axioms can be defined, using te
 
 
 [MontoloStats](https://lov.ilabt.imec.be/montolo/data/montolo-stats/latest/) is a dataset containing statistics about ontology modeling described using the [MontoloVoc](https://lov.ilabt.imec.be/montolo/ns/montolo-voc) vocabulary based on W3C PROV and W3C DataCube.
-So far MontoloStats contains statistics from **98% of LOV** and **97% of BioPortal** ontologies.
+So far MontoloStats contains statistics for 660 (98%) LOV and 565 BioPortal ontologies.
 
 This repository contains code to download ontologies, create the MontoloStats dataset and perform analyses.
 
@@ -43,8 +43,12 @@ node get-latest-ontologies.js ontologies/2019-07-19_lov-all ontologies/2019-07-1
 ```
 
 **BioPortal**
-First you have to download a current list of BioPortal ontologies
-and then you can download all versions and filter for most recent verions.
+First you have to download a current list of BioPortal ontologies,
+usually these ontologies are either in OWL or OBO format.
+However, in both cases a proper convertion to RDF is needed taking the [OWL-to-RDF](https://www.w3.org/TR/owl2-mapping-to-rdf/) semantics into account.
+
+We use the [robot](http://robot.obolibrary.org) tool for this task,
+afterwards the RDF data can be transformed using [N3.js](https://github.com/rdfjs/N3.js) to any other RDF serialization (in our case n-triples needed for LODStats).
 
 ```bash
 todo: add script to repo
