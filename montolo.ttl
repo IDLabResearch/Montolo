@@ -27,10 +27,11 @@
                                        dct:title "Montolo restriction types"@en ;
                                        dct:description "Montolo restriction types, described using the MontoloVoc vocabulary"@en ;
                                        rdfs:comment """-Version 1.0.0 Rebranded from ReLOVStats."""@en ;
-                                       owl:versionIRI   <https://w3id.org/montolo/ns/montolo/v1.0.0> ;
-                                       owl:versionInfo "1.0.0" ;
+                                       rdfs:comment """-Version 1.1.0 Added constraint type, expressions and detectors for SHACL core constraints."""@en ;
+                                       owl:versionIRI   <https://w3id.org/montolo/ns/montolo/v1.1.0> ;
+                                       owl:versionInfo "1.1.0" ;
                                        rdfs:seeAlso <https://w3id.org/montolo> ;
-                                       dct:modified "2019-07-19"^^xsd:date ;
+                                       dct:modified "2020-08-18"^^xsd:date ;
                                        dct:issued "2019-07-19"^^xsd:date ;
                                        dct:created "2019-07-19"^^xsd:date ;
                                        dct:rights "Copyright © Ghent University – imec – IDLab"@en ;
@@ -193,6 +194,290 @@ mon:disjointClasses a mov:RestrictionType ;
     rdfs:seeAlso <https://publikationen.bibliothek.kit.edu/1000054062> ;
     dct:description """The constraint type disjoint classes states that all of the classes C_i, 1 <= i <= n, are pairwise disjoint."""@en ;
     rdfs:label "Disjoint classes restriction type"@en .
+
+#
+# Definitions of ad-hoc restriction types for SHACL constraint types
+#
+
+mon:targetNodeTarget a mov:RestrictionType ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
+    dct:description """A node target is specified using the sh:targetNode predicate. Each value of sh:targetNode in a shape is either an IRI or a literal."""@en ;
+    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
+    rdfs:label "(SHACL) Target node"@en .
+
+mon:targetClassTarget a mov:RestrictionType ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
+    dct:description """A class target is specified with the sh:targetClass predicate. Each value of sh:targetClass in a shape is an IRI."""@en ;
+    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
+    rdfs:label "(SHACL) Target class"@en .
+
+mon:targetSubjectsOfTarget a mov:RestrictionType ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
+    dct:description """A subjects-of target is specified with the predicate sh:targetSubjectsOf. The values of sh:targetSubjectsOf in a shape are IRIs."""@en ;
+    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
+    rdfs:label "(SHACL) Subjects-of target"@en .
+
+mon:targetObjectsOfTarget a mov:RestrictionType ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
+    dct:description """An objects-of target is specified with the predicate sh:targetObjectsOf. The values of sh:targetObjectsOf in a shape are IRIs."""@en ;
+    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
+    rdfs:label "(SHACL) Objects-of target"@en .
+
+
+mon:valueTypeClass a mov:RestrictionType ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
+    dct:description """The condition specified by sh:class is that each value node is a SHACL instance of a given type."""@en ;
+    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
+    rdfs:label "(SHACL) Class restriction type"@en .
+
+mon:valueTypeDatatype a mov:RestrictionType ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
+    dct:description """It specifies a condition to be satisfied with regards to the datatype of each value node."""@en ;
+    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
+    rdfs:label "(SHACL) Datatype restriction type"@en .
+
+
+mon:cardinalityMinCount a mov:RestrictionType ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
+    dct:description """If the number of value nodes is less than $minCount, there is a validation result."""@en ;
+    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
+    rdfs:label "(SHACL) Minimum cardinality restriction type"@en .
+
+mon:cardinalityMaxCount a mov:RestrictionType ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
+    dct:description """If the number of value nodes is greater than $maxCount, there is a validation result."""@en ;
+    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
+    rdfs:label "(SHACL) Maximum cardinality restriction type"@en .
+
+
+mon:valueRangeMinExclusive a mov:RestrictionType ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
+    dct:description """The minimum exclusive value. The values of sh:minExclusive in a shape are literals."""@en ;
+    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
+    rdfs:label "(SHACL) Minimum exclusive restriction type"@en .
+
+mon:valueRangeMinInclusive a mov:RestrictionType ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
+    dct:description """The minimum inclusive value. The values of sh:minInclusive in a shape are literals."""@en ;
+    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
+    rdfs:label "(SHACL) Minimum inclusive restriction type"@en .
+
+mon:valueRangeMaxExclusive a mov:RestrictionType ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
+    dct:description """The maximum exclusive value. The values of sh:maxExclusive in a shape are literals."""@en ;
+    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
+    rdfs:label "(SHACL) Maximum exclusive restriction type"@en .
+
+mon:valueRangeMaxInclusive a mov:RestrictionType ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
+    dct:description """The maximum inclusive value. The values of sh:maxInclusive in a shape are literals."""@en ;
+    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
+    rdfs:label "(SHACL) Maximum inclusive restriction type"@en .
+
+
+mon:stringMinLength a mov:RestrictionType ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
+    dct:description """It specifies the minimum string length of each value node that satisfies the condition. This can be applied to any literals and IRIs, but not to blank nodes."""@en ;
+    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
+    rdfs:label "(SHACL) Minimum length restriction type"@en .
+
+mon:stringMaxLength a mov:RestrictionType ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
+    dct:description """It specifies the maximum string length of each value node that satisfies the condition. This can be applied to any literals and IRIs, but not to blank nodes."""@en ;
+    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
+    rdfs:label "(SHACL) Maximum length restriction type"@en .
+
+mon:stringPattern a mov:RestrictionType ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
+    dct:description """It specifies a regular expression that each value node matches to satisfy the condition."""@en ;
+    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
+    rdfs:label "(SHACL) Pattern restriction type"@en .
+
+mon:stringLanguageIn a mov:RestrictionType ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
+    dct:description """The condition specified by sh:languageIn is that the allowed language tags for each value node are limited by a given list of language tags."""@en ;
+    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
+    rdfs:label "(SHACL) Language-in restriction type"@en .
+
+mon:stringUniqueLang a mov:RestrictionType ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
+    dct:description """If $uniqueLang is true then for each non-empty language tag that is used by at least two value nodes, there is a validation result."""@en ;
+    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
+    rdfs:label "(SHACL) Unique Language restriction type"@en .
+
+
+mon:propertyPairEquals a mov:RestrictionType ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
+    dct:description """It specifies the condition that the set of all value nodes is equal to the set of objects of the triples that have the focus node as subject and the value of sh:equals as predicate."""@en ;
+    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
+    rdfs:label "(SHACL) Equals restriction type"@en .
+
+mon:propertyPairDisjoint a mov:RestrictionType ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
+    dct:description """It specifies the condition that the set of value nodes is disjoint with the set of objects of the triples that have the focus node as subject and the value of sh:disjoint as predicate."""@en ;
+    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
+    rdfs:label "(SHACL) Disjoint restriction type"@en .
+
+mon:propertyPairLessThan a mov:RestrictionType ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
+    dct:description """ The property to compare the values with. The values of sh:lessThan in a shape are IRIs."""@en ;
+    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
+    rdfs:label "(SHACL) Less-than restriction type"@en .
+
+mon:propertyPairLessThanOrEquals a mov:RestrictionType ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
+    dct:description """For each pair of value nodes and the values of the property $lessThanOrEquals at the given focus node where the first value is not less than or equal to the second value (based on SPARQL's <= operator) or where the two values cannot be compared, there is a validation result with the value node as sh:value."""@en ;
+    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
+    rdfs:label "(SHACL) Less Than Or Equals restriction type"@en .
+
+
+mon:logicalNegation a mov:RestrictionType ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
+    dct:description """It specifies the condition that each value node cannot conform to a given shape. This is comparable to negation and the logical "not" operator."""@en ;
+    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
+    rdfs:label "(SHACL) Negation restriction type"@en .
+
+mon:logicalConjunction a mov:RestrictionType ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
+    dct:description """It specifies the condition that each value node conforms to all provided shapes. This is comparable to conjunction and the logical "and" operator."""@en ;
+    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
+    rdfs:label "(SHACL) Conjunction restriction type"@en .
+
+mon:logicalDisjunction a mov:RestrictionType ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
+    dct:description """It specifies the condition that each value node conforms to at least one of the provided shapes. This is comparable to disjunction and the logical "or" operator."""@en ;
+    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
+    rdfs:label "(SHACL) Disjunction restriction type"@en .
+
+mon:logicalExclusiveDisjunction a mov:RestrictionType ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
+    dct:description """It specifies the condition that each value node conforms to exactly one of the provided shapes."""@en ;
+    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
+    rdfs:label "(SHACL) Exclusive Disjunction restriction type"@en .
+
+
+mon:shapeNode a mov:RestrictionType ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
+    dct:description """sh:node specifies the condition that each value node conforms to the given node shape."""@en ;
+    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
+    rdfs:label "(SHACL) Node restriction type"@en .
+
+mon:shapeQualifiedValue a mov:RestrictionType ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
+    dct:description """The shape that the specified number of value nodes needs to conform to."""@en ;
+    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
+    rdfs:label "(SHACL) Qualified value restriction type"@en .
+
+mon:shapeQualifiedMinCount a mov:RestrictionType ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
+    dct:description """The minimum number of value nodes that conform to the shape."""@en ;
+    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
+    rdfs:label "(SHACL) Qualified min count restriction type"@en .
+
+mon:shapeQualifiedMaxCount a mov:RestrictionType ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
+    dct:description """The maximum number of value nodes that can conform to the shape."""@en ;
+    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
+    rdfs:label "(SHACL) Qualified max count restriction type"@en .
+
+mon:shapeProperty a mov:RestrictionType ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
+    dct:description """A property shape that all value nodes need to have."""@en ;
+    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
+    rdfs:label "(SHACL) Property restriction type"@en .
+
+
+mon:otherClosed a mov:RestrictionType ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
+    dct:description """Set to true to close the shape. The values of sh:closed in a shape are literals with datatype xsd:boolean."""@en ;
+    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
+    rdfs:label "(SHACL) Closed restriction type"@en .
+
+mon:otherIgnoredProperties a mov:RestrictionType ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
+    dct:description """Optional SHACL list of properties that are also permitted in addition to those explicitly enumerated via sh:property"""@en ;
+    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
+    rdfs:label "(SHACL) Ignored properties restriction type"@en .
+
+mon:otherHasValue a mov:RestrictionType ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
+    dct:description """It specifies the condition that at least one value node is equal to the given RDF term."""@en ;
+    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
+    rdfs:label "(SHACL) Has-value restriction type"@en .
+
+mon:otherValueIn a mov:RestrictionType ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
+    dct:description """It specifies the condition that each value node is a member of a provided SHACL list."""@en ;
+    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
+    rdfs:label "(SHACL) Value-in restriction type"@en .
 
 #
 # Definitions of Restriction Types Expressions
