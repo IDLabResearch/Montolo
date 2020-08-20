@@ -1,0 +1,35 @@
+id,label,description,source
+targetNodeTarget,(SHACL) Target node,A node target is specified using the sh:targetNode predicate. Each value of sh:targetNode in a shape is either an IRI or a literal.,https://www.w3.org/TR/shacl/
+targetClassTarget,(SHACL) Target class,A class target is specified with the sh:targetClass predicate. Each value of sh:targetClass in a shape is an IRI.,https://www.w3.org/TR/shacl/
+targetSubjectsOfTarget,(SHACL) Subjects-of target,A subjects-of target is specified with the predicate sh:targetSubjectsOf. The values of sh:targetSubjectsOf in a shape are IRIs.,https://www.w3.org/TR/shacl/
+targetObjectsOfTarget,(SHACL) Objects-of target,An objects-of target is specified with the predicate sh:targetObjectsOf. The values of sh:targetObjectsOf in a shape are IRIs.,https://www.w3.org/TR/shacl/
+valueTypeClass,(SHACL) Class restriction type,The condition specified by sh:class is that each value node is a SHACL instance of a given type.,https://www.w3.org/TR/shacl/
+valueTypeDatatype,(SHACL) Datatype restriction type,It specifies a condition to be satisfied with regards to the datatype of each value node.,https://www.w3.org/TR/shacl/
+cardinalityMinCount,(SHACL) Minimum cardinality restriction type,"If the number of value nodes is less than $minCount, there is a validation result.",https://www.w3.org/TR/shacl/
+cardinalityMaxCount,(SHACL) Maximum cardinality restriction type,"If the number of value nodes is greater than $maxCount, there is a validation result.",https://www.w3.org/TR/shacl/
+valueRangeMinExclusive,(SHACL) Minimum exclusive restriction type,The minimum exclusive value. The values of sh:minExclusive in a shape are literals.,https://www.w3.org/TR/shacl/
+valueRangeMinInclusive,(SHACL) Minimum inclusive restriction type,The minimum inclusive value. The values of sh:minInclusive in a shape are literals.,https://www.w3.org/TR/shacl/
+valueRangeMaxExclusive,(SHACL) Maximum exclusive restriction type,The maximum exclusive value. The values of sh:maxExclusive in a shape are literals.,https://www.w3.org/TR/shacl/
+valueRangeMaxInclusive,(SHACL) Maximum inclusive restriction type,The maximum inclusive value. The values of sh:maxInclusive in a shape are literals.,https://www.w3.org/TR/shacl/
+stringMinLength,(SHACL) Minimum length restriction type,"It specifies the minimum string length of each value node that satisfies the condition. This can be applied to any literals and IRIs, but not to blank nodes.",https://www.w3.org/TR/shacl/
+stringMaxLength,(SHACL) Maximum length restriction type,"It specifies the maximum string length of each value node that satisfies the condition. This can be applied to any literals and IRIs, but not to blank nodes.",https://www.w3.org/TR/shacl/
+stringPattern,(SHACL) Pattern restriction type,It specifies a regular expression that each value node matches to satisfy the condition.,https://www.w3.org/TR/shacl/
+stringLanguageIn,(SHACL) Language-in restriction type,The condition specified by sh:languageIn is that the allowed language tags for each value node are limited by a given list of language tags.,https://www.w3.org/TR/shacl/
+stringUniqueLang,(SHACL) Unique Language restriction type,"If $uniqueLang is true then for each non-empty language tag that is used by at least two value nodes, there is a validation result.",https://www.w3.org/TR/shacl/
+propertyPairEquals,(SHACL) Equals restriction type,It specifies the condition that the set of all value nodes is equal to the set of objects of the triples that have the focus node as subject and the value of sh:equals as predicate.,https://www.w3.org/TR/shacl/
+propertyPairDisjoint,(SHACL) Disjoint restriction type,It specifies the condition that the set of value nodes is disjoint with the set of objects of the triples that have the focus node as subject and the value of sh:disjoint as predicate.,https://www.w3.org/TR/shacl/
+propertyPairLessThan,(SHACL) Less-than restriction type, The property to compare the values with. The values of sh:lessThan in a shape are IRIs.,https://www.w3.org/TR/shacl/
+propertyPairLessThanOrEquals,(SHACL) Less Than Or Equals restriction type,"For each pair of value nodes and the values of the property $lessThanOrEquals at the given focus node where the first value is not less than or equal to the second value (based on SPARQL's <= operator) or where the two values cannot be compared, there is a validation result with the value node as sh:value.",https://www.w3.org/TR/shacl/
+logicalNegation,(SHACL) Negation restriction type,It specifies the condition that each value node cannot conform to a given shape. This is comparable to negation and the logical not operator.,https://www.w3.org/TR/shacl/
+logicalConjunction,(SHACL) Conjunction restriction type,It specifies the condition that each value node conforms to all provided shapes. This is comparable to conjunction and the logical and operator.,https://www.w3.org/TR/shacl/
+logicalDisjunction,(SHACL) Disjunction restriction type,It specifies the condition that each value node conforms to at least one of the provided shapes. This is comparable to disjunction and the logical or operator.,https://www.w3.org/TR/shacl/
+logicalExclusiveDisjunction,(SHACL) Exclusive Disjunction restriction type,It specifies the condition that each value node conforms to exactly one of the provided shapes.,https://www.w3.org/TR/shacl/
+shapeNode,(SHACL) Node restriction type,sh:node specifies the condition that each value node conforms to the given node shape.,https://www.w3.org/TR/shacl/
+shapeQualifiedValue,(SHACL) Qualified value restriction type,The shape that the specified number of value nodes needs to conform to.,https://www.w3.org/TR/shacl/
+shapeQualifiedMinCount,(SHACL) Qualified min count restriction type,The minimum number of value nodes that conform to the shape.,https://www.w3.org/TR/shacl/
+shapeQualifiedMaxCount,(SHACL) Qualified max count restriction type,The maximum number of value nodes that can conform to the shape.,https://www.w3.org/TR/shacl/
+shapeProperty,(SHACL) Property restriction type,A property shape that all value nodes need to have.,https://www.w3.org/TR/shacl/
+otherClosed,(SHACL) Closed restriction type,Set to true to close the shape. The values of sh:closed in a shape are literals with datatype xsd:boolean.,https://www.w3.org/TR/shacl/
+otherIgnoredProperties,(SHACL) Ignored properties restriction type,Optional SHACL list of properties that are also permitted in addition to those explicitly enumerated via sh:property,https://www.w3.org/TR/shacl/
+otherHasValue,(SHACL) Has-value restriction type,It specifies the condition that at least one value node is equal to the given RDF term.,https://www.w3.org/TR/shacl/
+otherValueIn,(SHACL) Value-in restriction type,It specifies the condition that each value node is a member of a provided SHACL list.,https://www.w3.org/TR/shacl/

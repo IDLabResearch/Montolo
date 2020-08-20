@@ -1,0 +1,26 @@
+id,label,description
+functionalPropertiesDetectorOwlFunctionalProperty,owl:FunctionalProperty detector,A method or software component to detect owl:FunctionalProperties restrictions.
+inverseFunctionalPropertiesDetectorOwlInverseFunctionalProperty,owl:InverseFunctionalProperty detector,A method or software component to detect owl:InverseProperty restrictions.
+subsumptionDetectorRdfsSubClassOf,rdfs:subClassOf detector,A method or software component to detect rdfs:subClassOf restrictions.
+subsumptionDetectorOwlSubClassOf,owl:SubClassOf detector,A method or software component to detect owl:SubClassOf restrictions.
+propertyDomainDetectorRdfsDomain,rdfs:domain detector,A method or software component to detect rdfs:domain restrictions.
+propertyDomainDetectorOwlObjectPropertyDomain,owl:ObjectPropertyDomain detector,A method or software component to detect owl:ObjectPropertyDomain restrictions.
+propertyDomainDetectorOwlDataPropertyDomain,owl:DataPropertyDomain detector,A method or software component to detect owl:DataPropertyDomain restrictions.
+propertyRangeDetetorRdfsRange,rdfs:range detector,A method or software component to detect rdfs:range restrictions.
+propertyRangeDetectorOwlObjectPropertyRange,owl:ObjectPropertyRange detector,A method or software component to detect owl:ObjectPropertyRange restrictions.
+literalPatternMatchingDetectorXsdPatternOwlRestriction,"owl:withRestrictions, xsd:pattern detector","A method or software component to detect owl:withRestrictions, xsd:pattern restrictions."
+literalRangesDetectorXsdMinMaxOwlRestriction,"owl:withRestriction, xsd:minInclusive, xsd:minExclusive, xsd:maxInclusive, xsd:maxExclusive detector","A method or software component to detect owl:withRestrictions, xsd:minInclusive, xsd:minExclusive, xsd:maxInclusive, xsd:maxExclusive."
+universalQuantificationDetectorOwlAllValuesFrom,owl:allValuesFrom detector,A method or software component to detect owl:allValuesFrom restrictions.
+minimumUnqualifiedCardinalityDetectorOwlMinCardinality,owl:minCardinality detector,A method or software component to detect owl:minCardinality restrictions.
+minimumQualifiedCardinalityDetectorOwl,owl:minQualifiedCardinality detector,A method or software component to detect owl:minQualifiedCardinality restrictions.
+maximumUnqualifiedCardinalityDetectorOwlMaxCardinality,owl:maxCardinality detector,A method or software component to detect owl:maxCardinality restrictions.
+maximumQualifiedCardinalityDetectorOwl,owl:maxQualifiedCardinality detector,A method or software component to detect owl:maxQualifiedCardinality restrictions.
+exactQualifiedCardinalityDetectorOwlCardinality,owl:qualifiedCardinality detector,A method or software component to detect owl:qualifiedCardinality restrictions.
+exactUnqualifiedCardinalityDetectorOwlCardinality,owl:cardinality detector,A method or software component to detect owl:cardinality restrictions.
+exactUnqualifiedCardinalityDetectorOwlMinMax,owl:minCardinality==owl:maxCardinality detector,A method or software component to detect owl:minCardinality==owl:maxCardinality restrictions.
+asymmetricPropertiesDetectorOwlAsymmetricProperty,owl:AsymmetricProperty detector,A method or software component to detect owl:AsymmetricProperty restrictions.
+irreflexivePropertiesDetectorOwlIrreflexiveProperty,owl:IrreflexiveProperty detector,A method or software component to detect owl:IrreflexiveProperty restrictions.
+disjointPropertiesDetectorOwlDisjointWith,owl:propertyDisjointWith detector,A method or software component to detect owl:propertyDisjointWith restrictions.
+disjointPropertiesDetectorOwlAllDisjointProperties,owl:AllDisjointProperties detector,A method or software component to detect owl:AllDisjointProperties restrictions.
+disjointClassesDetectorOwlDisjointWith,owl:disjointWith detector,A method or software component to detect owl:disjointWith restrictions.
+disjointClassesDetectorOwlAllDisjointClasses,owl:AllDisjointClasses detector,A method or software component to detect owl:AllDisjointClasses restrictions.
