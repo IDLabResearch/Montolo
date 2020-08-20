@@ -480,7 +480,14 @@ mon:otherValueIn a mov:RestrictionType ;
     rdfs:label "(SHACL) Value-in restriction type"@en .
 
 #
-# Definitions of Restriction Types Expressions
+# Definitions of Restriction Type Expressions SHACL
+#
+
+
+
+
+#
+# Definitions of Restriction Types Expressions for OWL axioms
 #
 
 mon:functionalPropertiesOwlFunctionalProperty a mov:RestrictionTypeExpression ;
@@ -1028,6 +1035,10 @@ mon:bioportal a mov:OntologyRepository ;
     dct:creator <https://sven-lieber.org/profile#me> ;
     rdfs:label "BioPortal"@en .
 
+mon:noRepo a mov:OntologyRepository ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:label "Not specified"@en .
+
 #
 # Definitions of Dimensions
 #
@@ -1040,11 +1051,19 @@ mon:restrictionTypeDimension a qb:DimensionProperty, rdf:Property ;
     rdfs:domain qb:Observation ;
     rdfs:range mov:RestrictionType .
 
+mon:detectorDimension a qb:DimensionProperty, rdf:Property ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:label "Detector version dimension"@en ;
+    rdfs:comment "The detector used to collect the observation."@en ;
+    rdfs:domain qb:Observation ;
+    rdfs:range mov:RestrictionTypeExpressionDetector .
+
 mon:detectorVersionDimension a qb:DimensionProperty, rdf:Property ;
     rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
     dct:creator <https://sven-lieber.org/profile#me> ;
     rdfs:label "Detector version dimension"@en ;
-    rdfs:comment "The specific detector used to collect the observation."@en ;
+    rdfs:comment "The specific version of a detector used to collect the observation."@en ;
     rdfs:domain qb:Observation ;
     rdfs:range mov:RestrictionTypeExpressionDetectorVersion .
 
