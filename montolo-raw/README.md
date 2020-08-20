@@ -13,6 +13,6 @@ The script `create-dataset.sh` currently depends on the following tools:
 ## Example use
 
 ```
-bash create-dataset.sh
+bash create-dataset.sh montolo.yml montolo-dynamic.ttl
 ```
 
