@@ -1,0 +1,141 @@
+prefixes:
+  idlab-fn: "http://example.com/idlab/function/"
+  grel: "http://users.ugent.be/~bjdmeest/function/grel.ttl#"
+  owl: "http://www.w3.org/2002/07/owl#"
+  xsd: "http://www.w3.org/2001/XMLSchema#"
+  frbr: "http://purl.org/vocab/frbr/core#"
+  mov: "https://w3id.org/montolo/ns/montolo-voc#"
+  mon: "https://w3id.org/montolo/ns/montolo#"
+  dct: "http://purl.org/dc/terms/"
+
+mappings:
+
+  owl_restriction_types:
+    sources:
+      - ['owl-types.csv~csv']
+    s: mon:$(id)
+    po:
+      - [a, mov:RestrictionType~iri]
+      - [rdfs:label, $(label), en~lang]
+      - [dct:description, $(description)]
+      - [dct:creator, https://sven-lieber.org/profile#me~iri]
+      - [dct:source, $(source), schema:URL]
+      - [rdfs:isDefinedBy, https://w3id.org/montolo/ns/montolo#~iri]
+
+
+  owl_expressions:
+    sources:
+      - ['owl-expressions.csv~csv']
+    s: mon:$(id)
+    po:
+      - [a, mov:RestrictionTypeExpression~iri]
+      - [rdfs:label, $(label), en~lang]
+      - [dct:description, $(description)]
+      - [owl:sameAs, https://astrea.helio.linkeddata.es/$(term)~iri]
+      - [dct:creator, https://sven-lieber.org/profile#me~iri]
+      - [rdfs:isDefinedBy, https://w3id.org/montolo/ns/montolo#~iri]
+      - p: frbr:realizationOf
+        o:
+          mapping: owl_restriction_types
+          condition:
+            function: idlab-fn:equal
+            parameters:
+              - [grel:valueParameter, $(realizationOf), s]
+              - [grel:valueParameter2, $(id), o] 
+
+
+  shacl_restriction_types:
+    sources:
+      - ['shacl-types.csv~csv']
+    s: mon:$(id)
+    po:
+      - [a, mov:RestrictionType~iri]
+      - [rdfs:label, $(label), en~lang]
+      - [dct:description, $(description)]
+      - [dct:creator, https://sven-lieber.org/profile#me~iri]
+      - [dct:source, $(source), schema:URL]
+      - [rdfs:isDefinedBy, https://w3id.org/montolo/ns/montolo#~iri]
+
+
+  shacl_expressions:
+    sources:
+      - ['shacl-expressions.csv~csv']
+    s: mon:$(id)
+    po:
+      - [a, mov:RestrictionTypeExpression~iri]
+      - [rdfs:label, $(label), en~lang]
+      - [dct:creator, https://sven-lieber.org/profile#me~iri]
+      - [owl:sameAs, https://astrea.helio.linkeddata.es/$(term)~iri]
+      - [rdfs:isDefinedBy, https://w3id.org/montolo/ns/montolo#~iri]
+      - p: frbr:realizationOf
+        o:
+          mapping: shacl_restriction_types
+          condition:
+            function: idlab-fn:equal
+            parameters:
+              - [grel:valueParameter, $(realizationOf), s]
+              - [grel:valueParameter2, $(id), o] 
+
+
+  shacl_detectors:
+    sources:
+      - ['shacl-detectors.csv~csv']
+    s: mon:$(id)
+    po:
+      - [a, mov:RestrictionTypeExpressionDetector~iri]
+      - [rdfs:label, $(label), en~lang]
+      - [dct:creator, https://sven-lieber.org/profile#me~iri]
+      - [dct:description, $(description), en~lang]
+      - [rdfs:isDefinedBy, https://w3id.org/montolo/ns/montolo#~iri]
+
+
+  owl_detectors:
+    sources:
+      - ['owl-detectors.csv~csv']
+    s: mon:$(id)
+    po:
+      - [a, mov:RestrictionTypeExpressionDetector~iri]
+      - [rdfs:label, $(label), en~lang]
+      - [dct:creator, https://sven-lieber.org/profile#me~iri]
+      - [dct:description, $(description), en~lang]
+      - [rdfs:isDefinedBy, https://w3id.org/montolo/ns/montolo#~iri]
+
+
+  shacl_detector_versions:
+    sources:
+      - ['shacl-detector-versions.csv~csv']
+    s: mon:$(id)
+    po:
+      - [a, mov:RestrictionTypeExpressionDetectorVersion~iri]
+      - [rdfs:label, $(label), en~lang]
+      - [dct:creator, https://sven-lieber.org/profile#me~iri]
+      - [rdfs:isDefinedBy, https://w3id.org/montolo/ns/montolo#~iri]
+      - p: frbr:realizationOf
+        o:
+          mapping: shacl_detectors
+          condition:
+            function: idlab-fn:equal
+            parameters:
+              - [grel:valueParameter, $(realizationOf), s]
+              - [grel:valueParameter2, $(id), o] 
+
+
+  owl_detector_versions:
+    sources:
+      - ['owl-detector-versions.csv~csv']
+    s: mon:$(id)
+    po:
+      - [a, mov:RestrictionTypeExpressionDetectorVersion~iri]
+      - [rdfs:label, $(label), en~lang]
+      - [dct:creator, https://sven-lieber.org/profile#me~iri]
+      - [rdfs:isDefinedBy, https://w3id.org/montolo/ns/montolo#~iri]
+      - p: frbr:realizationOf
+        o:
+          mapping: owl_detectors
+          condition:
+            function: idlab-fn:equal
+            parameters:
+              - [grel:valueParameter, $(realizationOf), s]
+              - [grel:valueParameter2, $(id), o] 
+
+

@@ -10,9 +10,14 @@ To understand how current RDF-based ontologies are modeled we created **Montolo*
 Ontologies which are built with the RDF framework consist of concepts and relationship between these concepts. 
 Additionally several restrictions in the form of axioms can be defined, using terms of the RDFS and OWL vocabulary.
 
+The `montolo.ttl` dataset is created by [YARRRML](https://rml.io/yarrrml/) rules and the data of the `montolo-raw` directory.
 
 [MontoloStats](https://lov.ilabt.imec.be/montolo/data/montolo-stats/latest/) is a dataset containing statistics about ontology modeling described using the [MontoloVoc](https://lov.ilabt.imec.be/montolo/ns/montolo-voc) vocabulary based on W3C PROV and W3C DataCube.
 So far MontoloStats contains statistics for 660 (98%) LOV and 565 BioPortal ontologies.
+
+[MontoloSHACLStats](https://zenodo.org/record/3988930) is a dataset containing similar statistics but for the use of SHACL constraints instead of OWL axioms.
+Currently it contains statistics for a few data shapes hostd on GitHub
+and common data shapes such as [schema.org-SHACL](http://datashapes.org/schema) and [SHACL-of-SHACL](https://www.w3.org/ns/shacl-shacl).
 
 This repository contains code to download ontologies, create the MontoloStats dataset and perform analyses.
 

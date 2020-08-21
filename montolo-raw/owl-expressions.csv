@@ -1,0 +1,24 @@
+id,label,term,description,realizationOf
+functionalPropertiesOwlFunctionalProperty,OWL FunctionalProperty,owl:FunctionalProperty,"A functional properties restriction, expressed using the owl:FunctionalProperty property.",functionalProperty
+inverseFunctionalPropertiesOwlInverseFunctionalProperty,OWL InverseFunctionalProperty,owl:InverseFunctionalProperty,"An inverse functional properties restriction, expressed using the owl:InverseFunctionalProperty property.",inverseFunctionalProperty
+subsumptionRdfsSubClassOf,RDFS subClassOf restriction,rdfs:subClassOf,"A subsumption restriction, expressed using the rdfs:subClassOf property.",subsumption
+subsumptionOwlSubClassOf,OWL SubClassOf restriction,,"A subsumption restriction, expressed using the owl:SubClassOf property.",subsumption
+propertyDomainsRdfsDomain,RDFS domain restriction,rdfs:domain,"A property domains restriction, expressed using the rdfs:domain property.",propertyDomains
+propertyDomainsOwlObjectPropertyDomain,OWL ObjectPropertyDomain restriction,,"A property domains restriction, expressed using the owl:ObjectPropertyDomain property.",propertyDomains
+propertyDomainsOwlDataPropertyDomain,OWL DataPropertyDomain restriction,,"A property domains restriction, expressed using the owl:DataPropertyDomain property.",propertyDomains
+propertyRangesRdfsRange,RDFS range restriction,rdfs:range,"A property ranges restriction, expressed using the rdfs:range property.",propertyRanges
+propertyRangesOwlObjectPropertyRange,OWL ObjectPropertyRange restriction,,"A property ranges restriction, expressed using the owl:ObjectPropertyRange property.",propertyRanges
+propertyRangesOwlDataPropertyRange,OWL DataPropertyRange restriction,,"A property ranges restriction, expressed using the owl:DataPropertyRange property.",propertyRanges
+literalPatternMatchingXsdPatternOwlRestriction,OWL withRestrictions on xsd:pattern restriction,,"A literal pattern matching restriction, expressed using the owl:withRestrictions property and a defined xsd:pattern.",literalPatternMatching
+literalRangesXsdMinMaxOwlRestriction,OWL withRestriction on xsd:minInclusive xsd:minExclusive xsd:maxInclusive xsd:maxExclusive,,"A literal ranges restriction, expressed using the owl:withRestriction property and a defined xsd:minInclusive xsd:minExclusive or xsd:maxInclusive or xsd:maxExclusive",literalRanges
+universalQuantificationOwlAllValuesFrom,OWL allValuesFrom restriction,owl:allValuesFrom,"An universal quantification restriction, expressed using the owl:allValuesFrom property.",univeralQuantification
+minimumQualifiedCardinalityOwl,OWL minQualifiedCardinality restriction,owl:minQualifiedCardinality,"A minimum qualified cardinality restriction, expressed using the owl:minQualifiedCardinality property.",minimumQualifiedCardinality
+maximumQualifiedCardinalityOwl,OWL maxQualifiedCardinality restriction,owl:maxQualifiedCardinality,"A maximum qualified cardinality restriction, expressed using the owl:maxQualifiedCardinality property.",maximumQualifiedCardinality
+exactUnqualifiedCardinalityOwlCardinality,OWL cardinality restriction,owl:cardinality,"An exact unqualified cardinality restriction, expressed using the owl:cardinality property.",exactUnqualifiedCardinality
+exactUnqualifiedCardinalityOwlMinMax,OWL min equals max,,"An exact qualified cardinality restriction, expressed using the properties owl:minCardinality and owl:maxCardinality with the same values.",exactUnqualifiedCardinality
+asymmetricPropertiesOwlAsymmetricProperty,OWL asymmetricProperty restriction,owl:AsymmetricProperty,"An asymmetric properties restriction, expressed using the owl:asymmetricProperty property.",asymmetricProperties
+irreflexivePropertiesOwlIrreflexiveProperty,OWL irreflexiveProperty restriction,owl:IrreflexiveProperty,"An irreflexive properties restriction, expressed using the owl:irreflexiveProperty property.",irreflexiveProperties
+disjointPropertiesOwlDisjointWith,OWL propertyDisjointWith restriction,owl:propertyDisjointWith,"A disjoint properties restriction, expressed using the owl:propertyDisjointWith property.",disjointProperties
+disjointPropertiesOwlAllDisjointProperties,OWL AllDisjointProperties restriction,owl:AllDisjointProperties,"A disjoint properties restriction, expressed using the owl:AllDisjointProperties class.",disjointProperties
+disjointClassesOwlDisjointWith,OWL disjointWith restriction,owl:disjointWith,"A disjoint classes restriction, expressed using the owl:disjointWith property.",disjointClasses
+disjointClassesOwlAllDisjointClasses,OWL AllDisjointClasses restriction,owl:AllDisjointClasses,"A disjoint classes restriction, expressed using the owl:AllDisjointClasses class.",disjointClasses
