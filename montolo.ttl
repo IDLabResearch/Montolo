@@ -12,7 +12,7 @@
 @prefix cc: <http://creativecommons.org/ns#> .
 @prefix sdmx-attribute: <http://purl.org/linked-data/sdmx/2009/attribute#> .
 @prefix mon: <https://w3id.org/montolo/ns/montolo#>  .
-@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dc: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix frbr: <http://purl.org/vocab/frbr/core#> .
 @prefix rdfcv: <http://www.dr-thomashartmann.de/phd-thesis/rdf-validation/vocabularies/rdf-constraints-vocabulary#> .
@@ -20,26 +20,26 @@
 @prefix void: <http://rdfs.org/ns/void#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 
-<https://w3id.org/montolo/ns/montolo#> rdf:type void:Dataset, owl:Ontology, voaf:Vocabulary ;
+<https://w3id.org/montolo/ns/montolo#> rdf:type void:Dataset, voaf:Vocabulary ;
                                        vann:preferredNamespacePrefix "mon" ;
                                        vann:preferredNamespaceUri "https://w3id.org/montolo/ns/montolo#";
                                        rdfs:label "Montolo restriction types"@en ;
-                                       dct:title "Montolo restriction types"@en ;
-                                       dct:description "Montolo restriction types, described using the MontoloVoc vocabulary"@en ;
+                                       dc:title "Montolo restriction types"@en ;
+                                       dc:description "Montolo restriction types, described using the MontoloVoc vocabulary"@en ;
                                        rdfs:comment """-Version 1.0.0 Rebranded from ReLOVStats."""@en ;
-                                       rdfs:comment """-Version 1.1.0 Added constraint type, expressions and detectors for SHACL core constraints."""@en ;
+                                       rdfs:comment """-Version 1.1.0 Added constraint type, expressions and detectors for SHACL core constraints and added links to Astrea."""@en ;
                                        owl:versionIRI   <https://w3id.org/montolo/ns/montolo/v1.1.0> ;
                                        owl:versionInfo "1.1.0" ;
                                        rdfs:seeAlso <https://w3id.org/montolo> ;
-                                       dct:modified "2020-08-18"^^xsd:date ;
-                                       dct:issued "2019-07-19"^^xsd:date ;
-                                       dct:created "2019-07-19"^^xsd:date ;
-                                       dct:rights "Copyright © Ghent University – imec – IDLab"@en ;
+                                       dc:modified "2020-08-20"^^xsd:date ;
+                                       dc:issued "2019-07-19"^^xsd:date ;
+                                       dc:created "2019-07-19"^^xsd:date ;
+                                       dc:rights "Copyright © Ghent University – imec – IDLab"@en ;
                                        cc:license <https://creativecommons.org/publicdomain/zero/1.0/> ;
                                        foaf:primaryTopic <https://w3id.org/montolo> ;
-                                       dct:creator <https://sven-lieber.org/profile#me> ;
-                                       dct:contributor <http://ben.de-meester.org/#me> ;
-                                       dct:contributor [ foaf:name "Anastasia Dimou"@en ;
+                                       dc:creator <https://sven-lieber.org/profile#me> ;
+                                       dc:contributor <http://ben.de-meester.org/#me> ;
+                                       dc:contributor [ foaf:name "Anastasia Dimou"@en ;
                                                          rdf:type foaf:Person ;
                                                          foaf:mbox "mailto:Anastasia.dimou@UGent.be"
                                                        ] ;
@@ -54,973 +54,36 @@
                                  foaf:name "Ben De Meester"@en .
 
 #
-# Definitions of Restriction Types
-#
-
-mon:functionalProperties a mov:RestrictionType ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:seeAlso <https://publikationen.bibliothek.kit.edu/1000054062> ;
-	dct:description """Constraints of the constraint type functional properties state that object or data properties are functional within the context of a class."""@en ;
-    rdfs:comment """"""@en ;
-    rdfs:label "Functional properties restriction type"@en .
-
-mon:inverseFunctionalProperties a mov:RestrictionType ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:seeAlso <https://publikationen.bibliothek.kit.edu/1000054062> ;
-	dct:description """Constraints of the constraint type inverse-functional properties state that object properties are inverse-functional within the context of a class."""@en ;
-    rdfs:comment """"""@en ;
-    rdfs:label "Inverse functional properties restriction type"@en .
-
-mon:subsumption a mov:RestrictionType ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:seeAlso <https://publikationen.bibliothek.kit.edu/1000054062> ;
-	dct:description """The subsumption constraint type corresponds to concept inclusion in DL terminology. Subclass axioms are a fundamental type of axioms in OWL2 and can be used to construct class hierarchies."""@en ;
-    rdfs:comment """"""@en ;
-    rdfs:label "Subsumption restriction type"@en .
-
-mon:propertyDomains a mov:RestrictionType ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:seeAlso <https://publikationen.bibliothek.kit.edu/1000054062> ;
-	dct:description """Constraints of the property domains constraint type restrict the domain of object or data properties. In DL terminology, this constraint type is also called domain restrictions on roles. A constraint of the type property domains states that the domain of the object or data property p is the class C - that is, if an individual i is connected by p with some other individual or some literal, then i is an instance of C."""@en ;
-    rdfs:comment """"""@en ;
-    rdfs:label "Property domains restriction type"@en .
-
-mon:propertyRanges a mov:RestrictionType ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:seeAlso <https://publikationen.bibliothek.kit.edu/1000054062> ;
-	dct:description """Constraints of the constraint type property ranges restrict the range of object and data properties. In DL terminology, this constraint type is also called range restrictions on roles. The property ranges constraint type states that the range of the object or data property p is either (1) the class C - that is, if some individual is connected by p with an individual i, then i is an instance of C, or (2) the datatype DT - that is, if some individual is connected by p with a literal l, then l is in DT."""@en ;
-    rdfs:comment """"""@en ;
-    rdfs:label "Property ranges restriction type"@en .
-
-mon:literalPatternMatching a mov:RestrictionType ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:seeAlso <https://publikationen.bibliothek.kit.edu/1000054062> ;
-	dct:description """Constraints of the constraint type literal pattern matching ensure that individuals of a given class C can only have relations via a specific data property p to literals of a specific datatype DT that match a certain literal pattern."""@en ;
-    rdfs:comment """"""@en ;
-    rdfs:label "Literal pattern matching restriction type"@en .
-
-mon:literalRanges a mov:RestrictionType ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:seeAlso <https://publikationen.bibliothek.kit.edu/1000054062> ;
-	dct:description """Constraints of the constraint type literal ranges ensure that for individuals of class C, the literal values of the data property p of the datatype DT are within the literal range of [min, max]."""@en ;
-    rdfs:comment """"""@en ;
-    rdfs:label "Literal ranges restriction type"@en .
-
-
-mon:universalQuantification a mov:RestrictionType ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:seeAlso <https://publikationen.bibliothek.kit.edu/1000054062> ;
-	dct:description """Universal quantifications (value restrictions in DL) are used to enforce that all individuals of a given class C are connected by particular properties p only to instances/literals of certain classes C or datatypes DT."""@en ;
-    rdfs:comment """"""@en ;
-    rdfs:label "Universal quantification restriction type"@en .
-
-mon:minimumUnqualifiedCardinality a mov:RestrictionType ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:seeAlso <https://publikationen.bibliothek.kit.edu/1000054062> ;
-	dct:description """A constraint of the constraint type minimum unqualified cardinality restrictions consists of a non-negative integer n and an object or data property p, and it defines a class C which contains all those individuals that are connected by p to at least n different individuals/literals. Minimum unqualified cardinality restrictions must hold for all instances of the class C."""@en ;
-    rdfs:comment """Minimum unqualified cardinality restriction type"""@en ;
-    rdfs:label "Minimum unqualified cardinality restriction type"@en .
-
-mon:minimumQualifiedCardinality a mov:RestrictionType ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:seeAlso <https://publikationen.bibliothek.kit.edu/1000054062> ;
-	dct:description """The constraint type minimum qualified cardinality restrictions consists of a non-negative integer n, an object or data property p, and a class C or a datatype DT, and it defines a class C_context which contains all those individuals that are connected by p to at least n different (1) individuals that are instances of C or (2) literals in DT. Minimum qualified cardinality restrictions must hold for all instances of the class C_context."""@en ;
-    rdfs:comment """"""@en ;
-    rdfs:label "Minimum qualified cardinality restriction type"@en .
-
-mon:maximumUnqualifiedCardinality a mov:RestrictionType ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:seeAlso <https://publikationen.bibliothek.kit.edu/1000054062> ;
-	dct:description """A constraint of the constraint type maximum unqualified cardinality restrictions consists of a non-negative integer n and an object or data property p, and it defines a class C_context which contains all those individuals that are connected by p to at most n different individuals/literals. Maximum unqualififed cardinality restrictions must hold for all instances of the class C_context."""@en ;
-    rdfs:comment """"""@en ;
-    rdfs:label "Maximum unqualified cardinality restriction type"@en .
-
-mon:maximumQualifiedCardinality a mov:RestrictionType ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:seeAlso <https://publikationen.bibliothek.kit.edu/1000054062> ;
-    dct:description """The constraint type maximum qualified cardinality restrictions consists of a non-negative integer n, an object or data proeprty p, and a class C or a atatype DT, and it defiens a class C_context which contains all those individuals that are connected by p to at most n different (1) individuals that are instances of C or (2) literals in DT. Maximum qualified cardinality restrictions must hold for all instances of the class C_context."""@en ;
-    rdfs:label "Maximum qualified cardinality restriction type"@en .
-
-mon:exactUnqualifiedCardinality a mov:RestrictionType ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:seeAlso <https://publikationen.bibliothek.kit.edu/1000054062> ;
-    dct:description """A constraint of the constraint type exact unqualified cardinality restrictions consists of a non-negative integer n and an object or data property p, and it defines a class C_context which contains all those individuals that are connected by p to exactly n different individuals/literals. Exact unqualified cardinality restrictions must hold for all instances of the class C_context."""@en ;
-    rdfs:label "Exact unqualified cardinality restriction type"@en .
-
-mon:exactQualifiedCardinality a mov:RestrictionType ;
-   rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-   rdfs:seeAlso <https://publikationen.bibliothek.kit.edu/1000054062> ;
-   dct:description """A constraint of the constriant type exact qualified cardinality restrictions consists of a non-negative integer n, an object or data property p, and a class C or a datatype DT, and it defines a class C_context which contains all those individuals that are connected by p to exactly n different (1) individuals that are instances of C or (2) literals in DT. Exact qualified cardinality restrictions must hold for all instances of the class C_context."""@en ;
-   rdfs:label "Exact qualified cardinality restriction type"@en .
-    
-mon:asymmetricProperties a mov:RestrictionType ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:seeAlso <https://publikationen.bibliothek.kit.edu/1000054062> ;
-    dct:description """A property is asymmetric if it is disjoint from its own inverse. A constraint of the constraint type asymmetric object properties states that the object property p is asymmetric - that is, if an individual i_1 is connected by p to an individual i_2, then I_2 cannot be connected by p to i_2."""@en ;
-    rdfs:label "Asymmetric properties restriction type"@en .
-
-mon:irreflexiveProperties a mov:RestrictionType ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:seeAlso <https://publikationen.bibliothek.kit.edu/1000054062> ;
-    dct:description """A property is irreflexive if it is never locally reflexive. Constraints of the irreflexive object properties constraint type (irreflexive roles in DL) state that the object property p is irreflexive - that is, no individual is connected by p to itself."""@en ;
-    rdfs:label "Irreflexive properties restriction type"@en .
-
-mon:disjointProperties a mov:RestrictionType ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:seeAlso <https://publikationen.bibliothek.kit.edu/1000054062> ;
-    dct:description """A constraint of the constraint type disjoint properties states that all of the object or data properties p_i, 1 <= i <= n, are pairwise disjoint."""@en ;
-    rdfs:label "Disjoint properties restriction type"@en .
-
-mon:disjointClasses a mov:RestrictionType ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:seeAlso <https://publikationen.bibliothek.kit.edu/1000054062> ;
-    dct:description """The constraint type disjoint classes states that all of the classes C_i, 1 <= i <= n, are pairwise disjoint."""@en ;
-    rdfs:label "Disjoint classes restriction type"@en .
-
-#
-# Definitions of ad-hoc restriction types for SHACL constraint types
-#
-
-mon:targetNodeTarget a mov:RestrictionType ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
-    dct:description """A node target is specified using the sh:targetNode predicate. Each value of sh:targetNode in a shape is either an IRI or a literal."""@en ;
-    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
-    rdfs:label "(SHACL) Target node"@en .
-
-mon:targetClassTarget a mov:RestrictionType ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
-    dct:description """A class target is specified with the sh:targetClass predicate. Each value of sh:targetClass in a shape is an IRI."""@en ;
-    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
-    rdfs:label "(SHACL) Target class"@en .
-
-mon:targetSubjectsOfTarget a mov:RestrictionType ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
-    dct:description """A subjects-of target is specified with the predicate sh:targetSubjectsOf. The values of sh:targetSubjectsOf in a shape are IRIs."""@en ;
-    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
-    rdfs:label "(SHACL) Subjects-of target"@en .
-
-mon:targetObjectsOfTarget a mov:RestrictionType ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
-    dct:description """An objects-of target is specified with the predicate sh:targetObjectsOf. The values of sh:targetObjectsOf in a shape are IRIs."""@en ;
-    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
-    rdfs:label "(SHACL) Objects-of target"@en .
-
-
-mon:valueTypeClass a mov:RestrictionType ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
-    dct:description """The condition specified by sh:class is that each value node is a SHACL instance of a given type."""@en ;
-    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
-    rdfs:label "(SHACL) Class restriction type"@en .
-
-mon:valueTypeDatatype a mov:RestrictionType ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
-    dct:description """It specifies a condition to be satisfied with regards to the datatype of each value node."""@en ;
-    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
-    rdfs:label "(SHACL) Datatype restriction type"@en .
-
-
-mon:cardinalityMinCount a mov:RestrictionType ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
-    dct:description """If the number of value nodes is less than $minCount, there is a validation result."""@en ;
-    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
-    rdfs:label "(SHACL) Minimum cardinality restriction type"@en .
-
-mon:cardinalityMaxCount a mov:RestrictionType ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
-    dct:description """If the number of value nodes is greater than $maxCount, there is a validation result."""@en ;
-    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
-    rdfs:label "(SHACL) Maximum cardinality restriction type"@en .
-
-
-mon:valueRangeMinExclusive a mov:RestrictionType ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
-    dct:description """The minimum exclusive value. The values of sh:minExclusive in a shape are literals."""@en ;
-    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
-    rdfs:label "(SHACL) Minimum exclusive restriction type"@en .
-
-mon:valueRangeMinInclusive a mov:RestrictionType ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
-    dct:description """The minimum inclusive value. The values of sh:minInclusive in a shape are literals."""@en ;
-    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
-    rdfs:label "(SHACL) Minimum inclusive restriction type"@en .
-
-mon:valueRangeMaxExclusive a mov:RestrictionType ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
-    dct:description """The maximum exclusive value. The values of sh:maxExclusive in a shape are literals."""@en ;
-    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
-    rdfs:label "(SHACL) Maximum exclusive restriction type"@en .
-
-mon:valueRangeMaxInclusive a mov:RestrictionType ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
-    dct:description """The maximum inclusive value. The values of sh:maxInclusive in a shape are literals."""@en ;
-    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
-    rdfs:label "(SHACL) Maximum inclusive restriction type"@en .
-
-
-mon:stringMinLength a mov:RestrictionType ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
-    dct:description """It specifies the minimum string length of each value node that satisfies the condition. This can be applied to any literals and IRIs, but not to blank nodes."""@en ;
-    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
-    rdfs:label "(SHACL) Minimum length restriction type"@en .
-
-mon:stringMaxLength a mov:RestrictionType ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
-    dct:description """It specifies the maximum string length of each value node that satisfies the condition. This can be applied to any literals and IRIs, but not to blank nodes."""@en ;
-    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
-    rdfs:label "(SHACL) Maximum length restriction type"@en .
-
-mon:stringPattern a mov:RestrictionType ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
-    dct:description """It specifies a regular expression that each value node matches to satisfy the condition."""@en ;
-    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
-    rdfs:label "(SHACL) Pattern restriction type"@en .
-
-mon:stringLanguageIn a mov:RestrictionType ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
-    dct:description """The condition specified by sh:languageIn is that the allowed language tags for each value node are limited by a given list of language tags."""@en ;
-    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
-    rdfs:label "(SHACL) Language-in restriction type"@en .
-
-mon:stringUniqueLang a mov:RestrictionType ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
-    dct:description """If $uniqueLang is true then for each non-empty language tag that is used by at least two value nodes, there is a validation result."""@en ;
-    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
-    rdfs:label "(SHACL) Unique Language restriction type"@en .
-
-
-mon:propertyPairEquals a mov:RestrictionType ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
-    dct:description """It specifies the condition that the set of all value nodes is equal to the set of objects of the triples that have the focus node as subject and the value of sh:equals as predicate."""@en ;
-    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
-    rdfs:label "(SHACL) Equals restriction type"@en .
-
-mon:propertyPairDisjoint a mov:RestrictionType ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
-    dct:description """It specifies the condition that the set of value nodes is disjoint with the set of objects of the triples that have the focus node as subject and the value of sh:disjoint as predicate."""@en ;
-    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
-    rdfs:label "(SHACL) Disjoint restriction type"@en .
-
-mon:propertyPairLessThan a mov:RestrictionType ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
-    dct:description """ The property to compare the values with. The values of sh:lessThan in a shape are IRIs."""@en ;
-    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
-    rdfs:label "(SHACL) Less-than restriction type"@en .
-
-mon:propertyPairLessThanOrEquals a mov:RestrictionType ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
-    dct:description """For each pair of value nodes and the values of the property $lessThanOrEquals at the given focus node where the first value is not less than or equal to the second value (based on SPARQL's <= operator) or where the two values cannot be compared, there is a validation result with the value node as sh:value."""@en ;
-    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
-    rdfs:label "(SHACL) Less Than Or Equals restriction type"@en .
-
-
-mon:logicalNegation a mov:RestrictionType ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
-    dct:description """It specifies the condition that each value node cannot conform to a given shape. This is comparable to negation and the logical "not" operator."""@en ;
-    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
-    rdfs:label "(SHACL) Negation restriction type"@en .
-
-mon:logicalConjunction a mov:RestrictionType ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
-    dct:description """It specifies the condition that each value node conforms to all provided shapes. This is comparable to conjunction and the logical "and" operator."""@en ;
-    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
-    rdfs:label "(SHACL) Conjunction restriction type"@en .
-
-mon:logicalDisjunction a mov:RestrictionType ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
-    dct:description """It specifies the condition that each value node conforms to at least one of the provided shapes. This is comparable to disjunction and the logical "or" operator."""@en ;
-    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
-    rdfs:label "(SHACL) Disjunction restriction type"@en .
-
-mon:logicalExclusiveDisjunction a mov:RestrictionType ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
-    dct:description """It specifies the condition that each value node conforms to exactly one of the provided shapes."""@en ;
-    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
-    rdfs:label "(SHACL) Exclusive Disjunction restriction type"@en .
-
-
-mon:shapeNode a mov:RestrictionType ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
-    dct:description """sh:node specifies the condition that each value node conforms to the given node shape."""@en ;
-    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
-    rdfs:label "(SHACL) Node restriction type"@en .
-
-mon:shapeQualifiedValue a mov:RestrictionType ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
-    dct:description """The shape that the specified number of value nodes needs to conform to."""@en ;
-    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
-    rdfs:label "(SHACL) Qualified value restriction type"@en .
-
-mon:shapeQualifiedMinCount a mov:RestrictionType ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
-    dct:description """The minimum number of value nodes that conform to the shape."""@en ;
-    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
-    rdfs:label "(SHACL) Qualified min count restriction type"@en .
-
-mon:shapeQualifiedMaxCount a mov:RestrictionType ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
-    dct:description """The maximum number of value nodes that can conform to the shape."""@en ;
-    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
-    rdfs:label "(SHACL) Qualified max count restriction type"@en .
-
-mon:shapeProperty a mov:RestrictionType ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
-    dct:description """A property shape that all value nodes need to have."""@en ;
-    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
-    rdfs:label "(SHACL) Property restriction type"@en .
-
-
-mon:otherClosed a mov:RestrictionType ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
-    dct:description """Set to true to close the shape. The values of sh:closed in a shape are literals with datatype xsd:boolean."""@en ;
-    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
-    rdfs:label "(SHACL) Closed restriction type"@en .
-
-mon:otherIgnoredProperties a mov:RestrictionType ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
-    dct:description """Optional SHACL list of properties that are also permitted in addition to those explicitly enumerated via sh:property"""@en ;
-    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
-    rdfs:label "(SHACL) Ignored properties restriction type"@en .
-
-mon:otherHasValue a mov:RestrictionType ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
-    dct:description """It specifies the condition that at least one value node is equal to the given RDF term."""@en ;
-    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
-    rdfs:label "(SHACL) Has-value restriction type"@en .
-
-mon:otherValueIn a mov:RestrictionType ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:seeAlso <https://www.w3.org/TR/shacl/> ;
-    dct:description """It specifies the condition that each value node is a member of a provided SHACL list."""@en ;
-    rdfs:comment """This restriction type was created ad-hoc, research is needed to determine if an existing restriction type can cover this or how an alignment is possible."""@en ;
-    rdfs:label "(SHACL) Value-in restriction type"@en .
-
-#
-# Definitions of Restriction Type Expressions SHACL
-#
-
-
-
-
-#
-# Definitions of Restriction Types Expressions for OWL axioms
-#
-
-mon:functionalPropertiesOwlFunctionalProperty a mov:RestrictionTypeExpression ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:comment """A functional properties restriction, expressed using the owl:FunctionalProperty property."""@en ;
-    frbr:realizationOf mon:functionalProperty ;
-    rdfs:label "owl:FunctionalProperty"@en .
-
-mon:inverseFunctionalPropertiesOwlInverseFunctionalProperty a mov:RestrictionTypeExpression ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:comment """An inverse functional properties restriction, expressed using the owl:InverseFunctionalProperty property."""@en ;
-    frbr:realizationOf mon:inverseFunctionalProperty ;
-    rdfs:label "owl:InverseFunctionalProperty"@en .
-
-mon:subsumptionRdfsSubClassOf a mov:RestrictionTypeExpression ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:comment """A subsumption restriction, expressed using the rdfs:subClassOf property."""@en ;
-    frbr:realizationOf mon:subsumption ;
-    rdfs:label "rdfs:subClassOf restriction"@en .
-
-mon:subsumptionOwlSubClassOf a mov:RestrictionTypeExpression ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:comment """A subsumption restriction, expressed using the owl:SubClassOf property."""@en ;
-    frbr:realizationOf mon:subsumption ;
-    rdfs:label "owl:SubClassOf restriction"@en .
-
-mon:propertyDomainsRdfsDomain a mov:RestrictionTypeExpression ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:comment """A property domains restriction, expressed using the rdfs:domain property."""@en ;
-    frbr:realizationOf mon:propertyDomains ;
-    rdfs:label "rdfs:domain restriction"@en .
-
-mon:propertyDomainsOwlObjectPropertyDomain a mov:RestrictionTypeExpression ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:comment """A property domains restriction, expressed using the owl:ObjectPropertyDomain property."""@en ;
-    frbr:realizationOf mon:propertyDomains ;
-    rdfs:label "owl:ObjectPropertyDomain restriction"@en .
-
-mon:propertyDomainsOwlDataPropertyDomain a mov:RestrictionTypeExpression ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:comment """A property domains restriction, expressed using the owl:DataPropertyDomain property."""@en ;
-    frbr:realizationOf mon:propertyDomains ;
-    rdfs:label "owl:DataPropertyDomain restriction"@en .
-
-mon:propertyRangesRdfsRange a mov:RestrictionTypeExpression ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:comment """A property ranges restriction, expressed using the rdfs:range property."""@en ;
-    frbr:realizationOf mon:propertyRanges ;
-    rdfs:label "rdfs:range restriction"@en .
-
-mon:propertyRangesOwlObjectPropertyRange a mov:RestrictionTypeExpression ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:comment """A property ranges restriction, expressed using the owl:ObjectPropertyRange property."""@en ;
-    frbr:realizationOf mon:propertyRanges ;
-    rdfs:label "owl:ObjectPropertyRange restriction"@en .
-
-mon:propertyRangesOwlDataPropertyRange a mov:RestrictionTypeExpression ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:comment """A property ranges restriction, expressed using the owl:DataPropertyRange property."""@en ;
-    frbr:realizationOf mon:propertyRanges ;
-    rdfs:label "owl:DataPropertyRange restriction"@en .
-
-mon:literalPatternMatchingXsdPatternOwlRestriction a mov:RestrictionTypeExpression ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:comment """A literal pattern matching restriction, expressed using the owl:withRestrictions property and a defined xsd:pattern."""@en ;
-    frbr:realizationOf mon:literalPatternMatching ;
-    rdfs:label "owl:withRestrictions on xsd:pattern restriction"@en .
-
-mon:literalRangesXsdMinMaxOwlRestriction a mov:RestrictionTypeExpression ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:comment """A literal ranges restriction, expressed using the owl:withRestriction property and a defined xsd:minInclusive xsd:minExclusive or xsd:maxInclusive or xsd:maxExclusive"""@en ;
-    frbr:realizationOf mon:literalRanges ;
-    rdfs:label "owl:withRestriction on xsd:minInclusive xsd:minExclusive xsd:maxInclusive xsd:maxExclusive"@en .
-
-mon:universalQuantificationOwlAllValuesFrom a mov:RestrictionTypeExpression ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:comment """An universal quantification restriction, expressed using the owl:allValuesFrom property."""@en ;
-    frbr:realizationOf mon:univeralQuantification ;
-    rdfs:label "owl:allValuesFrom restriction"@en .
-
-mon:minimumUnqualifiedCardinalityOwlMinCardinality a mov:RestrictionTypeExpression ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:comment """A minimum unqualified cardinality restriction, expressed using the owl:minCardinality property."""@en ;
-    rdfs:label "owl:minCardinality restriction"@en .
-
-mon:minimumQualifiedCardinalityOwl a mov:RestrictionTypeExpression ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:comment """A minimum qualified cardinality restriction, expressed using the owl:minQualifiedCardinality property."""@en ;
-    frbr:realizationOf mon:minimumQualifiedCardinality ;
-    rdfs:label "owl:minQualifiedCardinality restriction"@en .
-
-mon:maximumUnqualifiedCardinalityOwlMaxCardinality a mov:RestrictionTypeExpression ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:comment """A maximum unqualified cardinality restriction, expressed using the owl:maxCardinality property."""@en ;
-    rdfs:label "owl:maxCardinality restriction"@en .
-
-mon:maximumQualifiedCardinalityOwl a mov:RestrictionTypeExpression ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:comment """A maximum qualified cardinality restriction, expressed using the owl:maxQualifiedCardinality property."""@en ;
-    frbr:realizationOf mon:maximumQualifiedCardinality ;
-    rdfs:label "owl:maxQualifiedCardinality restriction"@en .
-
-mon:exactUnqualifiedCardinalityOwlCardinality a mov:RestrictionTypeExpression ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:comment """An exact unqualified cardinality restriction, expressed using the owl:cardinality property."""@en ;
-    frbr:realizationOf mon:exactUnqualifiedCardinality ;
-    rdfs:label "owl:cardinality restriction"@en .
-
-mon:exactUnqualifiedCardinalityOwlMinMax a mov:RestrictionTypeExpression ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:comment """An exact qualified cardinality restriction, expressed using the properties owl:minCardinality and owl:maxCardinality with the same values."""@en ;
-    frbr:realizationOf mon:exactUnqualifiedCardinality ;
-    rdfs:label "owl:minCardinality==owl:maxCardinality"@en .
-
-mon:asymmetricPropertiesOwlAsymmetricProperty a mov:RestrictionTypeExpression ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:comment """An asymmetric properties restriction, expressed using the owl:asymmetricProperty property."""@en ;
-    frbr:realizationOf mon:asymmetricProperties ;
-    rdfs:label "owl:asymmetricProperty restriction"@en .
-
-mon:irreflexivePropertiesOwlIrreflexiveProperty a mov:RestrictionTypeExpression ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:comment """An irreflexive properties restriction, expressed using the owl:irreflexiveProperty property."""@en ;
-    frbr:realizationOf mon:irreflexiveProperties ;
-    rdfs:label "owl:irreflexiveProperty restriction"@en .
-
-mon:disjointPropertiesOwlDisjointWith a mov:RestrictionTypeExpression ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:comment """A disjoint properties restriction, expressed using the owl:propertyDisjointWith property."""@en ;
-    frbr:realizationOf mon:disjointProperties ;
-    rdfs:label "owl:propertyDisjointWith restriction"@en .
-
-mon:disjointPropertiesOwlAllDisjointProperties a mov:RestrictionTypeExpression ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:comment """A disjoint properties restriction, expressed using the owl:AllDisjointProperties class."""@en ;
-    frbr:realizationOf mon:disjointProperties ;
-    rdfs:label "owl:AllDisjointProperties restriction"@en .
-
-mon:disjointClassesOwlDisjointWith a mov:RestrictionTypeExpression ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:comment """A disjoint classes restriction, expressed using the owl:disjointWith property."""@en ;
-    frbr:realizationOf mon:disjointClasses ;
-    rdfs:label "owl:disjointWith restriction"@en .
-
-mon:disjointClassesOwlAllDisjointClasses a mov:RestrictionTypeExpression ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:comment """A disjoint classes restriction, expressed using the owl:AllDisjointClasses class."""@en ;
-    frbr:realizationOf mon:disjointClasses ;
-    rdfs:label "owl:AllDisjointClasses restriction"@en .
-
-#
-# Definitions of Restriction Types Detectors (and Versions for our specific LODStats implementation)
-#
-
-mon:functionalPropertiesDetectorOwlFunctionalProperty a mov:RestrictionTypeExpressionDetector ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:comment """A method or software component to detect owl:FunctionalProperties restrictions."""@en ;
-    rdfs:label "owl:FunctionalProperty detector"@en .
-
-mon:functionalPropertiesLODStatsDetectorOwlFunctionalProperty-v1 a mov:RestrictionTypeExpressionDetectorVersion ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:label "owl:FunctionalProperty detector (LODStats) v1"@en ;
-    frbr:realizationOf mon:functionalPropertiesDetectorOwlFunctionalProperty .
-
-
-mon:inverseFunctionalPropertiesDetectorOwlInverseFunctionalProperty a mov:RestrictionTypeExpressionDetector ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:comment """A method or software component to detect owl:InverseProperty restrictions."""@en ;
-    rdfs:label "owl:InverseFunctionalProperty detector"@en .
-
-mon:inverseFunctionalPropertiesLODStatsDetectorOwlInverseFunctionalProperty-v1 a mov:RestrictionTypeExpressionDetectorVersion ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:label "owl:InverseFunctionalProperty detector (LODStats) v1"@en ;
-    frbr:realizationOf mon:inverseFunctionalPropertiesDetectorOwlInverseFunctionalProperty .
-
-
-mon:subsumptionDetectorRdfsSubClassOf a mov:RestrictionTypeExpressionDetector ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:comment """A method or software component to detect rdfs:subClassOf restrictions."""@en ;
-    rdfs:label "rdfs:subClassOf detector"@en .
-
-mon:subsumptionLODStatsDetectorRdfsSubClassOf-v1 a mov:RestrictionTypeExpressionDetectorVersion ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:label "rdfs:subClassOf detector (LODStats) v1"@en ;
-    frbr:realizationOf mon:subsumptionDetectorRdfsSubClassOf .
-
-
-mon:subsumptionDetectorOwlSubClassOf a mov:RestrictionTypeExpressionDetector ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:comment """A method or software component to detect owl:SubClassOf restrictions."""@en ;
-    rdfs:label "owl:SubClassOf detector"@en .
-
-mon:subsumptionLODStatsDetectorOwlSubClassOf-v1 a mov:RestrictionTypeExpressionDetectorVersion ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:label "owl:SubClassOf detector (LODStats) v1"@en ;
-    frbr:realizationOf mon:subsumptionDetectorOwlSubClassOf .
-
-
-mon:propertyDomainDetectorRdfsDomain a mov:RestrictionTypeExpressionDetector ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:comment """A method or software component to detect rdfs:domain restrictions."""@en ;
-    rdfs:label "rdfs:domain detector"@en .
-
-mon:propertyDomainLODStatsDetectorRdfsDomain-v1 a mov:RestrictionTypeExpressionDetectorVersion ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:label "rdfs:domain detector (LODStats) v1"@en ;
-    frbr:realizationOf mon:propertyDomainDetectorRdfsDomain .
-
-
-mon:propertyDomainDetectorOwlObjectPropertyDomain a mov:RestrictionTypeExpressionDetector ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:comment """A method or software component to detect owl:ObjectPropertyDomain restrictions."""@en ;
-    rdfs:label "owl:ObjectPropertyDomain detector"@en .
-
-mon:propertyDomainLODStatsDetectorOwlObjectPropertyDomain-v1 a mov:RestrictionTypeExpressionDetectorVersion ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:label "owl:ObjectPropertyDomain detector (LODStats) v1"@en ;
-    frbr:realizationOf mon:propertyDomainDetectorOwlObjectPropertyDomain .
-
-
-mon:propertyDomainDetectorOwlDataPropertyDomain a mov:RestrictionTypeExpressionDetector ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:comment """A method or software component to detect owl:DataPropertyDomain restrictions."""@en ;
-    rdfs:label "owl:DataPropertyDomain detector"@en .
-
-mon:propertyDomainLODStatsDetectorOwlDataPropertyDomain-v1 a mov:RestrictionTypeExpressionDetectorVersion ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:label "owl:DataPropertyDomain detector (LODStats) v1"@en ;
-    frbr:realizationOf mon:propertyDomainDetectorOwlDataPropertyDomain .
-
-
-mon:propertyRangeDetetorRdfsRange a mov:RestrictionTypeExpressionDetector ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:comment """A method or software component to detect rdfs:range restrictions."""@en ;
-    rdfs:label "rdfs:range detector"@en .
-
-mon:propertyRangeLODStatsDetectorRdfsRange-v1 a mov:RestrictionTypeExpressionDetectorVersion ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:label "rdfs:range detector (LODStats) v1"@en ;
-    frbr:realizationOf mon:propertyRangeDetetorRdfsRange .
-
-
-mon:propertyRangeDetectorOwlObjectPropertyRange a mov:RestrictionTypeExpressionDetector ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:comment """A method or software component to detect owl:ObjectPropertyRange restrictions."""@en ;
-    rdfs:label "owl:ObjectPropertyRange detector"@en .
-
-mon:propertyRangeLODStatsDetectorOwlObjectPropertyRange-v1 a mov:RestrictionTypeExpressionDetectorVersion ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:label "owl:ObjectPropertyRange detector (LODStats) v1"@en ;
-    frbr:realizationOf mon:propertyRangeDetectorOwlObjectPropertyRange .
-
-
-mon:literalPatternMatchingDetectorXsdPatternOwlRestriction a mov:RestrictionTypeExpressionDetector ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:comment """A method or software component to detect owl:withRestrictions, xsd:pattern restrictions."""@en ;
-    rdfs:label "owl:withRestrictions, xsd:pattern detector"@en .
-
-mon:literalPatternMatchingLODStatsDetectorXsdPatternOwlRestriction-v1 a mov:RestrictionTypeExpressionDetectorVersion ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:label "owl:withRestrictions, xsd:pattern detector (LODStats) v1"@en ;
-    frbr:realizationOf mon:literalPatternMatchingDetectorXsdPatternOwlRestriction .
-
-mon:literalRangesDetectorXsdMinMaxOwlRestriction a mov:RestrictionTypeExpressionDetector ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:comment """A method or software component to detect owl:withRestrictions, xsd:minInclusive, xsd:minExclusive, xsd:maxInclusive, xsd:maxExclusive."""@en ;
-    rdfs:label "owl:withRestriction, xsd:minInclusive, xsd:minExclusive, xsd:maxInclusive, xsd:maxExclusive detector"@en .
-
-mon:literalRangesLODStatsDetectorXsdMinMaxOwlRestriction-v1 a mov:RestrictionTypeExpressionDetectorVersion ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:label "owl:withRestriction, xsd:minInclusive, xsd:minExclusive, xsd:maxInclusive, xsd:maxExclusive detector v1"@en ;
-    frbr:realizationOf mon:literalRangesDetectorXsdMinMaxOwlRestriction .
-
-mon:universalQuantificationDetectorOwlAllValuesFrom a mov:RestrictionTypeExpressionDetector ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:comment """A method or software component to detect owl:allValuesFrom restrictions."""@en ;
-    rdfs:label "owl:allValuesFrom detector"@en .
-
-mon:universalQuantificationLODStatsDetectorOwlAllValuesFrom-v1 a mov:RestrictionTypeExpressionDetectorVersion ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:label "owl:allValuesFrom detector (LODStats) v1"@en ;
-    frbr:realizationOf mon:universalQuantificationDetectorOwlAllValuesFrom .
-
-
-mon:minimumUnqualifiedCardinalityDetectorOwlMinCardinality a mov:RestrictionTypeExpressionDetector ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:comment """A method or software component to detect owl:minCardinality restrictions."""@en ;
-    rdfs:label "owl:minCardinality detector"@en .
-
-mon:minimumUnqualifiedCardinalityLODStatsDetectorOwl-v1 a mov:RestrictionTypeExpressionDetectorVersion ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:label "owl:minCardinality detector (LODStats) v1"@en ;
-    frbr:realizationOf mon:minimumUnqualifiedCardinalityDetectorOwlMinCardinality .
-
-
-mon:minimumQualifiedCardinalityDetectorOwl a mov:RestrictionTypeExpressionDetector ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:comment """A method or software component to detect owl:minQualifiedCardinality restrictions."""@en ;
-    rdfs:label "owl:minQualifiedCardinality detector"@en .
-
-mon:minimumQualifiedCardinalityLODStatsDetector-v1 a mov:RestrictionTypeExpressionDetectorVersion ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:label "owl:minQualifiedCardinality detector (LODStats) v1"@en ;
-    frbr:realizationOf mon:minimumQualifiedCardinalityDetectorOwl .
-
-
-mon:maximumUnqualifiedCardinalityDetectorOwlMaxCardinality a mov:RestrictionTypeExpressionDetector ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:comment """A method or software component to detect owl:maxCardinality restrictions."""@en ;
-    rdfs:label "owl:maxCardinality detector"@en .
-
-
-mon:maximumUnqualifiedCardinalityLODStatsDetectorOwl-v1 a mov:RestrictionTypeExpressionDetectorVersion ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:label "owl:maxCardinality detector (LODStats) v1"@en ;
-    frbr:realizationOf mon:maximumUnqualifiedCardinalityDetectorOwlMaxCardinality .
-
-	
-mon:maximumQualifiedCardinalityDetectorOwl a mov:RestrictionTypeExpressionDetector ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:comment """A method or software component to detect owl:maxQualifiedCardinality restrictions."""@en ;
-    rdfs:label "owl:maxQualifiedCardinality detector"@en .
-
-mon:maximumQualifiedCardinalityLODStatsDetector-v1 a mov:RestrictionTypeExpressionDetectorVersion ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:label "owl:maxQualifiedCardinality detector (LODStats) v1"@en ;
-    frbr:realizationOf mon:maximumQualifiedCardinalityDetectorOwl .
-
-	
-mon:exactQualifiedCardinalityDetectorOwlCardinality a mov:RestrictionTypeExpressionDetector ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:comment """A method or software component to detect owl:qualifiedCardinality restrictions."""@en ;
-    rdfs:label "owl:qualifiedCardinality detector"@en .
-	
-mon:exactQualifiedCardinalityLODStatsDetectorOwlCardinality-v1 a mov:RestrictionTypeExpressionDetectorVersion ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:label "owl:qualifiedCardinality detector (LODStats) v1"@en ;
-    frbr:realizationOf mon:exactQualifiedCardinalityDetectorOwlCardinality .
-	
-	
-mon:exactUnqualifiedCardinalityDetectorOwlCardinality a mov:RestrictionTypeExpressionDetector ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:comment """A method or software component to detect owl:cardinality restrictions."""@en ;
-    rdfs:label "owl:cardinality detector"@en .
-
-mon:exactUnqualifiedCardinalityLODStatsDetectorOwlCardinality-v1 a mov:RestrictionTypeExpressionDetectorVersion ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:label "owl:cardinality detector (LODStats) v1"@en ;
-    frbr:realizationOf mon:exactUnqualifiedCardinalityDetectorOwlCardinality .
-
-
-mon:exactUnqualifiedCardinalityDetectorOwlMinMax a mov:RestrictionTypeExpressionDetector ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:comment """A method or software component to detect owl:minCardinality==owl:maxCardinality restrictions."""@en ;
-    rdfs:label "owl:minCardinality==owl:maxCardinality detector"@en .
-
-mon:exactUnqualifiedCardinalityLODStatsDetectorOwlMinMax-v1 a mov:RestrictionTypeExpressionDetectorVersion ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:label "owl:minCardinality==owl:maxCardinality detector (LODStats) v1"@en ;
-    frbr:realizationOf mon:exactUnqualifiedCardinalityDetectorOwlMinMax .
-
-
-mon:asymmetricPropertiesDetectorOwlAsymmetricProperty a mov:RestrictionTypeExpressionDetector ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:comment """A method or software component to detect owl:AsymmetricProperty restrictions."""@en ;
-    rdfs:label "owl:AsymmetricProperty detector"@en .
-
-mon:asymmetricPropertiesLODStatsDetectorOwlAsymmetricProperty-v1 a mov:RestrictionTypeExpressionDetectorVersion ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:label "owl:AsymmetricProperty detector (LODStats) v1"@en ;
-    frbr:realizationOf mon:asymmetricPropertiesDetectorOwlAsymmetricProperty .
-
-
-mon:irreflexivePropertiesDetectorOwlIrreflexiveProperty a mov:RestrictionTypeExpressionDetector ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:comment """A method or software component to detect owl:IrreflexiveProperty restrictions."""@en ;
-    rdfs:label "owl:IrreflexiveProperty detector"@en .
-
-mon:irreflexivePropertiesLODStatsDetectorOwlIrreflexiveProperty-v1 a mov:RestrictionTypeExpressionDetectorVersion ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:label "owl:IrreflexiveProperty detector (LODStats) v1"@en ;
-    frbr:realizationOf mon:irreflexivePropertiesDetectorOwlIrreflexiveProperty .
-
-
-mon:disjointPropertiesDetectorOwlDisjointWith a mov:RestrictionTypeExpressionDetector ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:comment """A method or software component to detect owl:propertyDisjointWith restrictions."""@en ;
-    rdfs:label "owl:propertyDisjointWith detector"@en .
-
-mon:disjointPropertiesLODStatsDetectorOwlDisjointWith-v1 a mov:RestrictionTypeExpressionDetectorVersion ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:label "owl:propertyDisjointWith detector (LODStats) v1"@en ;
-    frbr:realizationOf mon:disjointPropertiesDetectorOwlDisjointWith .
-
-
-mon:disjointPropertiesDetectorOwlAllDisjointProperties a mov:RestrictionTypeExpressionDetector ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:comment """A method or software component to detect owl:AllDisjointProperties restrictions."""@en ;
-    rdfs:label "owl:AllDisjointProperties detector"@en .
-
-mon:disjointPropertiesLODStatsDetectorOwlAllDisjointProperties-v1 a mov:RestrictionTypeExpressionDetectorVersion ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:label "owl:AllDisjointProperties detector (LODStats) v1"@en ;
-    frbr:realizationOf mon:disjointPropertiesDetectorOwlAllDisjointProperties .
-
-
-mon:disjointClassesDetectorOwlDisjointWith a mov:RestrictionTypeExpressionDetector ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:comment """A method or software component to detect owl:disjointWith restrictions."""@en ;
-    rdfs:label "owl:disjointWith detector"@en .
-
-mon:disjointClassesLODStatsDetectorOwlDisjointWith-v1 a mov:RestrictionTypeExpressionDetectorVersion ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:label "owl:disjointWith detector (LODStats) v1"@en ;
-    frbr:realizationOf mon:disjointClassesDetectorOwlDisjointWith .
-
-
-mon:disjointClassesDetectorOwlAllDisjointClasses a mov:RestrictionTypeExpressionDetector ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:comment """A method or software component to detect owl:AllDisjointClasses restrictions."""@en ;
-    rdfs:label "owl:AllDisjointClasses detector"@en .
-
-mon:disjointClassesLODStatsDetectorOwlAllDisjointClasses-v1 a mov:RestrictionTypeExpressionDetectorVersion ;
-    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
-    rdfs:label "owl:AllDisjointClasses detector (LODStats) v1"@en ;
-    frbr:realizationOf mon:disjoinClassesDetectorOwlAllDisjointClasses .
-
-#
 # Definitions of Restriction Types Measures
 #
 
 mon:restrictionTypeOccurrence a mov:RestrictionTypeMeasure ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
+    dc:creator <https://sven-lieber.org/profile#me> ;
     rdfs:comment """The occurrence of a restriction of a certain type."""@en ;
     rdfs:label "Restriction type occurrence"@en .
 
 mon:hierarchyOccurrence a mov:RestrictionTypeMeasure ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
+    dc:creator <https://sven-lieber.org/profile#me> ;
     rdfs:comment """The occurrence of disjoint hierarchies of IRIs."""@en ;
     rdfs:label "Hierarchy amount"@en .
 
 mon:minHierarchyDepth a mov:RestrictionTypeMeasure ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
+    dc:creator <https://sven-lieber.org/profile#me> ;
     rdfs:comment """The smallest hierarchy depth of disjoint hierarchies of IRIs."""@en ;
     rdfs:label "Minimum hierarchy depth"@en .
 
 mon:maxHierarchyDepth a mov:RestrictionTypeMeasure ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
+    dc:creator <https://sven-lieber.org/profile#me> ;
     rdfs:comment """The biggest hierarchy depth of disjoint hierarcheis of IRIs."""@en ;
     rdfs:label "Maximum hierarchy depth"@en .
 
 mon:averageHierarchyDepth a mov:RestrictionTypeMeasure ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
+    dc:creator <https://sven-lieber.org/profile#me> ;
     rdfs:comment """The average hierarchy depth of disjoint hierarchies of IRIs."""@en ;
     rdfs:label "Average hierarchy depth" .
 
 mon:medianHierarchyDepth a mov:RestrictionTypeMeasure ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
+    dc:creator <https://sven-lieber.org/profile#me> ;
     rdfs:comment """The median hierarchy depth of disjoint hierarchies of IRIs."""@en ;
     rdfs:label "Median hierarchy depth"@en .
 
@@ -1028,15 +91,15 @@ mon:medianHierarchyDepth a mov:RestrictionTypeMeasure ;
 # Definitions of Ontology Repositories
 #
 mon:lov a mov:OntologyRepository ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
+    dc:creator <https://sven-lieber.org/profile#me> ;
     rdfs:label "Linked Open Vocabularies (LOV)"@en .
 
 mon:bioportal a mov:OntologyRepository ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
+    dc:creator <https://sven-lieber.org/profile#me> ;
     rdfs:label "BioPortal"@en .
 
 mon:noRepo a mov:OntologyRepository ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
+    dc:creator <https://sven-lieber.org/profile#me> ;
     rdfs:label "Not specified"@en .
 
 #
@@ -1045,7 +108,7 @@ mon:noRepo a mov:OntologyRepository ;
 
 mon:restrictionTypeDimension a qb:DimensionProperty, rdf:Property ;
     rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
+    dc:creator <https://sven-lieber.org/profile#me> ;
     rdfs:label "Restriction type dimension"@en ;
     rdfs:comment "The restriction type of this observation."@en ;
     rdfs:domain qb:Observation ;
@@ -1053,7 +116,7 @@ mon:restrictionTypeDimension a qb:DimensionProperty, rdf:Property ;
 
 mon:detectorDimension a qb:DimensionProperty, rdf:Property ;
     rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
+    dc:creator <https://sven-lieber.org/profile#me> ;
     rdfs:label "Detector version dimension"@en ;
     rdfs:comment "The detector used to collect the observation."@en ;
     rdfs:domain qb:Observation ;
@@ -1061,7 +124,7 @@ mon:detectorDimension a qb:DimensionProperty, rdf:Property ;
 
 mon:detectorVersionDimension a qb:DimensionProperty, rdf:Property ;
     rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
+    dc:creator <https://sven-lieber.org/profile#me> ;
     rdfs:label "Detector version dimension"@en ;
     rdfs:comment "The specific version of a detector used to collect the observation."@en ;
     rdfs:domain qb:Observation ;
@@ -1069,7 +132,7 @@ mon:detectorVersionDimension a qb:DimensionProperty, rdf:Property ;
 
 mon:executionTimeDimension a qb:DimensionProperty, rdf:Property ;
     rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
+    dc:creator <https://sven-lieber.org/profile#me> ;
     rdfs:label "Execution time dimension"@en ;
     rdfs:comment "The time at which the observation was made."@en ;
     rdfs:domain qb:Observation ;
@@ -1077,7 +140,7 @@ mon:executionTimeDimension a qb:DimensionProperty, rdf:Property ;
 
 mon:ontologyVersionDimension a qb:DimensionProperty, rdf:Property ;
     rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
+    dc:creator <https://sven-lieber.org/profile#me> ;
     rdfs:label "Ontology version dimension"@en ;
     rdfs:comment "The ontology version from which this observation was made."@en ;
     rdfs:domain qb:Observation ;
@@ -1085,7 +148,7 @@ mon:ontologyVersionDimension a qb:DimensionProperty, rdf:Property ;
 
 mon:ontologyRepositoryDimension a qb:DimensionProperty, rdf:Property ;
     rdfs:isDefiendBy <https://w3id.org/montolo/ns/montolo#> ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
+    dc:creator <https://sven-lieber.org/profile#me> ;
     rdfs:label "Ontology Repository dimension"@en ;
     rdfs:comment "The ontology repository from which the ontology was obtained."@en ;
     rdfs:domain qb:Observation ;
@@ -1100,7 +163,7 @@ mon:ontologyRepositoryDimension a qb:DimensionProperty, rdf:Property ;
 #
 mon:restrictionTypesAmount a qb:DataStructureDefinition, prov:Entity ;
     rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
+    dc:creator <https://sven-lieber.org/profile#me> ;
     rdfs:label "Amount of restriction types"@en ;
     rdfs:comment """This data structure contains the measurement of the amount of restriction types."""@en ;
 
@@ -1124,7 +187,7 @@ mon:restrictionTypesAmount a qb:DataStructureDefinition, prov:Entity ;
 #
 mon:hierarchyAmountDistribution a qb:DataStructureDefinition, prov:Entity ;
     rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
+    dc:creator <https://sven-lieber.org/profile#me> ;
     rdfs:label "Amount of hierarchies"@en ;
     rdfs:comment """This data structure contains the measurement of the amount of hierarchies."""@en ;
 
@@ -1149,7 +212,7 @@ mon:hierarchyAmountDistribution a qb:DataStructureDefinition, prov:Entity ;
 #
 mon:meanHierarchyDepthsDistribution a qb:DataStructureDefinition ;
     rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
+    dc:creator <https://sven-lieber.org/profile#me> ;
     rdfs:label "Average hierarchy depth distribution"@en ;
     rdfs:comment """This data structure contains average hieararchy depth measurements."""@en ;
 
@@ -1174,7 +237,7 @@ mon:meanHierarchyDepthsDistribution a qb:DataStructureDefinition ;
 #
 mon:medianHierarchyDepthsDistribution a qb:DataStructureDefinition ;
     rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
+    dc:creator <https://sven-lieber.org/profile#me> ;
     rdfs:label "Median hierarchy depth distribution"@en ;
     rdfs:comment """This data structure contains median hieararchy depth measurements."""@en ;
 
@@ -1199,7 +262,7 @@ mon:medianHierarchyDepthsDistribution a qb:DataStructureDefinition ;
 #
 mon:minHierarchyDepthsDistribution a qb:DataStructureDefinition ;
     rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
+    dc:creator <https://sven-lieber.org/profile#me> ;
     rdfs:label "Minimum hierarchy depth distribution"@en ;
     rdfs:comment """This data structure contains minimum hieararchy depth measurements."""@en ;
 
@@ -1224,7 +287,7 @@ mon:minHierarchyDepthsDistribution a qb:DataStructureDefinition ;
 #
 mon:maxHierarchyDepthsDistribution a qb:DataStructureDefinition ;
     rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
-    dct:creator <https://sven-lieber.org/profile#me> ;
+    dc:creator <https://sven-lieber.org/profile#me> ;
     rdfs:label "Maximum hierarchy depth distribution"@en ;
     rdfs:comment """This data structure contains maximum hieararchy depth measurements."""@en ;
 
@@ -1245,5 +308,1484 @@ mon:maxHierarchyDepthsDistribution a qb:DataStructureDefinition ;
       [ a qb:ComponentSpecification ; qb:attribute sdmx-attribute:unitMeasure ; ] .
    
 
-  
+mon:asymmetricProperties a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A property is asymmetric if it is disjoint from its own inverse. A constraint of the constraint type asymmetric object properties states that the object property p is asymmetric - that is, if an individual i_1 is connected by p to an individual i_2, then I_2 cannot be connected by p to i_2.";
+  dc:source "https://publikationen.bibliothek.kit.edu/1000054062"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "Asymmetric properties restriction type"@en .
 
+mon:asymmetricPropertiesDetectorOwlAsymmetricProperty a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect owl:AsymmetricProperty restrictions."@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "owl:AsymmetricProperty detector"@en .
+
+mon:asymmetricPropertiesLODStatsDetectorOwlAsymmetricProperty-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:asymmetricPropertiesDetectorOwlAsymmetricProperty;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "owl:AsymmetricProperty detector (LODStats) v1"@en .
+
+mon:asymmetricPropertiesOwlAsymmetricProperty a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "An asymmetric properties restriction, expressed using the owl:asymmetricProperty property.";
+  frbr:realizationOf mon:asymmetricProperties;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "OWL asymmetricProperty restriction"@en;
+  owl:sameAs <https://astrea.helio.linkeddata.es/owl:AsymmetricProperty> .
+
+mon:cardinalityMaxCount a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "If the number of value nodes is greater than $maxCount, there is a validation result.";
+  dc:source "https://www.w3.org/TR/shacl/"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "(SHACL) Maximum cardinality restriction type"@en .
+
+mon:cardinalityMaxCountDetectorSHACLMaxCount a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect sh:maxCount constraints"@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:maxCount detector"@en .
+
+mon:cardinalityMaxCountLODStatsDetectorSHACLMaxCount-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:cardinalityMaxCountDetectorSHACLMaxCount;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:maxCount detector (LODStats) v1"@en .
+
+mon:cardinalityMaxCountSHACLMaxCount a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:cardinalityMaxCount;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "SHACL max count"@en;
+  owl:sameAs <https://astrea.helio.linkeddata.es/sh:maxCount> .
+
+mon:cardinalityMinCount a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "If the number of value nodes is less than $minCount, there is a validation result.";
+  dc:source "https://www.w3.org/TR/shacl/"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "(SHACL) Minimum cardinality restriction type"@en .
+
+mon:cardinalityMinCountDetectorSHACLMinCount a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect sh:minCount constraints"@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:minCount detector"@en .
+
+mon:cardinalityMinCountLODStatsDetectorSHACLMinCount-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:cardinalityMinCountDetectorSHACLMinCount;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:minCount detector (LODStats) v1"@en .
+
+mon:cardinalityMinCountSHACLMinCount a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:cardinalityMinCount;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "SHACL min count"@en;
+  owl:sameAs <https://astrea.helio.linkeddata.es/sh:minCount> .
+
+mon:disjointClasses a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "The constraint type disjoint classes states that all of the classes C_i, 1 <= i <= n, are pairwise disjoint.";
+  dc:source "https://publikationen.bibliothek.kit.edu/1000054062"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "Disjoint classes restriction type"@en .
+
+mon:disjointClassesDetectorOwlAllDisjointClasses a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect owl:AllDisjointClasses restrictions."@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "owl:AllDisjointClasses detector"@en .
+
+mon:disjointClassesDetectorOwlDisjointWith a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect owl:disjointWith restrictions."@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "owl:disjointWith detector"@en .
+
+mon:disjointClassesLODStatsDetectorOwlAllDisjointClasses-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "owl:AllDisjointClasses detector (LODStats) v1"@en .
+
+mon:disjointClassesLODStatsDetectorOwlDisjointWith-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:disjointClassesDetectorOwlDisjointWith;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "owl:disjointWith detector (LODStats) v1"@en .
+
+mon:disjointClassesOwlAllDisjointClasses a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A disjoint classes restriction, expressed using the owl:AllDisjointClasses class.";
+  frbr:realizationOf mon:disjointClasses;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "OWL AllDisjointClasses restriction"@en;
+  owl:sameAs <https://astrea.helio.linkeddata.es/owl:AllDisjointClasses> .
+
+mon:disjointClassesOwlDisjointWith a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A disjoint classes restriction, expressed using the owl:disjointWith property.";
+  frbr:realizationOf mon:disjointClasses;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "OWL disjointWith restriction"@en;
+  owl:sameAs <https://astrea.helio.linkeddata.es/owl:disjointWith> .
+
+mon:disjointProperties a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A constraint of the constraint type disjoint properties states that all of the object or data properties p_i, 1 <= i <= n, are pairwise disjoint.";
+  dc:source "https://publikationen.bibliothek.kit.edu/1000054062"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "Disjoint properties restriction type"@en .
+
+mon:disjointPropertiesDetectorOwlAllDisjointProperties a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect owl:AllDisjointProperties restrictions."@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "owl:AllDisjointProperties detector"@en .
+
+mon:disjointPropertiesDetectorOwlDisjointWith a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect owl:propertyDisjointWith restrictions."@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "owl:propertyDisjointWith detector"@en .
+
+mon:disjointPropertiesLODStatsDetectorOwlAllDisjointProperties-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:disjointPropertiesDetectorOwlAllDisjointProperties;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "owl:AllDisjointProperties detector (LODStats) v1"@en .
+
+mon:disjointPropertiesLODStatsDetectorOwlDisjointWith-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:disjointPropertiesDetectorOwlDisjointWith;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "owl:propertyDisjointWith detector (LODStats) v1"@en .
+
+mon:disjointPropertiesOwlAllDisjointProperties a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A disjoint properties restriction, expressed using the owl:AllDisjointProperties class.";
+  frbr:realizationOf mon:disjointProperties;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "OWL AllDisjointProperties restriction"@en;
+  owl:sameAs <https://astrea.helio.linkeddata.es/owl:AllDisjointProperties> .
+
+mon:disjointPropertiesOwlDisjointWith a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A disjoint properties restriction, expressed using the owl:propertyDisjointWith property.";
+  frbr:realizationOf mon:disjointProperties;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "OWL propertyDisjointWith restriction"@en;
+  owl:sameAs <https://astrea.helio.linkeddata.es/owl:propertyDisjointWith> .
+
+mon:exactQualifiedCardinality a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A constraint of the constriant type exact qualified cardinality restrictions consists of a non-negative integer n, an object or data property p, and a class C or a datatype DT, and it defines a class C_context which contains all those individuals that are connected by p to exactly n different (1) individuals that are instances of C or (2) literals in DT. Exact qualified cardinality restrictions must hold for all instances of the class C_context.";
+  dc:source "https://publikationen.bibliothek.kit.edu/1000054062"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "Exact qualified cardinality restriction type"@en .
+
+mon:exactQualifiedCardinalityDetectorOwlCardinality a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect owl:qualifiedCardinality restrictions."@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "owl:qualifiedCardinality detector"@en .
+
+mon:exactQualifiedCardinalityLODStatsDetectorOwlCardinality-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:exactQualifiedCardinalityDetectorOwlCardinality;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "owl:qualifiedCardinality detector (LODStats) v1"@en .
+
+mon:exactUnqualifiedCardinality a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A constraint of the constraint type exact unqualified cardinality restrictions consists of a non-negative integer n and an object or data property p, and it defines a class C_context which contains all those individuals that are connected by p to exactly n different individuals/literals. Exact unqualified cardinality restrictions must hold for all instances of the class C_context.";
+  dc:source "https://publikationen.bibliothek.kit.edu/1000054062"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "Exact unqualified cardinality restriction type"@en .
+
+mon:exactUnqualifiedCardinalityDetectorOwlCardinality a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect owl:cardinality restrictions."@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "owl:cardinality detector"@en .
+
+mon:exactUnqualifiedCardinalityDetectorOwlMinMax a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect owl:minCardinality==owl:maxCardinality restrictions."@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "owl:minCardinality==owl:maxCardinality detector"@en .
+
+mon:exactUnqualifiedCardinalityLODStatsDetectorOwlCardinality-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:exactUnqualifiedCardinalityDetectorOwlCardinality;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "owl:cardinality detector (LODStats) v1"@en .
+
+mon:exactUnqualifiedCardinalityLODStatsDetectorOwlMinMax-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:exactUnqualifiedCardinalityDetectorOwlMinMax;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "owl:minCardinality==owl:maxCardinality detector (LODStats) v1"@en .
+
+mon:exactUnqualifiedCardinalityOwlCardinality a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "An exact unqualified cardinality restriction, expressed using the owl:cardinality property.";
+  frbr:realizationOf mon:exactUnqualifiedCardinality;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "OWL cardinality restriction"@en;
+  owl:sameAs <https://astrea.helio.linkeddata.es/owl:cardinality> .
+
+mon:exactUnqualifiedCardinalityOwlMinMax a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "An exact qualified cardinality restriction, expressed using the properties owl:minCardinality and owl:maxCardinality with the same values.";
+  frbr:realizationOf mon:exactUnqualifiedCardinality;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "OWL min equals max"@en .
+
+mon:functionalProperties a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "Constraints of the constraint type functional properties state that object or data properties are functional within the context of a class.";
+  dc:source "https://publikationen.bibliothek.kit.edu/1000054062"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "Functional properties restriction type"@en .
+
+mon:functionalPropertiesDetectorOwlFunctionalProperty a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect owl:FunctionalProperties restrictions."@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "owl:FunctionalProperty detector"@en .
+
+mon:functionalPropertiesLODStatsDetectorOwlFunctionalProperty-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:functionalPropertiesDetectorOwlFunctionalProperty;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "owl:FunctionalProperty detector (LODStats) v1"@en .
+
+mon:functionalPropertiesOwlFunctionalProperty a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A functional properties restriction, expressed using the owl:FunctionalProperty property.";
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "OWL FunctionalProperty"@en;
+  owl:sameAs <https://astrea.helio.linkeddata.es/owl:FunctionalProperty> .
+
+mon:inverseFunctionalProperties a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "Constraints of the constraint type inverse-functional properties state that object properties are inverse-functional within the context of a class.";
+  dc:source "https://publikationen.bibliothek.kit.edu/1000054062"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "Inverse functional properties restriction type"@en .
+
+mon:inverseFunctionalPropertiesDetectorOwlInverseFunctionalProperty a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect owl:InverseProperty restrictions."@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "owl:InverseFunctionalProperty detector"@en .
+
+mon:inverseFunctionalPropertiesLODStatsDetectorOwlInverseFunctionalProperty-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:inverseFunctionalPropertiesDetectorOwlInverseFunctionalProperty;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "owl:InverseFunctionalProperty detector (LODStats) v1"@en .
+
+mon:inverseFunctionalPropertiesOwlInverseFunctionalProperty a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "An inverse functional properties restriction, expressed using the owl:InverseFunctionalProperty property.";
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "OWL InverseFunctionalProperty"@en;
+  owl:sameAs <https://astrea.helio.linkeddata.es/owl:InverseFunctionalProperty> .
+
+mon:irreflexiveProperties a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A property is irreflexive if it is never locally reflexive. Constraints of the irreflexive object properties constraint type (irreflexive roles in DL) state that the object property p is irreflexive - that is, no individual is connected by p to itself.";
+  dc:source "https://publikationen.bibliothek.kit.edu/1000054062"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "Irreflexive properties restriction type"@en .
+
+mon:irreflexivePropertiesDetectorOwlIrreflexiveProperty a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect owl:IrreflexiveProperty restrictions."@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "owl:IrreflexiveProperty detector"@en .
+
+mon:irreflexivePropertiesLODStatsDetectorOwlIrreflexiveProperty-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:irreflexivePropertiesDetectorOwlIrreflexiveProperty;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "owl:IrreflexiveProperty detector (LODStats) v1"@en .
+
+mon:irreflexivePropertiesOwlIrreflexiveProperty a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "An irreflexive properties restriction, expressed using the owl:irreflexiveProperty property.";
+  frbr:realizationOf mon:irreflexiveProperties;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "OWL irreflexiveProperty restriction"@en;
+  owl:sameAs <https://astrea.helio.linkeddata.es/owl:IrreflexiveProperty> .
+
+mon:literalPatternMatching a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "Constraints of the constraint type literal pattern matching ensure that individuals of a given class C can only have relations via a specific data property p to literals of a specific datatype DT that match a certain literal pattern.";
+  dc:source "https://publikationen.bibliothek.kit.edu/1000054062"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "Literal pattern matching restriction type"@en .
+
+mon:literalPatternMatchingDetectorXsdPatternOwlRestriction a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect owl:withRestrictions, xsd:pattern restrictions."@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "owl:withRestrictions, xsd:pattern detector"@en .
+
+mon:literalPatternMatchingLODStatsDetectorXsdPatternOwlRestriction-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:literalPatternMatchingDetectorXsdPatternOwlRestriction;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "owl:withRestrictions, xsd:pattern detector (LODStats) v1"@en .
+
+mon:literalPatternMatchingXsdPatternOwlRestriction a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A literal pattern matching restriction, expressed using the owl:withRestrictions property and a defined xsd:pattern.";
+  frbr:realizationOf mon:literalPatternMatching;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "OWL withRestrictions on xsd:pattern restriction"@en .
+
+mon:literalRanges a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "Constraints of the constraint type literal ranges ensure that for individuals of class C, the literal values of the data property p of the datatype DT are within the literal range of [min, max].";
+  dc:source "https://publikationen.bibliothek.kit.edu/1000054062"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "Literal ranges restriction type"@en .
+
+mon:literalRangesDetectorXsdMinMaxOwlRestriction a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect owl:withRestrictions, xsd:minInclusive, xsd:minExclusive, xsd:maxInclusive, xsd:maxExclusive."@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "owl:withRestriction, xsd:minInclusive, xsd:minExclusive, xsd:maxInclusive, xsd:maxExclusive detector"@en .
+
+mon:literalRangesLODStatsDetectorXsdMinMaxOwlRestriction-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:literalRangesDetectorXsdMinMaxOwlRestriction;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "owl:withRestriction, xsd:minInclusive, xsd:minExclusive, xsd:maxInclusive, xsd:maxExclusive detector v1"@en .
+
+mon:literalRangesXsdMinMaxOwlRestriction a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A literal ranges restriction, expressed using the owl:withRestriction property and a defined xsd:minInclusive xsd:minExclusive or xsd:maxInclusive or xsd:maxExclusive";
+  frbr:realizationOf mon:literalRanges;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "OWL withRestriction on xsd:minInclusive xsd:minExclusive xsd:maxInclusive xsd:maxExclusive"@en .
+
+mon:logicalConjunction a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "It specifies the condition that each value node conforms to all provided shapes. This is comparable to conjunction and the logical and operator.";
+  dc:source "https://www.w3.org/TR/shacl/"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "(SHACL) Conjunction restriction type"@en .
+
+mon:logicalConjunctionDetectorSHACLAnd a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect sh:and constraints"@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:and detector"@en .
+
+mon:logicalConjunctionLODStatsDetectorSHACLAnd-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:logicalConjunctionDetectorSHACLAnd;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:and detector (LODStats) v1"@en .
+
+mon:logicalConjunctionSHACLAnd a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:logicalConjunction;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "SHACL conjunction (and)"@en;
+  owl:sameAs <https://astrea.helio.linkeddata.es/sh:and> .
+
+mon:logicalDisjunction a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "It specifies the condition that each value node conforms to at least one of the provided shapes. This is comparable to disjunction and the logical or operator.";
+  dc:source "https://www.w3.org/TR/shacl/"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "(SHACL) Disjunction restriction type"@en .
+
+mon:logicalDisjunctionDetectorSHACLOr a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect sh:or constraints"@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:or detector"@en .
+
+mon:logicalDisjunctionLODStatsDetectorSHACLOr-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:logicalDisjunctionDetectorSHACLOr;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:or detector (LODStats) v1"@en .
+
+mon:logicalDisjunctionSHACLOr a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:logicalDisjunction;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "SHACL disjunction (or)"@en;
+  owl:sameAs <https://astrea.helio.linkeddata.es/sh:or> .
+
+mon:logicalExclusiveDisjunction a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "It specifies the condition that each value node conforms to exactly one of the provided shapes.";
+  dc:source "https://www.w3.org/TR/shacl/"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "(SHACL) Exclusive Disjunction restriction type"@en .
+
+mon:logicalExclusiveDisjunctionDetectorSHACLXone a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect sh:xone constraints"@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:xone detector"@en .
+
+mon:logicalExclusiveDisjunctionLODStatsDetectorSHACLXone-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:logicalExclusiveDisjunctionDetectorSHACLXone;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:xone detector (LODStats) v1"@en .
+
+mon:logicalExclusiveDisjunctionSHACLXone a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:logicalExclusiveDisjunction;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "SHACL exclusive disjunction (xor)"@en;
+  owl:sameAs <https://astrea.helio.linkeddata.es/sh:xone> .
+
+mon:logicalNegation a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "It specifies the condition that each value node cannot conform to a given shape. This is comparable to negation and the logical not operator.";
+  dc:source "https://www.w3.org/TR/shacl/"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "(SHACL) Negation restriction type"@en .
+
+mon:logicalNegationDetectorSHACLNot a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect sh:not constraints"@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:not detector"@en .
+
+mon:logicalNegationLODStatsDetectorSHACLNot-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:logicalNegationDetectorSHACLNot;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:not detector (LODStats) v1"@en .
+
+mon:logicalNegationSHACLNot a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:logicalNegation;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "SHACL not"@en;
+  owl:sameAs <https://astrea.helio.linkeddata.es/sh:not> .
+
+mon:maximumQualifiedCardinality a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "The constraint type maximum qualified cardinality restrictions consists of a non-negative integer n, an object or data proeprty p, and a class C or a atatype DT, and it defiens a class C_context which contains all those individuals that are connected by p to at most n different (1) individuals that are instances of C or (2) literals in DT. Maximum qualified cardinality restrictions must hold for all instances of the class C_context.";
+  dc:source "https://publikationen.bibliothek.kit.edu/1000054062"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "Maximum qualified cardinality restriction type"@en .
+
+mon:maximumQualifiedCardinalityDetectorOwl a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect owl:maxQualifiedCardinality restrictions."@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "owl:maxQualifiedCardinality detector"@en .
+
+mon:maximumQualifiedCardinalityLODStatsDetector-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:maximumQualifiedCardinalityDetectorOwl;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "owl:maxQualifiedCardinality detector (LODStats) v1"@en .
+
+mon:maximumQualifiedCardinalityOwl a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A maximum qualified cardinality restriction, expressed using the owl:maxQualifiedCardinality property.";
+  frbr:realizationOf mon:maximumQualifiedCardinality;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "OWL maxQualifiedCardinality restriction"@en;
+  owl:sameAs <https://astrea.helio.linkeddata.es/owl:maxQualifiedCardinality> .
+
+mon:maximumUnqualifiedCardinality a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A constraint of the constraint type maximum unqualified cardinality restrictions consists of a non-negative integer n and an object or data property p, and it defines a class C_context which contains all those individuals that are connected by p to at most n different individuals/literals. Maximum unqualififed cardinality restrictions must hold for all instances of the class C_context.";
+  dc:source "https://publikationen.bibliothek.kit.edu/1000054062"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "Maximum unqualified cardinality restriction type"@en .
+
+mon:maximumUnqualifiedCardinalityDetectorOwlMaxCardinality a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect owl:maxCardinality restrictions."@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "owl:maxCardinality detector"@en .
+
+mon:maximumUnqualifiedCardinalityLODStatsDetectorOwl-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:maximumUnqualifiedCardinalityDetectorOwlMaxCardinality;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "owl:maxCardinality detector (LODStats) v1"@en .
+
+mon:minimumQualifiedCardinality a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "The constraint type minimum qualified cardinality restrictions consists of a non-negative integer n, an object or data property p, and a class C or a datatype DT, and it defines a class C_context which contains all those individuals that are connected by p to at least n different (1) individuals that are instances of C or (2) literals in DT. Minimum qualified cardinality restrictions must hold for all instances of the class C_context.";
+  dc:source "https://publikationen.bibliothek.kit.edu/1000054062"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "Minimum qualified cardinality restriction type"@en .
+
+mon:minimumQualifiedCardinalityDetectorOwl a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect owl:minQualifiedCardinality restrictions."@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "owl:minQualifiedCardinality detector"@en .
+
+mon:minimumQualifiedCardinalityLODStatsDetector-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:minimumQualifiedCardinalityDetectorOwl;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "owl:minQualifiedCardinality detector (LODStats) v1"@en .
+
+mon:minimumQualifiedCardinalityOwl a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A minimum qualified cardinality restriction, expressed using the owl:minQualifiedCardinality property.";
+  frbr:realizationOf mon:minimumQualifiedCardinality;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "OWL minQualifiedCardinality restriction"@en;
+  owl:sameAs <https://astrea.helio.linkeddata.es/owl:minQualifiedCardinality> .
+
+mon:minimumUnqualifiedCardinality a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A constraint of the constraint type minimum unqualified cardinality restrictions consists of a non-negative integer n and an object or data property p, and it defines a class C which contains all those individuals that are connected by p to at least n different individuals/literals. Minimum unqualified cardinality restrictions must hold for all instances of the class C.";
+  dc:source "https://publikationen.bibliothek.kit.edu/1000054062"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "Minimum unqualified cardinality restriction type"@en .
+
+mon:minimumUnqualifiedCardinalityDetectorOwlMinCardinality a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect owl:minCardinality restrictions."@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "owl:minCardinality detector"@en .
+
+mon:minimumUnqualifiedCardinalityLODStatsDetectorOwl-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:minimumUnqualifiedCardinalityDetectorOwlMinCardinality;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "owl:minCardinality detector (LODStats) v1"@en .
+
+mon:otherClosed a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "Set to true to close the shape. The values of sh:closed in a shape are literals with datatype xsd:boolean.";
+  dc:source "https://www.w3.org/TR/shacl/"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "(SHACL) Closed restriction type"@en .
+
+mon:otherClosedDetectorSHACLClosed a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect sh:closed constraints"@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:closed detector"@en .
+
+mon:otherClosedLODStatsDetectorSHACLClosed-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:otherClosedDetectorSHACLClosed;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:closed detector (LODStats) v1"@en .
+
+mon:otherClosedSHACLClosed a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:otherClosed;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "SHACL closed"@en;
+  owl:sameAs <https://astrea.helio.linkeddata.es/sh:closed> .
+
+mon:otherHasValue a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "It specifies the condition that at least one value node is equal to the given RDF term.";
+  dc:source "https://www.w3.org/TR/shacl/"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "(SHACL) Has-value restriction type"@en .
+
+mon:otherHasValueDetectorSHACLHasValue a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect sh:hasValue constraints"@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:hasValue detector"@en .
+
+mon:otherHasValueLODStatsDetectorSHACLHasValue-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:otherHasValueDetectorSHACLHasValue;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:hasValue detector (LODStats) v1"@en .
+
+mon:otherHasValueSHACLHasValue a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:otherHasValue;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "SHACL has-value"@en;
+  owl:sameAs <https://astrea.helio.linkeddata.es/sh:hasValue> .
+
+mon:otherIgnoredProperties a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "Optional SHACL list of properties that are also permitted in addition to those explicitly enumerated via sh:property";
+  dc:source "https://www.w3.org/TR/shacl/"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "(SHACL) Ignored properties restriction type"@en .
+
+mon:otherIgnoredPropertiesDetectorSHACLIgnoredProperties a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect sh:ignoredProperties constraints"@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:ignoredProperties detector"@en .
+
+mon:otherIgnoredPropertiesLODStatsDetectorSHACLIgnoredProperties-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:otherIgnoredPropertiesDetectorSHACLIgnoredProperties;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:ignoredProperties detector (LODStats) v1"@en .
+
+mon:otherIgnoredPropertiesSHACLIgnoredProperties a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:otherIgnoredProperties;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "SHACL ignored properties"@en;
+  owl:sameAs <https://astrea.helio.linkeddata.es/sh:ignoredProperties> .
+
+mon:otherValueIn a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "It specifies the condition that each value node is a member of a provided SHACL list.";
+  dc:source "https://www.w3.org/TR/shacl/"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "(SHACL) Value-in restriction type"@en .
+
+mon:otherValueInDetectorSHACLValueIn a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect sh:in constraints"@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:in detector"@en .
+
+mon:otherValueInLODStatsDetectorSHACLValueIn-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:otherValueInDetectorSHACLValueIn;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:in detector (LODStats) v1"@en .
+
+mon:otherValueInSHACLValueIn a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:otherValueIn;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "SHACL value-in"@en;
+  owl:sameAs <https://astrea.helio.linkeddata.es/sh:in> .
+
+mon:propertyDomainDetectorOwlDataPropertyDomain a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect owl:DataPropertyDomain restrictions."@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "owl:DataPropertyDomain detector"@en .
+
+mon:propertyDomainDetectorOwlObjectPropertyDomain a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect owl:ObjectPropertyDomain restrictions."@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "owl:ObjectPropertyDomain detector"@en .
+
+mon:propertyDomainDetectorRdfsDomain a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect rdfs:domain restrictions."@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "rdfs:domain detector"@en .
+
+mon:propertyDomainLODStatsDetectorOwlDataPropertyDomain-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:propertyDomainDetectorOwlDataPropertyDomain;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "owl:DataPropertyDomain detector (LODStats) v1"@en .
+
+mon:propertyDomainLODStatsDetectorOwlObjectPropertyDomain-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:propertyDomainDetectorOwlObjectPropertyDomain;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "owl:ObjectPropertyDomain detector (LODStats) v1"@en .
+
+mon:propertyDomainLODStatsDetectorRdfsDomain-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:propertyDomainDetectorRdfsDomain;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "rdfs:domain detector (LODStats) v1"@en .
+
+mon:propertyDomains a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "Constraints of the property domains constraint type restrict the domain of object or data properties. In DL terminology, this constraint type is also called domain restrictions on roles. A constraint of the type property domains states that the domain of the object or data property p is the class C - that is, if an individual i is connected by p with some other individual or some literal, then i is an instance of C.";
+  dc:source "https://publikationen.bibliothek.kit.edu/1000054062"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "Property domains restriction type"@en .
+
+mon:propertyDomainsOwlDataPropertyDomain a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A property domains restriction, expressed using the owl:DataPropertyDomain property.";
+  frbr:realizationOf mon:propertyDomains;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "OWL DataPropertyDomain restriction"@en .
+
+mon:propertyDomainsOwlObjectPropertyDomain a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A property domains restriction, expressed using the owl:ObjectPropertyDomain property.";
+  frbr:realizationOf mon:propertyDomains;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "OWL ObjectPropertyDomain restriction"@en .
+
+mon:propertyDomainsRdfsDomain a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A property domains restriction, expressed using the rdfs:domain property.";
+  frbr:realizationOf mon:propertyDomains;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "RDFS domain restriction"@en;
+  owl:sameAs <https://astrea.helio.linkeddata.es/rdfs:domain> .
+
+mon:propertyPairDisjoint a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "It specifies the condition that the set of value nodes is disjoint with the set of objects of the triples that have the focus node as subject and the value of sh:disjoint as predicate.";
+  dc:source "https://www.w3.org/TR/shacl/"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "(SHACL) Disjoint restriction type"@en .
+
+mon:propertyPairDisjointDetectorSHACLDisjoint a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect sh:disjoint constraints"@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:disjoint detector"@en .
+
+mon:propertyPairDisjointLODstatsDetectorSHACLDisjoint-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:propertyPairDisjointDetectorSHACLDisjoint;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:disjoint detector (LODStats) v1"@en .
+
+mon:propertyPairDisjointSHACLDisjoint a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:propertyPairDisjoint;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "SHACL disjoint"@en;
+  owl:sameAs <https://astrea.helio.linkeddata.es/sh:disjoint> .
+
+mon:propertyPairEquals a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "It specifies the condition that the set of all value nodes is equal to the set of objects of the triples that have the focus node as subject and the value of sh:equals as predicate.";
+  dc:source "https://www.w3.org/TR/shacl/"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "(SHACL) Equals restriction type"@en .
+
+mon:propertyPairEqualsDetectorSHACLEquals a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect sh:equals constraints"@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:equals detector"@en .
+
+mon:propertyPairEqualsLODStatsDetectorSHACLEquals-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:propertyPairEqualsDetectorSHACLEquals;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:equals detector (LODStats) v1"@en .
+
+mon:propertyPairEqualsSHACLEquals a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:propertyPairEquals;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "SHACL equals"@en;
+  owl:sameAs <https://astrea.helio.linkeddata.es/sh:equals> .
+
+mon:propertyPairLessThan a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description " The property to compare the values with. The values of sh:lessThan in a shape are IRIs.";
+  dc:source "https://www.w3.org/TR/shacl/"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "(SHACL) Less-than restriction type"@en .
+
+mon:propertyPairLessThanDetectorSHACLLessThan a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect sh:lessThan constraints"@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:lessThan detector"@en .
+
+mon:propertyPairLessThanLODStatsDetectorSHACLLessThan-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:propertyPairLessThanDetectorSHACLLessThan;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:lessThan detector (LODStats) v1"@en .
+
+mon:propertyPairLessThanOrEquals a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "For each pair of value nodes and the values of the property $lessThanOrEquals at the given focus node where the first value is not less than or equal to the second value (based on SPARQL's <= operator) or where the two values cannot be compared, there is a validation result with the value node as sh:value.";
+  dc:source "https://www.w3.org/TR/shacl/"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "(SHACL) Less Than Or Equals restriction type"@en .
+
+mon:propertyPairLessThanOrEqualsDetectorSHACLLessThanOrEquals a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect sh:lessThanOrEquals constraints"@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:lessThanOrEquals detector"@en .
+
+mon:propertyPairLessThanOrEqualsLODStatsDetectorSHACLLessThanOrEquals-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:propertyPairLessThanOrEqualsDetectorSHACLLessThanOrEquals;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:lessThanOrEquals detector (LODStats) v1"@en .
+
+mon:propertyPairLessThanOrEqualsSHACLLessThanOrEquals a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:propertyPairLessThanOrEquals;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "SHACL less than or equals"@en;
+  owl:sameAs <https://astrea.helio.linkeddata.es/sh:lessThanOrEquals> .
+
+mon:propertyPairLessThanSHACLLessThan a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:propertyPairLessThan;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "SHACL less than"@en;
+  owl:sameAs <https://astrea.helio.linkeddata.es/sh:lessThan> .
+
+mon:propertyRangeDetectorOwlObjectPropertyRange a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect owl:ObjectPropertyRange restrictions."@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "owl:ObjectPropertyRange detector"@en .
+
+mon:propertyRangeDetetorRdfsRange a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect rdfs:range restrictions."@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "rdfs:range detector"@en .
+
+mon:propertyRangeLODStatsDetectorOwlObjectPropertyRange-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:propertyRangeDetectorOwlObjectPropertyRange;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "owl:ObjectPropertyRange detector (LODStats) v1"@en .
+
+mon:propertyRangeLODStatsDetectorRdfsRange-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:propertyRangeDetetorRdfsRange;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "rdfs:range detector (LODStats) v1"@en .
+
+mon:propertyRanges a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "Constraints of the constraint type property ranges restrict the range of object and data properties. In DL terminology, this constraint type is also called range restrictions on roles. The property ranges constraint type states that the range of the object or data property p is either (1) the class C - that is, if some individual is connected by p with an individual i, then i is an instance of C, or (2) the datatype DT - that is, if some individual is connected by p with a literal l, then l is in DT.";
+  dc:source "https://publikationen.bibliothek.kit.edu/1000054062"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "Property ranges restriction type"@en .
+
+mon:propertyRangesOwlDataPropertyRange a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A property ranges restriction, expressed using the owl:DataPropertyRange property.";
+  frbr:realizationOf mon:propertyRanges;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "OWL DataPropertyRange restriction"@en .
+
+mon:propertyRangesOwlObjectPropertyRange a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A property ranges restriction, expressed using the owl:ObjectPropertyRange property.";
+  frbr:realizationOf mon:propertyRanges;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "OWL ObjectPropertyRange restriction"@en .
+
+mon:propertyRangesRdfsRange a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A property ranges restriction, expressed using the rdfs:range property.";
+  frbr:realizationOf mon:propertyRanges;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "RDFS range restriction"@en;
+  owl:sameAs <https://astrea.helio.linkeddata.es/rdfs:range> .
+
+mon:shapeNode a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "sh:node specifies the condition that each value node conforms to the given node shape.";
+  dc:source "https://www.w3.org/TR/shacl/"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "(SHACL) Node restriction type"@en .
+
+mon:shapeNodeDetectorSHACLNode a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect sh:node constraints"@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:node detector"@en .
+
+mon:shapeNodeLODStatsDetectorSHACLNode-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:shapeNodeDetectorSHACLNode;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:node detector (LODStats) v1"@en .
+
+mon:shapeNodeSHACLNode a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:shapeNode;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "SHACL node"@en;
+  owl:sameAs <https://astrea.helio.linkeddata.es/sh:node> .
+
+mon:shapeProperty a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A property shape that all value nodes need to have.";
+  dc:source "https://www.w3.org/TR/shacl/"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "(SHACL) Property restriction type"@en .
+
+mon:shapePropertyDetectorSHACLProperty a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect sh:property constraints"@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:property detector"@en .
+
+mon:shapePropertyLODStatsDetectorSHACLProperty-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:shapePropertyDetectorSHACLProperty;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:property detector (LODStats) v1"@en .
+
+mon:shapePropertySHACLProperty a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:shapeProperty;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "SHACL property"@en;
+  owl:sameAs <https://astrea.helio.linkeddata.es/sh:property> .
+
+mon:shapeQualifiedMaxCount a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "The maximum number of value nodes that can conform to the shape.";
+  dc:source "https://www.w3.org/TR/shacl/"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "(SHACL) Qualified max count restriction type"@en .
+
+mon:shapeQualifiedMaxCountDetectorSHACLQualifiedMaxCount a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect sh:qualifiedMaxCount constraints"@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:qualifiedMaxCount detector"@en .
+
+mon:shapeQualifiedMaxCountLODStatsDetectorSHACLQualifiedMaxCount-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:shapeQualifiedMaxCountDetectorSHACLQualifiedMaxCount;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:qualifiedMaxCount detector (LODStats) v1"@en .
+
+mon:shapeQualifiedMaxCountSHACLQualifiedMaxCount a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:shapeQualifiedMaxCount;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "SHACL qualified max count"@en;
+  owl:sameAs <https://astrea.helio.linkeddata.es/sh:qualifiedMaxCount> .
+
+mon:shapeQualifiedMinCount a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "The minimum number of value nodes that conform to the shape.";
+  dc:source "https://www.w3.org/TR/shacl/"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "(SHACL) Qualified min count restriction type"@en .
+
+mon:shapeQualifiedMinCountDetectorSHACLQualifiedMinCount a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect sh:qualifiedMinCount constraints"@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:qualifiedMinCount detector"@en .
+
+mon:shapeQualifiedMinCountLODStatsDetectorSHACLQualifiedMinCount-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:shapeQualifiedMinCountDetectorSHACLQualifiedMinCount;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:qualifiedMinCount detector (LODStats) v1"@en .
+
+mon:shapeQualifiedMinCountSHACLQualifiedMinCount a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:shapeQualifiedMinCount;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "SHACL qualified min count"@en;
+  owl:sameAs <https://astrea.helio.linkeddata.es/sh:qualifiedMinCount> .
+
+mon:shapeQualifiedValue a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "The shape that the specified number of value nodes needs to conform to.";
+  dc:source "https://www.w3.org/TR/shacl/"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "(SHACL) Qualified value restriction type"@en .
+
+mon:shapeQualifiedValueDetectorSHACLQualifiedValue a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect sh:qualifiedValue constraints"@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:qualifiedValue detector"@en .
+
+mon:shapeQualifiedValueLODStatsDetectorSHACLQualifiedValue-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:shapeQualifiedValueDetectorSHACLQualifiedValue;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:qualifiedValue detector (LODStats) v1"@en .
+
+mon:shapeQualifiedValueSHACLQualifiedValue a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:shapeQualifiedValue;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "SHACL qualified value"@en;
+  owl:sameAs <https://astrea.helio.linkeddata.es/sh:qualifiedValueShape> .
+
+mon:stringLanguageIn a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "The condition specified by sh:languageIn is that the allowed language tags for each value node are limited by a given list of language tags.";
+  dc:source "https://www.w3.org/TR/shacl/"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "(SHACL) Language-in restriction type"@en .
+
+mon:stringLanguageInDetectorSHACLLanguageIn a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect sh:languageIn constraints"@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:languageIn detector"@en .
+
+mon:stringLanguageInLODStatsDetectorSHACLLanguageIn-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:stringLanguageInDetectorSHACLLanguageIn;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:languageIn detector (LODStats) v1"@en .
+
+mon:stringLanguageInSHACLLanguageIn a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:stringLanguageIn;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "SHACL language-in"@en;
+  owl:sameAs <https://astrea.helio.linkeddata.es/sh:languageIn> .
+
+mon:stringMaxLength a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "It specifies the maximum string length of each value node that satisfies the condition. This can be applied to any literals and IRIs, but not to blank nodes.";
+  dc:source "https://www.w3.org/TR/shacl/"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "(SHACL) Maximum length restriction type"@en .
+
+mon:stringMaxLengthDetectorSHACLMaxLength a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect sh:maxLength constraints"@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:maxLength detector"@en .
+
+mon:stringMaxLengthLODStatsDetectorSHACLMaxLength-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:stringMaxLengthDetectorSHACLMaxLength;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:maxLength detector (LODStats) v1"@en .
+
+mon:stringMaxLengthSHACLMaxLength a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:stringMaxLength;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "SHACL max length"@en;
+  owl:sameAs <https://astrea.helio.linkeddata.es/sh:maxLength> .
+
+mon:stringMinLength a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "It specifies the minimum string length of each value node that satisfies the condition. This can be applied to any literals and IRIs, but not to blank nodes.";
+  dc:source "https://www.w3.org/TR/shacl/"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "(SHACL) Minimum length restriction type"@en .
+
+mon:stringMinLengthDetectorSHACLMinLength a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect sh:minLength constraints"@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:minLength detector"@en .
+
+mon:stringMinLengthLODStatsDetectorSHACLMinLength-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:stringMinLengthDetectorSHACLMinLength;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:minLength detector (LODStats) v1"@en .
+
+mon:stringMinLengthSHACLMinLength a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:stringMinLength;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "SHACL min length"@en;
+  owl:sameAs <https://astrea.helio.linkeddata.es/sh:minLength> .
+
+mon:stringPattern a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "It specifies a regular expression that each value node matches to satisfy the condition.";
+  dc:source "https://www.w3.org/TR/shacl/"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "(SHACL) Pattern restriction type"@en .
+
+mon:stringPatternDetectorSHACLPattern a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect sh:pattern constraints"@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:pattern detector"@en .
+
+mon:stringPatternLODStatsDetectorSHACLPattern-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:stringPatternDetectorSHACLPattern;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:pattern detector (LODStats) v1"@en .
+
+mon:stringPatternSHACLPattern a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:stringPattern;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "SHACL pattern"@en;
+  owl:sameAs <https://astrea.helio.linkeddata.es/sh:pattern> .
+
+mon:stringUniqueLang a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "If $uniqueLang is true then for each non-empty language tag that is used by at least two value nodes, there is a validation result.";
+  dc:source "https://www.w3.org/TR/shacl/"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "(SHACL) Unique Language restriction type"@en .
+
+mon:stringUniqueLangDetectorSHACLUniqueLang a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect sh:uniqueLang constraints"@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:uniqueLang detector"@en .
+
+mon:stringUniqueLangLODStatsDetectorSHACLUniqueLang-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:stringUniqueLangDetectorSHACLUniqueLang;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:uniqueLang detector (LODStats) v1"@en .
+
+mon:stringUniqueLangSHACLUniqueLang a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:stringUniqueLang;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "SHACL unique language"@en;
+  owl:sameAs <https://astrea.helio.linkeddata.es/sh:uniqueLang> .
+
+mon:subsumption a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "The subsumption constraint type corresponds to concept inclusion in DL terminology. Subclass axioms are a fundamental type of axioms in OWL2 and can be used to construct class hierarchies.";
+  dc:source "https://publikationen.bibliothek.kit.edu/1000054062"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "Subsumption restriction type"@en .
+
+mon:subsumptionDetectorOwlSubClassOf a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect owl:SubClassOf restrictions."@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "owl:SubClassOf detector"@en .
+
+mon:subsumptionDetectorRdfsSubClassOf a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect rdfs:subClassOf restrictions."@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "rdfs:subClassOf detector"@en .
+
+mon:subsumptionLODStatsDetectorOwlSubClassOf-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:subsumptionDetectorOwlSubClassOf;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "owl:SubClassOf detector (LODStats) v1"@en .
+
+mon:subsumptionLODStatsDetectorRdfsSubClassOf-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:subsumptionDetectorRdfsSubClassOf;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "rdfs:subClassOf detector (LODStats) v1"@en .
+
+mon:subsumptionOwlSubClassOf a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A subsumption restriction, expressed using the owl:SubClassOf property.";
+  frbr:realizationOf mon:subsumption;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "OWL SubClassOf restriction"@en .
+
+mon:subsumptionRdfsSubClassOf a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A subsumption restriction, expressed using the rdfs:subClassOf property.";
+  frbr:realizationOf mon:subsumption;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "RDFS subClassOf restriction"@en;
+  owl:sameAs <https://astrea.helio.linkeddata.es/rdfs:subClassOf> .
+
+mon:targetClassTarget a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A class target is specified with the sh:targetClass predicate. Each value of sh:targetClass in a shape is an IRI.";
+  dc:source "https://www.w3.org/TR/shacl/"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "(SHACL) Target class"@en .
+
+mon:targetClassTargetDetectorSHACLTargetClass a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect sh:targetClass properties"@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:targetClass detector"@en .
+
+mon:targetClassTargetLODStatsDetectorSHACLTargetClass-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:targetClassTargetDetectorSHACLTargetClass;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:targetClass detector (LODStats) v1"@en .
+
+mon:targetClassTargetSHACLTargetClass a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:targetClassTarget;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "SHACL target class"@en;
+  owl:sameAs <https://astrea.helio.linkeddata.es/sh:targetClass> .
+
+mon:targetNodeTarget a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A node target is specified using the sh:targetNode predicate. Each value of sh:targetNode in a shape is either an IRI or a literal.";
+  dc:source "https://www.w3.org/TR/shacl/"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "(SHACL) Target node"@en .
+
+mon:targetNodeTargetDetectorSHACLTargetNode a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect sh:targetNode properties"@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:targetNode detector"@en .
+
+mon:targetNodeTargetLODStatsDetectorSHACLTargetNode-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:targetNodeTargetDetectorSHACLTargetNode;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:targetNode detector (LODStats) v1"@en .
+
+mon:targetNodeTargetSHACLTargetNode a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:targetNodeTarget;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "SHACL target node"@en;
+  owl:sameAs <https://astrea.helio.linkeddata.es/sh:targetNode> .
+
+mon:targetObjectsOfTarget a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "An objects-of target is specified with the predicate sh:targetObjectsOf. The values of sh:targetObjectsOf in a shape are IRIs.";
+  dc:source "https://www.w3.org/TR/shacl/"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "(SHACL) Objects-of target"@en .
+
+mon:targetObjectsOfTargetDetectorSHACLTargetObjectsOf a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect sh:targetObjectsOf properties"@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:targetObjectsOf detector"@en .
+
+mon:targetObjectsOfTargetLODStatsDetectorSHACLTargetObjectsOf-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:targetObjectsOfTargetDetectorSHACLTargetObjectsOf;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:targetObjectsOf detector (LODStats) v1"@en .
+
+mon:targetObjectsOfTargetSHACLTargetObjectsOf a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:targetObjectsOfTarget;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "SHACL target objects of"@en;
+  owl:sameAs <https://astrea.helio.linkeddata.es/sh:targetObjectsOf> .
+
+mon:targetSubjectsOfTarget a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A subjects-of target is specified with the predicate sh:targetSubjectsOf. The values of sh:targetSubjectsOf in a shape are IRIs.";
+  dc:source "https://www.w3.org/TR/shacl/"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "(SHACL) Subjects-of target"@en .
+
+mon:targetSubjectsOfTargetDetectorSHACLTargetSubjectsOf a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect sh:targetSubjectsOf properties"@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:targetSubjectsOf detector"@en .
+
+mon:targetSubjectsOfTargetLODStatsDetectorSHACLTargetSubjectsOf-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:targetSubjectsOfTargetDetectorSHACLTargetSubjectsOf;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:targetSubjectsOf detector (LODStats) v1"@en .
+
+mon:targetSubjectsOfTargetSHACLTargetSubjectsOf a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:targetSubjectsOfTarget;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "SHACL target subjects of"@en;
+  owl:sameAs <https://astrea.helio.linkeddata.es/sh:targetSubjectsOf> .
+
+mon:universalQuantification a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "Universal quantifications (value restrictions in DL) are used to enforce that all individuals of a given class C are connected by particular properties p only to instances/literals of certain classes C or datatypes DT.";
+  dc:source "https://publikationen.bibliothek.kit.edu/1000054062"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "Universal quantification restriction type"@en .
+
+mon:universalQuantificationDetectorOwlAllValuesFrom a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect owl:allValuesFrom restrictions."@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "owl:allValuesFrom detector"@en .
+
+mon:universalQuantificationLODStatsDetectorOwlAllValuesFrom-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:universalQuantificationDetectorOwlAllValuesFrom;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "owl:allValuesFrom detector (LODStats) v1"@en .
+
+mon:universalQuantificationOwlAllValuesFrom a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "An universal quantification restriction, expressed using the owl:allValuesFrom property.";
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "OWL allValuesFrom restriction"@en;
+  owl:sameAs <https://astrea.helio.linkeddata.es/owl:allValuesFrom> .
+
+mon:valueRangeMaxExclusive a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "The maximum exclusive value. The values of sh:maxExclusive in a shape are literals.";
+  dc:source "https://www.w3.org/TR/shacl/"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "(SHACL) Maximum exclusive restriction type"@en .
+
+mon:valueRangeMaxExclusiveDetectorSHACLMaxExclusive a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect sh:maxExclusive constraints"@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:maxExclusive detector"@en .
+
+mon:valueRangeMaxExclusiveLODStatsDetectorSHACLMaxExclusive-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:valueRangeMaxExclusiveDetectorSHACLMaxExclusive;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:maxExclusive detector (LODStats) v1"@en .
+
+mon:valueRangeMaxExclusiveSHACLMaxExclusive a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:valueRangeMaxExclusive;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "SHACL max exclusive"@en;
+  owl:sameAs <https://astrea.helio.linkeddata.es/sh:maxExclusive> .
+
+mon:valueRangeMaxInclusive a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "The maximum inclusive value. The values of sh:maxInclusive in a shape are literals.";
+  dc:source "https://www.w3.org/TR/shacl/"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "(SHACL) Maximum inclusive restriction type"@en .
+
+mon:valueRangeMaxInclusiveDetectorSHACLMaxInclusive a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect sh:maxInclusive constraints"@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:maxInclusive detector"@en .
+
+mon:valueRangeMaxInclusiveLODStatsDetectorSHACLMaxInclusive-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:valueRangeMaxInclusiveDetectorSHACLMaxInclusive;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:maxInclusive detector (LODStats) v1"@en .
+
+mon:valueRangeMaxInclusiveSHACLMaxInclusive a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:valueRangeMaxInclusive;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "SHACL max inclusive"@en;
+  owl:sameAs <https://astrea.helio.linkeddata.es/sh:maxInclusive> .
+
+mon:valueRangeMinExclusive a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "The minimum exclusive value. The values of sh:minExclusive in a shape are literals.";
+  dc:source "https://www.w3.org/TR/shacl/"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "(SHACL) Minimum exclusive restriction type"@en .
+
+mon:valueRangeMinExclusiveDetectorSHACLMinExclusive a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect sh:minExclusive constraints"@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:minExclusive detector"@en .
+
+mon:valueRangeMinExclusiveLODStatsDetectorSHACLMinExclusive-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:valueRangeMinExclusiveDetectorSHACLMinExclusive;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:minExclusive detector (LODStats) v1"@en .
+
+mon:valueRangeMinExclusiveSHACLMinExclusive a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:valueRangeMinExclusive;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "SHACL min exclusive"@en;
+  owl:sameAs <https://astrea.helio.linkeddata.es/sh:minExclusive> .
+
+mon:valueRangeMinInclusive a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "The minimum inclusive value. The values of sh:minInclusive in a shape are literals.";
+  dc:source "https://www.w3.org/TR/shacl/"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "(SHACL) Minimum inclusive restriction type"@en .
+
+mon:valueRangeMinInclusiveDetectorSHACLMinInclusive a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect sh:minInclusive constraints"@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:minInclusive detector"@en .
+
+mon:valueRangeMinInclusiveLODStatsDetectorSHACLMinInclusive-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:valueRangeMinInclusiveDetectorSHACLMinInclusive;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:minInclusive detector (LODStats) v1"@en .
+
+mon:valueRangeMinInclusiveSHACLMinInclusive a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:valueRangeMinInclusive;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "SHACL min inclusive"@en;
+  owl:sameAs <https://astrea.helio.linkeddata.es/sh:minInclusive> .
+
+mon:valueTypeClass a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "The condition specified by sh:class is that each value node is a SHACL instance of a given type.";
+  dc:source "https://www.w3.org/TR/shacl/"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "(SHACL) Class restriction type"@en .
+
+mon:valueTypeClassDetectorSHACLClass a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect sh:class constraints"@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:class detector"@en .
+
+mon:valueTypeClassLODStatsDetectorSHACLClass-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:valueTypeClassDetectorSHACLClass;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:class detector (LODStats) v1"@en .
+
+mon:valueTypeClassSHACLClass a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:valueTypeClass;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "SHACL class"@en;
+  owl:sameAs <https://astrea.helio.linkeddata.es/sh:class> .
+
+mon:valueTypeDatatype a mov:RestrictionType;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "It specifies a condition to be satisfied with regards to the datatype of each value node.";
+  dc:source "https://www.w3.org/TR/shacl/"^^<http://schema.org/URL>;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "(SHACL) Datatype restriction type"@en .
+
+mon:valueTypeDatatypeDetectorSHACLDatatype a mov:RestrictionTypeExpressionDetector;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  dc:description "A method or software component to detect sh:datatype constraints"@en;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:datatype detector"@en .
+
+mon:valueTypeDatatypeLODStatsDetectorSHACLDatatype-v1 a mov:RestrictionTypeExpressionDetectorVersion;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:valueTypeDatatypeDetectorSHACLDatatype;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "sh:datatype detector (LODStats) v1"@en .
+
+mon:valueTypeDatatypeSHACLDatatype a mov:RestrictionTypeExpression;
+  dc:creator <https://sven-lieber.org/profile#me>;
+  frbr:realizationOf mon:valueTypeDatatype;
+  rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>;
+  rdfs:label "SHACL datatype"@en;
+  owl:sameAs <https://astrea.helio.linkeddata.es/sh:datatype> .
