@@ -23,7 +23,7 @@ targetClassTargetSHACLTargetClass,SHACL target class,sh:targetClass,targetClassT
 otherClosedSHACLClosed,SHACL closed,sh:closed,otherClosed
 targetNodeTargetSHACLTargetNode,SHACL target node,sh:targetNode,targetNodeTarget
 stringLanguageInSHACLLanguageIn,SHACL language-in,sh:languageIn,stringLanguageIn
-targetObjectsOfTargetSHACLTargetObjectsOf,SHACL target objects of,sh:targetObjectsOof,targetObjectsOfTarget
+targetObjectsOfTargetSHACLTargetObjectsOf,SHACL target objects of,sh:targetObjectsOf,targetObjectsOfTarget
 propertyPairLessThanSHACLLessThan,SHACL less than,sh:lessThan,propertyPairLessThan
 stringPatternSHACLPattern,SHACL pattern,sh:pattern,stringPattern
 shapeNodeSHACLNode,SHACL node,sh:node,shapeNode
@@ -32,4 +32,4 @@ targetSubjectsOfTargetSHACLTargetSubjectsOf,SHACL target subjects of,sh:targetSu
 stringMaxLengthSHACLMaxLength,SHACL max length,sh:maxLength,stringMaxLength
 valueRangeMaxExclusiveSHACLMaxExclusive,SHACL max exclusive,sh:maxExclusive,valueRangeMaxExclusive
 shapeQualifiedMaxCountSHACLQualifiedMaxCount,SHACL qualified max count,sh:qualifiedMaxCount,shapeQualifiedMaxCount
-shapeQualifiedValueSHACLQualifiedValue,SHACL qualified value,sh:qualifiedValue,shapeQualifiedValue
+shapeQualifiedValueSHACLQualifiedValue,SHACL qualified value,sh:qualifiedValueShape,shapeQualifiedValue
