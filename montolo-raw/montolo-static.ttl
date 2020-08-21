@@ -1,0 +1,312 @@
+#
+# This file contains Restriction Type-related instantiations of the MontoloVoc vocabulary
+#
+
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix mov: <https://w3id.org/montolo/ns/montolo-voc#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix qb: <http://purl.org/linked-data/cube#> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix sdmx-attribute: <http://purl.org/linked-data/sdmx/2009/attribute#> .
+@prefix mon: <https://w3id.org/montolo/ns/montolo#>  .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix frbr: <http://purl.org/vocab/frbr/core#> .
+@prefix rdfcv: <http://www.dr-thomashartmann.de/phd-thesis/rdf-validation/vocabularies/rdf-constraints-vocabulary#> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+
+<https://w3id.org/montolo/ns/montolo#> rdf:type void:Dataset, owl:Ontology, voaf:Vocabulary ;
+                                       vann:preferredNamespacePrefix "mon" ;
+                                       vann:preferredNamespaceUri "https://w3id.org/montolo/ns/montolo#";
+                                       rdfs:label "Montolo restriction types"@en ;
+                                       dct:title "Montolo restriction types"@en ;
+                                       dct:description "Montolo restriction types, described using the MontoloVoc vocabulary"@en ;
+                                       rdfs:comment """-Version 1.0.0 Rebranded from ReLOVStats."""@en ;
+                                       rdfs:comment """-Version 1.1.0 Added constraint type, expressions and detectors for SHACL core constraints and added links to Astrea."""@en ;
+                                       owl:versionIRI   <https://w3id.org/montolo/ns/montolo/v1.1.0> ;
+                                       owl:versionInfo "1.1.0" ;
+                                       rdfs:seeAlso <https://w3id.org/montolo> ;
+                                       dct:modified "2020-08-20"^^xsd:date ;
+                                       dct:issued "2019-07-19"^^xsd:date ;
+                                       dct:created "2019-07-19"^^xsd:date ;
+                                       dct:rights "Copyright © Ghent University – imec – IDLab"@en ;
+                                       cc:license <https://creativecommons.org/publicdomain/zero/1.0/> ;
+                                       foaf:primaryTopic <https://w3id.org/montolo> ;
+                                       dct:creator <https://sven-lieber.org/profile#me> ;
+                                       dct:contributor <http://ben.de-meester.org/#me> ;
+                                       dct:contributor [ foaf:name "Anastasia Dimou"@en ;
+                                                         rdf:type foaf:Person ;
+                                                         foaf:mbox "mailto:Anastasia.dimou@UGent.be"
+                                                       ] ;
+                                       .
+
+<https://sven-lieber.org/profile#me> rdf:type foaf:Person ;
+                                     foaf:mbox "mailto:sven.lieber@ugent.be" ;
+                                     foaf:name "Sven Lieber"@en .
+
+<https://ben.de-meester.org/#me> rdf:type foaf:Person ;
+                                 foaf:mbox "mailto:ben.demeester@ugent.be" ;
+                                 foaf:name "Ben De Meester"@en .
+
+#
+# Definitions of Restriction Types Measures
+#
+
+mon:restrictionTypeOccurrence a mov:RestrictionTypeMeasure ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:comment """The occurrence of a restriction of a certain type."""@en ;
+    rdfs:label "Restriction type occurrence"@en .
+
+mon:hierarchyOccurrence a mov:RestrictionTypeMeasure ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:comment """The occurrence of disjoint hierarchies of IRIs."""@en ;
+    rdfs:label "Hierarchy amount"@en .
+
+mon:minHierarchyDepth a mov:RestrictionTypeMeasure ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:comment """The smallest hierarchy depth of disjoint hierarchies of IRIs."""@en ;
+    rdfs:label "Minimum hierarchy depth"@en .
+
+mon:maxHierarchyDepth a mov:RestrictionTypeMeasure ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:comment """The biggest hierarchy depth of disjoint hierarcheis of IRIs."""@en ;
+    rdfs:label "Maximum hierarchy depth"@en .
+
+mon:averageHierarchyDepth a mov:RestrictionTypeMeasure ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:comment """The average hierarchy depth of disjoint hierarchies of IRIs."""@en ;
+    rdfs:label "Average hierarchy depth" .
+
+mon:medianHierarchyDepth a mov:RestrictionTypeMeasure ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:comment """The median hierarchy depth of disjoint hierarchies of IRIs."""@en ;
+    rdfs:label "Median hierarchy depth"@en .
+
+#
+# Definitions of Ontology Repositories
+#
+mon:lov a mov:OntologyRepository ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:label "Linked Open Vocabularies (LOV)"@en .
+
+mon:bioportal a mov:OntologyRepository ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:label "BioPortal"@en .
+
+mon:noRepo a mov:OntologyRepository ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:label "Not specified"@en .
+
+#
+# Definitions of Dimensions
+#
+
+mon:restrictionTypeDimension a qb:DimensionProperty, rdf:Property ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:label "Restriction type dimension"@en ;
+    rdfs:comment "The restriction type of this observation."@en ;
+    rdfs:domain qb:Observation ;
+    rdfs:range mov:RestrictionType .
+
+mon:detectorDimension a qb:DimensionProperty, rdf:Property ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:label "Detector version dimension"@en ;
+    rdfs:comment "The detector used to collect the observation."@en ;
+    rdfs:domain qb:Observation ;
+    rdfs:range mov:RestrictionTypeExpressionDetector .
+
+mon:detectorVersionDimension a qb:DimensionProperty, rdf:Property ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:label "Detector version dimension"@en ;
+    rdfs:comment "The specific version of a detector used to collect the observation."@en ;
+    rdfs:domain qb:Observation ;
+    rdfs:range mov:RestrictionTypeExpressionDetectorVersion .
+
+mon:executionTimeDimension a qb:DimensionProperty, rdf:Property ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:label "Execution time dimension"@en ;
+    rdfs:comment "The time at which the observation was made."@en ;
+    rdfs:domain qb:Observation ;
+    rdfs:range xsd:dateTime .
+
+mon:ontologyVersionDimension a qb:DimensionProperty, rdf:Property ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:label "Ontology version dimension"@en ;
+    rdfs:comment "The ontology version from which this observation was made."@en ;
+    rdfs:domain qb:Observation ;
+    rdfs:range owl:Ontology .
+
+mon:ontologyRepositoryDimension a qb:DimensionProperty, rdf:Property ;
+    rdfs:isDefiendBy <https://w3id.org/montolo/ns/montolo#> ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:label "Ontology Repository dimension"@en ;
+    rdfs:comment "The ontology repository from which the ontology was obtained."@en ;
+    rdfs:domain qb:Observation ;
+    rdfs:range mov:OntologyRepository .
+
+#
+# Definitions of Data Structures
+#
+
+#
+# Restriction type amount data structure
+#
+mon:restrictionTypesAmount a qb:DataStructureDefinition, prov:Entity ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:label "Amount of restriction types"@en ;
+    rdfs:comment """This data structure contains the measurement of the amount of restriction types."""@en ;
+
+    # dimensions
+    qb:component
+      [ a qb:ComponentSpecification ; qb:dimension mon:restrictionTypeDimension ;] ,
+      [ a qb:ComponentSpecification ; qb:dimension mon:detectorVersionDimension ;] ,
+      [ a qb:ComponentSpecification ; qb:dimension mon:executionTimeDimension ;] ,
+      [ a qb:ComponentSpecification ; qb:dimension mon:ontologyVersionDimension ;] ;
+
+    # measures
+    qb:component
+      [ a qb:ComponentSpecification ; qb:measure mon:occurrence ; ] ;
+
+    # attributes
+    qb:component
+      [ a qb:ComponentSpecification ; qb:attribute sdmx-attribute:unitMeasure ; ] .
+
+#
+# Hierarchy amount data structure
+#
+mon:hierarchyAmountDistribution a qb:DataStructureDefinition, prov:Entity ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:label "Amount of hierarchies"@en ;
+    rdfs:comment """This data structure contains the measurement of the amount of hierarchies."""@en ;
+
+    # dimensions
+    qb:component
+      [ a qb:ComponentSpecification ; qb:dimension mon:implementationDimension ; ] ,
+      [ a qb:ComponentSpecification ; qb:dimension mon:restrictionTypeDimension ;] ,
+      [ a qb:ComponentSpecification ; qb:dimension mon:detectorVersionDimension ;] ,
+      [ a qb:ComponentSpecification ; qb:dimension mon:executionTimeDimension ;] ,
+      [ a qb:ComponentSpecification ; qb:dimension mon:ontologyVersionDimension ;] ;
+
+    # measures
+    qb:component
+      [ a qb:ComponentSpecification ; qb:measure mon:hierarchyOccurrence ; ] ;
+
+    # attributes
+    qb:component
+      [ a qb:ComponentSpecification ; qb:attribute sdmx-attribute:unitMeasure ; ] .
+   
+#
+# Mean hierarchy depth data structure
+#
+mon:meanHierarchyDepthsDistribution a qb:DataStructureDefinition ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:label "Average hierarchy depth distribution"@en ;
+    rdfs:comment """This data structure contains average hieararchy depth measurements."""@en ;
+
+    # dimensions
+    qb:component
+      [ a qb:ComponentSpecification ; qb:dimension mon:implementationDimension ; ] ,
+      [ a qb:ComponentSpecification ; qb:dimension mon:restrictionTypeDimension ;] ,
+      [ a qb:ComponentSpecification ; qb:dimension mon:detectorVersionDimension ;] ,
+      [ a qb:ComponentSpecification ; qb:dimension mon:executionTimeDimension ;] ,
+      [ a qb:ComponentSpecification ; qb:dimension mon:ontologyVersionDimension ;] ;
+
+    # measures
+    qb:component
+      [ a qb:ComponentSpecification ; qb:measure mon:averageHierarchyDepth ; ] ;
+
+    # attributes
+    qb:component
+      [ a qb:ComponentSpecification ; qb:attribute sdmx-attribute:unitMeasure ; ] .
+
+#
+# Median hierarchy depth data structure
+#
+mon:medianHierarchyDepthsDistribution a qb:DataStructureDefinition ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:label "Median hierarchy depth distribution"@en ;
+    rdfs:comment """This data structure contains median hieararchy depth measurements."""@en ;
+
+    # dimensions
+    qb:component
+      [ a qb:ComponentSpecification ; qb:dimension mon:implementationDimension ; ] ,
+      [ a qb:ComponentSpecification ; qb:dimension mon:restrictionTypeDimension ;] ,
+      [ a qb:ComponentSpecification ; qb:dimension mon:detectorVersionDimension ;] ,
+      [ a qb:ComponentSpecification ; qb:dimension mon:executionTimeDimension ;] ,
+      [ a qb:ComponentSpecification ; qb:dimension mon:ontologyVersionDimension ;] ;
+
+    # measures
+    qb:component
+      [ a qb:ComponentSpecification ; qb:measure mon:medianHierarchyDepth ; ] ;
+
+    # attributes
+    qb:component
+      [ a qb:ComponentSpecification ; qb:attribute sdmx-attribute:unitMeasure ; ] .
+   
+#
+# Min hierarchy depth data structure
+#
+mon:minHierarchyDepthsDistribution a qb:DataStructureDefinition ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:label "Minimum hierarchy depth distribution"@en ;
+    rdfs:comment """This data structure contains minimum hieararchy depth measurements."""@en ;
+
+    # dimensions
+    qb:component
+      [ a qb:ComponentSpecification ; qb:dimension mon:implementationDimension ; ] ,
+      [ a qb:ComponentSpecification ; qb:dimension mon:restrictionTypeDimension ;] ,
+      [ a qb:ComponentSpecification ; qb:dimension mon:detectorVersionDimension ;] ,
+      [ a qb:ComponentSpecification ; qb:dimension mon:executionTimeDimension ;] ,
+      [ a qb:ComponentSpecification ; qb:dimension mon:ontologyVersionDimension ;] ;
+
+    # measures
+    qb:component
+      [ a qb:ComponentSpecification ; qb:measure mon:minHierarchyDepth ; ] ;
+
+    # attributes
+    qb:component
+      [ a qb:ComponentSpecification ; qb:attribute sdmx-attribute:unitMeasure ; ] .
+
+#   
+# Max hierarchy depth data structure
+#
+mon:maxHierarchyDepthsDistribution a qb:DataStructureDefinition ;
+    rdfs:isDefinedBy <https://w3id.org/montolo/ns/montolo#>  ;
+    dct:creator <https://sven-lieber.org/profile#me> ;
+    rdfs:label "Maximum hierarchy depth distribution"@en ;
+    rdfs:comment """This data structure contains maximum hieararchy depth measurements."""@en ;
+
+    # dimensions
+    qb:component
+      [ a qb:ComponentSpecification ; qb:dimension mon:implementationDimension ; ] ,
+      [ a qb:ComponentSpecification ; qb:dimension mon:restrictionTypeDimension ;] ,
+      [ a qb:ComponentSpecification ; qb:dimension mon:detectorVersionDimension ;] ,
+      [ a qb:ComponentSpecification ; qb:dimension mon:executionTimeDimension ;] ,
+      [ a qb:ComponentSpecification ; qb:dimension mon:ontologyVersionDimension ;] ;
+
+    # measures
+    qb:component
+      [ a qb:ComponentSpecification ; qb:measure mon:maxHierarchyDepth ; ] ;
+
+    # attributes
+    qb:component
+      [ a qb:ComponentSpecification ; qb:attribute sdmx-attribute:unitMeasure ; ] .
+   
+
+  
+

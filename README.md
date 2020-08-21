@@ -10,9 +10,14 @@ To understand how current RDF-based ontologies are modeled we created **Montolo*
 Ontologies which are built with the RDF framework consist of concepts and relationship between these concepts. 
 Additionally several restrictions in the form of axioms can be defined, using terms of the RDFS and OWL vocabulary.
 
+The `montolo.ttl` dataset is created by [YARRRML](https://rml.io/yarrrml/) rules and the data of the `montolo-raw` directory.
 
 [MontoloStats](https://lov.ilabt.imec.be/montolo/data/montolo-stats/latest/) is a dataset containing statistics about ontology modeling described using the [MontoloVoc](https://lov.ilabt.imec.be/montolo/ns/montolo-voc) vocabulary based on W3C PROV and W3C DataCube.
-So far MontoloStats contains statistics from **98% of LOV** and **97% of BioPortal** ontologies.
+So far MontoloStats contains statistics for 660 (98%) LOV and 565 BioPortal ontologies.
+
+[MontoloSHACLStats](https://zenodo.org/record/3988930) is a dataset containing similar statistics but for the use of SHACL constraints instead of OWL axioms.
+Currently it contains statistics for a few data shapes hostd on GitHub
+and common data shapes such as [schema.org-SHACL](http://datashapes.org/schema) and [SHACL-of-SHACL](https://www.w3.org/ns/shacl-shacl).
 
 This repository contains code to download ontologies, create the MontoloStats dataset and perform analyses.
 
@@ -22,6 +27,7 @@ This repository contains code to download ontologies, create the MontoloStats da
 ## Download ontologies
 
 **LOV**
+
 First you have to download a current list of LOV ontologies
 and then you can download all versions and filter for most recent versions.
 
@@ -43,8 +49,13 @@ node get-latest-ontologies.js ontologies/2019-07-19_lov-all ontologies/2019-07-1
 ```
 
 **BioPortal**
-First you have to download a current list of BioPortal ontologies
-and then you can download all versions and filter for most recent verions.
+
+First you have to download a current list of BioPortal ontologies,
+usually these ontologies are either in OWL or OBO format.
+However, in both cases a proper convertion to RDF is needed taking the [OWL-to-RDF](https://www.w3.org/TR/owl2-mapping-to-rdf/) semantics into account.
+
+We use the [robot](http://robot.obolibrary.org) tool for this task,
+afterwards the RDF data can be transformed using [N3.js](https://github.com/rdfjs/N3.js) to any other RDF serialization (in our case n-triples needed for LODStats).
 
 ```bash
 todo: add script to repo
@@ -56,7 +67,7 @@ todo: add script to repo
 
 The statistics are computed using a [LODStats extension](https://github.com/IDLabResearch/lovstats) and are [semantically described](https://github.com/IDLabResearch/montolo-voc).
 
-```
+```bash
 # Create stats for LOV
 todo: add script to repo
 
@@ -73,7 +84,7 @@ python combine-results.py -i ../stats/lov_2019-07-16 -i ../stats/bioportal_2019-
 
 The dataset is described using a W3C PROV and W3C DataCube-based vocabulary and thus can be analyzed using SPARQL queries.
 
-```
+```bash
 # Optional:
 # Create a csv file with all observations to further analyze the observations programatically, e.g. using R.
 python create-observations-csv.py -i ../stats/MontoloStats.ttl -o montolo-observations.csv
@@ -85,8 +96,10 @@ should link to a corresponding `data structure definition` as defined by RDF Dat
 We also provide several such data structures in the [montolo](montolo.ttl) file.
 
 ```turtle
-@prefix lovc: <https://w3id.org/lovcube/ns/lovcube#> .
-@prefix rls: <https://w3id.org/lovcube/ns/relovstats#> .
+@prefix mon: <https://w3id.org/montolo/ns/montolo#> .
+@prefix mov: <https://w3id.org/montolo/ns/montolo-voc#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix qb: <http://purl.org/linked-data/cube#> .
 
 # Created statistics, described using the RDF Data Cube compliant LOVCube vocabulary
 # The observation links to a corresponding RDF Data Cube dataset (described below)
